@@ -1,6 +1,6 @@
 import React from "react";
 import "./OurPresence.css";
-import AboutMap from '../../../assets/images/About/AboutMap.png'
+import AboutMap from '../../../assets/images/About/AboutMap.png';
 
 const OurPresence = ({ mapImage }) => {
   const certifications = [
@@ -11,14 +11,11 @@ const OurPresence = ({ mapImage }) => {
     { name: "INDIA" },
   ];
 
-  // Default stylish world map image (high-res illustration)
-  const defaultMapImage = AboutMap;
-  const imageSrc = mapImage || defaultMapImage;
+  const imageSrc = mapImage || AboutMap;
 
   return (
-    <section className="op-section">
+    <section className="op-section" aria-label="Global presence – serving international markets">
       <div className="op-container">
-
         {/* Header */}
         <div className="op-header">
           <span className="op-subtitle">GLOBAL PRESENCE</span>
@@ -27,21 +24,20 @@ const OurPresence = ({ mapImage }) => {
           </h2>
         </div>
 
-        {/* Stylish Map Image with Animations & Effects */}
+        {/* Map Image with Effects */}
         <div className="op-map-real">
           <div className="op-map-image-wrapper">
             <img
               src={imageSrc}
-              alt="Stylish world map showing global presence"
+              alt="Stylish world map highlighting global rebar detailing service locations"
               className="op-map-image"
               loading="lazy"
             />
           </div>
-          {/* Scanning beam effect overlay for "real functioning" feel */}
-          <div className="op-scan-overlay"></div>
+          <div className="op-scan-overlay" aria-hidden="true"></div>
         </div>
 
-        {/* Certifications */}
+        {/* Certifications / Regions */}
         <div className="op-cert-simple">
           {certifications.map((cert, index) => (
             <div key={index} className="op-cert-badge">
@@ -49,7 +45,6 @@ const OurPresence = ({ mapImage }) => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

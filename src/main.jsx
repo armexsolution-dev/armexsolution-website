@@ -5,6 +5,11 @@ import { HelmetProvider } from 'react-helmet-async'
 import router from './router'
 import './styles/global.css'
 
+// ✅ Disable browser's native scroll restoration globally
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual'
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HelmetProvider>

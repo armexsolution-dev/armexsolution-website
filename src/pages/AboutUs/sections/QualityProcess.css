@@ -1,21 +1,28 @@
-/* ===== Quality & Process Section ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* --------------------------------------------
+   Quality Philosophy Section – Cleaned & Optimized
+   (No global resets, no font-family)
+-------------------------------------------- */
 
 .qp-section {
   position: relative;
-  padding: 100px 0 120px;
+  padding: clamp(3rem, 8vw, 6.25rem) 0 clamp(4rem, 10vw, 7.5rem);
   background: linear-gradient(135deg, #ffffff 0%, #fef9e6 100%);
-  font-family: 'Inter', sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  /* GPU acceleration and composite layer */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Prevent layout thrashing during scroll */
+  contain: layout style paint;
 }
 
-/* Background Elements */
+
+.qp-section::after{
+  display: none !important;
+}
+/* Background decorative elements */
 .qp-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
 }
@@ -24,32 +31,12 @@
   position: absolute;
   top: -20%;
   right: -10%;
-  width: 600px;
-  height: 600px;
+  width: clamp(300px, 40vw, 600px);
+  height: clamp(300px, 40vw, 600px);
   background: radial-gradient(circle, rgba(201, 162, 45, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   animation: qpGradientFloat 20s ease-in-out infinite;
-}
-
-.qp-bg-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(rgba(201, 162, 45, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(201, 162, 45, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.qp-bg-dots {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle at 2px 2px, rgba(201, 162, 45, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
+  will-change: transform;
 }
 
 @keyframes qpGradientFloat {
@@ -58,10 +45,25 @@
   66% { transform: translate(20px, -20px) scale(0.9); }
 }
 
+.qp-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(201, 162, 45, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(201, 162, 45, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.qp-bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 2px 2px, rgba(201, 162, 45, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
 .qp-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 clamp(1rem, 5vw, 1.875rem);
   position: relative;
   z-index: 10;
 }
@@ -69,7 +71,7 @@
 /* Header */
 .qp-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(2rem, 6vw, 3.75rem);
 }
 
 .qp-header-badge {
@@ -83,12 +85,13 @@
   margin-bottom: 1rem;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #C9A22D;
+  color: #c9a22d;
   letter-spacing: 1px;
 }
 
 .qp-badge-icon {
   animation: qpSpin 3s linear infinite;
+  will-change: transform;
 }
 
 @keyframes qpSpin {
@@ -97,14 +100,14 @@
 }
 
 .qp-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 700;
   color: #1e2b37;
   margin: 0 0 1rem;
 }
 
 .qp-title span {
-  color: #C9A22D;
+  color: #c9a22d;
   position: relative;
   display: inline-block;
 }
@@ -131,15 +134,16 @@
 .qp-decoration-line {
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #C9A22D, transparent);
+  background: linear-gradient(90deg, transparent, #c9a22d, transparent);
 }
 
 .qp-decoration-dot {
   width: 8px;
   height: 8px;
-  background: #C9A22D;
+  background: #c9a22d;
   border-radius: 50%;
   animation: qpDotPulse 2s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes qpDotPulse {
@@ -148,21 +152,20 @@
 }
 
 .qp-desc {
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 2vw, 1rem);
   color: #64748b;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
-/* Process Flow */
+/* Process Flow (steps) */
 .qp-process {
-  position: relative;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 70px;
   flex-wrap: wrap;
   gap: 20px;
+  margin-bottom: 70px;
 }
 
 .qp-process-step {
@@ -179,6 +182,9 @@
   animation: qpStepFade 0.6s ease-out forwards;
   opacity: 0;
   transform: translateY(20px);
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .qp-process-step:nth-child(1) { animation-delay: 0.1s; }
@@ -187,15 +193,12 @@
 .qp-process-step:nth-child(4) { animation-delay: 0.4s; }
 
 @keyframes qpStepFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .qp-process-step:hover {
   transform: translateY(-10px);
-  border-color: #C9A22D;
+  border-color: #c9a22d;
   box-shadow: 0 20px 40px rgba(201, 162, 45, 0.15);
 }
 
@@ -205,7 +208,7 @@
   left: 20px;
   width: 40px;
   height: 40px;
-  background: #C9A22D;
+  background: #c9a22d;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -216,10 +219,9 @@
   box-shadow: 0 5px 15px rgba(201, 162, 45, 0.3);
 }
 
-/* PROCESS FLOW IMAGE STYLES */
 .qp-step-icon {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   margin: 0 auto 20px;
   background: rgba(201, 162, 45, 0.1);
   border-radius: 20px;
@@ -228,12 +230,11 @@
   justify-content: center;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid transparent;
 }
 
 .qp-step-img {
-  width: 55px;
-  height: 55px;
+  width: 85px;
+  height: 85px;
   object-fit: cover;
   border-radius: 14px;
   transition: all 0.3s ease;
@@ -248,17 +249,16 @@
 }
 
 .qp-step-content h3 {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 600;
   color: #1e2b37;
   margin-bottom: 10px;
 }
 
 .qp-step-content p {
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
   color: #64748b;
   line-height: 1.5;
-  margin: 0;
 }
 
 .qp-step-connector {
@@ -274,9 +274,10 @@
 .qp-connector-line {
   width: 40px;
   height: 2px;
-  background: linear-gradient(90deg, #C9A22D, #0F766E);
+  background: linear-gradient(90deg, #c9a22d, #0f766e);
   animation: qpLineFlow 2s linear infinite;
   background-size: 200% 100%;
+  will-change: background-position;
 }
 
 @keyframes qpLineFlow {
@@ -287,9 +288,10 @@
 .qp-connector-dot {
   width: 8px;
   height: 8px;
-  background: #C9A22D;
+  background: #c9a22d;
   border-radius: 50%;
   animation: qpConnectorPulse 1.5s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes qpConnectorPulse {
@@ -297,25 +299,25 @@
   50% { transform: scale(1.5); opacity: 1; }
 }
 
-/* Quality Pillars - React Icons (unchanged) */
+/* Quality Pillars */
 .qp-pillars {
   background: linear-gradient(135deg, rgba(201, 162, 45, 0.05) 0%, rgba(15, 118, 110, 0.05) 100%);
   border-radius: 40px;
-  padding: 50px;
-  margin-bottom: 50px;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: 3rem;
   border: 1px solid rgba(201, 162, 45, 0.2);
 }
 
 .qp-pillars-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
 }
 
 .qp-pillars-subtitle {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #C9A22D;
+  color: #c9a22d;
   letter-spacing: 1px;
   text-transform: uppercase;
   background: rgba(201, 162, 45, 0.1);
@@ -325,14 +327,13 @@
 }
 
 .qp-pillars-header h3 {
-  font-size: 1.6rem;
+  font-size: clamp(1.3rem, 4vw, 1.6rem);
   font-weight: 600;
   color: #1e2b37;
-  margin: 0;
 }
 
 .qp-pillars-header h3 span {
-  color: #C9A22D;
+  color: #c9a22d;
 }
 
 .qp-pillars-grid {
@@ -350,11 +351,13 @@
   border: 1px solid rgba(201, 162, 45, 0.1);
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .qp-pillar-card:hover {
   transform: translateY(-8px);
-  border-color: var(--pillar-color, #C9A22D);
+  border-color: #c9a22d;
   box-shadow: 0 20px 40px rgba(201, 162, 45, 0.1);
 }
 
@@ -375,16 +378,15 @@
 }
 
 .qp-pillar-card h4 {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: 600;
   color: #1e2b37;
-  margin: 0;
 }
 
 .qp-pillar-bar {
   width: 40px;
   height: 3px;
-  background: var(--pillar-color, #C9A22D);
+  background: #c9a22d;
   margin: 10px auto 0;
   border-radius: 2px;
   transition: width 0.3s ease;
@@ -394,12 +396,12 @@
   width: 60px;
 }
 
-/* Statement */
+/* Statement & Wave */
 .qp-statement {
   position: relative;
-  background: linear-gradient(135deg, #0B1A2F 0%, #1e2b37 100%);
+  background: linear-gradient(135deg, #0b1a2f 0%, #1e2b37 100%);
   border-radius: 30px;
-  padding: 35px 40px;
+  padding: clamp(1.5rem, 4vw, 2.2rem) clamp(1rem, 4vw, 2.5rem);
   text-align: center;
   color: white;
   overflow: hidden;
@@ -414,7 +416,7 @@
 }
 
 .qp-statement p {
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 2vw, 1rem);
   line-height: 1.7;
   max-width: 800px;
   margin: 0 auto;
@@ -430,6 +432,7 @@
   height: 200%;
   background: radial-gradient(circle, rgba(201, 162, 45, 0.1) 0%, transparent 70%);
   animation: qpGlowRotate 20s linear infinite;
+  will-change: transform;
 }
 
 @keyframes qpGlowRotate {
@@ -437,7 +440,6 @@
   to { transform: rotate(360deg); }
 }
 
-/* Wave */
 .qp-wave {
   position: absolute;
   bottom: 0;
@@ -446,58 +448,113 @@
   line-height: 0;
 }
 
-/* Responsive */
+/* Responsive Breakpoints */
 @media (max-width: 1000px) {
   .qp-process {
     flex-direction: column;
     gap: 30px;
   }
-  
   .qp-step-connector {
     display: none;
   }
-  
   .qp-pillars-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .qp-pillars {
-    padding: 30px;
   }
 }
 
 @media (max-width: 600px) {
-  .qp-section {
-    padding: 60px 0 80px;
-  }
-  
-  .qp-title {
-    font-size: 2rem;
-  }
-  
   .qp-pillars-grid {
     grid-template-columns: 1fr;
   }
-  
   .qp-pillars {
-    padding: 20px;
+    padding: 1.5rem;
   }
-  
-  .qp-statement {
-    padding: 25px;
+  .qp-step-icon {
+    width: 80px;
+    height: 80px;
   }
-  
-  .qp-statement p {
-    font-size: 0.9rem;
+  .qp-step-img {
+    width: 60px;
+    height: 60px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .qp-section {
+    padding: 2rem 0 3rem;
+  }
+  .qp-process-step {
+    padding: 20px 15px;
+  }
+  .qp-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+    top: -12px;
+    left: 15px;
+  }
   .qp-step-icon {
     width: 70px;
     height: 70px;
   }
-  
   .qp-step-img {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
+  }
+  .qp-pillar-card {
+    padding: 18px;
+  }
+  .qp-pillar-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .qp-title-decoration .qp-decoration-line {
+    width: 30px;
+  }
+  .qp-header-badge {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+/* Accessibility & Print */
+@media (prefers-reduced-motion: reduce) {
+  .qp-bg-gradient,
+  .qp-badge-icon,
+  .qp-decoration-dot,
+  .qp-connector-line,
+  .qp-connector-dot,
+  .qp-statement-glow,
+  .qp-pillar-icon,
+  .qp-pillar-bar {
+    animation: none !important;
+    transition: none !important;
+  }
+  .qp-process-step:hover {
+    transform: none;
+  }
+}
+
+@media print {
+  .qp-section {
+    background: white;
+    padding: 1rem;
+  }
+  .qp-bg,
+  .qp-wave,
+  .qp-statement-glow {
+    display: none;
+  }
+  .qp-process-step {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    background: white;
+  }
+  .qp-pillars {
+    background: #f5f5f5;
   }
 }

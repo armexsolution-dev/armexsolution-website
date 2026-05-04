@@ -1,21 +1,64 @@
-import React, { useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { FiArrowLeft, FiCheckCircle, FiCpu, FiAward, FiUsers, FiClock } from 'react-icons/fi';
-import { servicesData, getServiceById } from '../../../data/servicesData';
-import SEO from '../../../seo/SEO'
+import React, { useEffect, useLayoutEffect } from 'react';
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
+import { FiArrowLeft, FiCheckCircle, FiHome, FiGrid, FiMap, FiSettings } from 'react-icons/fi';
+import { getServiceById } from '../../../data/servicesData';
+import SEO from '../../../seo/SEO';
 import './ServiceDetail.css';
+
+const industriesData = [
+  { icon: <FiHome />, title: 'Residential', desc: 'Apartments, villas, High-Rise Towers' },
+  { icon: <FiGrid />, title: 'Commercial', desc: 'Office Buildings, Malls, Hotels' },
+  { icon: <FiMap />, title: 'Infrastructure', desc: 'Bridges, Metro, Highways' },
+  { icon: <FiSettings />, title: 'Industrial', desc: 'Factories, Warehouses, Manufacturing Plants' },
+];
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const service = getServiceById(serviceId);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!service) {
       navigate('/services', { replace: true });
+      return;
     }
-    window.scrollTo(0, 0);
-  }, [service, navigate, serviceId]);
+
+    // 1. Disable browser's automatic scroll restoration globally
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // 2. If we came from the categories page (state or referrer), set the restoration flag
+    const cameFromCategories = location.state?.fromCategories || 
+                               document.referrer.includes('/services') && !document.referrer.includes('/services/');
+    
+    if (cameFromCategories) {
+      // Signal to categories page that it should restore scroll when we go back
+      sessionStorage.setItem("sc_needRestore", "true");
+      // The target scroll is already saved by Categories (sc_targetScroll)
+    } else {
+      // If direct access, ensure no stale flag
+      sessionStorage.removeItem("sc_needRestore");
+      sessionStorage.removeItem("sc_targetScroll");
+    }
+
+    // 3. Force scroll to top – multiple strategies for reliability
+    const scrollToTop = () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    scrollToTop();
+    const timer = setTimeout(scrollToTop, 10);
+    window.addEventListener('load', scrollToTop);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('load', scrollToTop);
+    };
+  }, [service, navigate, serviceId, location.state]);
 
   if (!service) {
     return null;
@@ -30,8 +73,16 @@ const ServiceDetail = () => {
       />
 
       <main className="sd-creative">
-        {/* Back Button */}
-        <Link to="/services" className="sd-back">
+        {/* Custom Back link – also triggers the restoration flag */}
+        <Link 
+          to="/services" 
+          className="sd-back"
+          state={{ fromDetail: true }}
+          onClick={() => {
+            // Ensure the categories page knows to restore scroll
+            sessionStorage.setItem("sc_needRestore", "true");
+          }}
+        >
           <FiArrowLeft /> Back
         </Link>
 
@@ -39,7 +90,7 @@ const ServiceDetail = () => {
         <div className="sd-hero">
           <div className="sd-hero-bg">
             <img src={service.bgImage} alt={service.title} />
-            <div className="sd-hero-overlay"></div>
+            <div className="sd-hero-overlay" aria-hidden="true"></div>
           </div>
           <div className="sd-hero-content">
             <span className="sd-hero-sub">{service.subtitle}</span>
@@ -48,35 +99,17 @@ const ServiceDetail = () => {
           </div>
         </div>
 
-        {/* Stats Strip */}
-        <div className="sd-stats-strip">
-          <div className="sd-stat-item">
-            <FiCpu className="sd-stat-icon" />
-            <div>
-              <span className="sd-stat-value">{service.features.length}</span>
-              <span className="sd-stat-label">Features</span>
-            </div>
-          </div>
-          <div className="sd-stat-item">
-            <FiAward className="sd-stat-icon" />
-            <div>
-              <span className="sd-stat-value">{service.standards.length}</span>
-              <span className="sd-stat-label">Standards</span>
-            </div>
-          </div>
-          <div className="sd-stat-item">
-            <FiUsers className="sd-stat-icon" />
-            <div>
-              <span className="sd-stat-value">{service.industries.length}</span>
-              <span className="sd-stat-label">Industries</span>
-            </div>
-          </div>
-          <div className="sd-stat-item">
-            <FiClock className="sd-stat-icon" />
-            <div>
-              <span className="sd-stat-value">24/7</span>
-              <span className="sd-stat-label">Support</span>
-            </div>
+        {/* Industries Section */}
+        <div className="sd-card sd-card-full">
+          <h3 className="sd-card-title">Industries</h3>
+          <div className="sd-industries-grid">
+            {industriesData.map((item, index) => (
+              <div className="sd-industry-card" key={index}>
+                <div className="sd-industry-icon" aria-hidden="true">{item.icon}</div>
+                <h4>{item.title}</h4>
+                <p>{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -87,63 +120,28 @@ const ServiceDetail = () => {
 
         {/* Features & Benefits Grid */}
         <div className="sd-grid-2col">
-          {/* Features */}
           <div className="sd-card">
             <h3 className="sd-card-title">Key Features</h3>
             <ul className="sd-list">
               {service.features.map((feature, index) => (
                 <li key={index} className="sd-list-item">
-                  <FiCheckCircle className="sd-list-icon" />
+                  <FiCheckCircle className="sd-list-icon" aria-hidden="true" />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Benefits */}
           <div className="sd-card">
             <h3 className="sd-card-title">Benefits</h3>
             <ul className="sd-list">
               {service.benefits.map((benefit, index) => (
                 <li key={index} className="sd-list-item">
-                  <FiCheckCircle className="sd-list-icon" />
+                  <FiCheckCircle className="sd-list-icon" aria-hidden="true" />
                   <span>{benefit}</span>
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-
-        {/* Standards & Tools */}
-        <div className="sd-grid-2col">
-          {/* Standards */}
-          <div className="sd-card">
-            <h3 className="sd-card-title">Standards</h3>
-            <div className="sd-tags">
-              {service.standards.map((standard, index) => (
-                <span key={index} className="sd-tag">{standard}</span>
-              ))}
-            </div>
-          </div>
-
-          {/* Software */}
-          <div className="sd-card">
-            <h3 className="sd-card-title">Software</h3>
-            <div className="sd-tags">
-              {service.software.map((item, index) => (
-                <span key={index} className="sd-tag">{item}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Industries */}
-        <div className="sd-card sd-card-full">
-          <h3 className="sd-card-title">Industries Served</h3>
-          <div className="sd-tags">
-            {service.industries.map((item, index) => (
-              <span key={index} className="sd-tag sd-tag-industry">{item}</span>
-            ))}
           </div>
         </div>
 

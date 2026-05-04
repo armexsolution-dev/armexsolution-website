@@ -1,150 +1,180 @@
-:root {
-  --gold: #C9A22D;
-  --bg: #ffffff;
-}
-
+/* --------------------------------------------
+   Base (no root variables)
+-------------------------------------------- */
 .wsu-section {
-  padding: 80px 5vw;
-  background: var(--bg);
+  padding: clamp(2rem, 8vw, 6.25rem) clamp(1rem, 5vw, 8rem);
+  background: #ffffff;
   font-family: 'Inter', sans-serif;
 }
 
+.wsu-section::after{
+  display: none !important;
+}
+
 .wsu-header {
-  margin-bottom: 40px;
+  margin-bottom: clamp(1.5rem, 4vw, 3.75rem);
 }
 
 .wsu-eyebrow {
-  color: var(--gold);
-  font-size: 12px;
+  color: #c9a22d;
+  font-size: clamp(0.7rem, 2vw, 0.875rem);
   font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .wsu-title {
-  font-size: 42px;
+  font-size: clamp(1.5rem, 5vw, 3.25rem);
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .wsu-title span {
-  color: var(--gold);
+  color: #c9a22d;
 }
 
+/* --------------------------------------------
+   Body Layout
+-------------------------------------------- */
 .wsu-body {
   display: grid;
-  grid-template-columns: 350px 1fr;
-  gap: 50px;
+  grid-template-columns: minmax(200px, 350px) 1fr;
+  gap: clamp(1.5rem, 4vw, 4.375rem);
   align-items: start;
 }
 
-/* ORBIT */
+/* Orbit container */
 .wsu-orbit-wrap {
-  width: 350px;
-  height: 350px;
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
 }
 
 .wsu-ring {
   fill: none;
-  stroke: rgba(201,162,45,0.3);
+  stroke: rgba(201, 162, 45, 0.3);
   stroke-dasharray: 4 3;
 }
 
 .wsu-line {
-  stroke: rgba(201,162,45,0.3);
+  stroke: rgba(201, 162, 45, 0.3);
+  stroke-width: 0.5;
 }
 
 .wsu-line-active {
-  stroke: var(--gold);
+  stroke: #c9a22d;
   stroke-width: 1;
 }
 
 .wsu-dot {
-  fill: rgba(201,162,45,0.2);
-  stroke: var(--gold);
+  fill: rgba(201, 162, 45, 0.2);
+  stroke: #c9a22d;
+  stroke-width: 0.8;
 }
 
 .wsu-dot-active {
-  fill: var(--gold);
+  fill: #c9a22d;
   stroke: white;
+  stroke-width: 1;
 }
 
 .wsu-num {
   font-size: 5px;
-  fill: var(--gold);
+  fill: #c9a22d;
   text-anchor: middle;
   dominant-baseline: middle;
+  font-weight: bold;
 }
 
-/* PANEL */
+/* --------------------------------------------
+   Content Panel
+-------------------------------------------- */
 .wsu-panel {
   background: white;
-  padding: 30px;
+  padding: clamp(1rem, 3vw, 2.5rem);
   border-radius: 20px;
-  border: 1px solid rgba(0,0,0,0.05);
-  min-height: 420px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  min-height: clamp(300px, 40vh, 420px);
   max-height: 420px;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
-/* SMOOTH SCROLL */
 .wsu-panel::-webkit-scrollbar {
   width: 5px;
 }
 .wsu-panel::-webkit-scrollbar-thumb {
-  background: rgba(201,162,45,0.4);
+  background: rgba(201, 162, 45, 0.4);
   border-radius: 10px;
 }
 
-/* HEADER */
 .wsu-panel-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .wsu-icon {
-  font-size: 26px;
-  color: var(--gold);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  color: #c9a22d;
 }
 
 .wsu-badge {
-  font-size: 12px;
-  color: var(--gold);
+  font-size: clamp(0.7rem, 2vw, 0.875rem);
+  color: #c9a22d;
+  font-weight: 600;
 }
 
-/* TEXT */
+.wsu-panel h3 {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  margin-bottom: 0.75rem;
+}
+
 .wsu-desc {
   color: #475569;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
 .wsu-expand {
   background: #fafafa;
-  padding: 15px;
-  border-left: 3px solid var(--gold);
-  margin-bottom: 20px;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  border-left: 3px solid #c9a22d;
+  margin-bottom: 1.25rem;
+}
+
+.wsu-expand p {
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  line-height: 1.5;
+  margin: 0;
 }
 
 .wsu-tags {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 0.625rem;
 }
 
 .wsu-tags span {
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
   background: #f1f5f9;
-  padding: 5px 10px;
+  padding: 0.3rem 0.75rem;
   border-radius: 20px;
 }
 
-/* ANIMATION */
+/* --------------------------------------------
+   Animations
+-------------------------------------------- */
 .fade-in {
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.6s ease;
 }
-
 .fade-out {
-  animation: fadeOut 0.2s ease;
+  animation: fadeOut 0.5s ease;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -155,7 +185,6 @@
     transform: translateY(0);
   }
 }
-
 @keyframes fadeOut {
   to {
     opacity: 0;
@@ -163,682 +192,94 @@
   }
 }
 
-/* ============================================
-   RESPONSIVE DESIGN - ALL SCREEN SIZES
-   ============================================ */
-
-/* XX-Large Devices (1400px and above) */
-@media (min-width: 1400px) {
-  .wsu-section {
-    padding: 100px 8vw;
-  }
-  
-  .wsu-header {
-    margin-bottom: 60px;
-  }
-  
-  .wsu-eyebrow {
-    font-size: 14px;
-  }
-  
-  .wsu-title {
-    font-size: 52px;
-  }
-  
-  .wsu-body {
-    grid-template-columns: 400px 1fr;
-    gap: 70px;
-  }
-  
-  .wsu-orbit-wrap {
-    width: 400px;
-    height: 400px;
-  }
-  
-  .wsu-panel {
-    padding: 40px;
-    min-height: 480px;
-    max-height: 480px;
-  }
-  
-  .wsu-icon {
-    font-size: 32px;
-  }
-  
-  .wsu-badge {
-    font-size: 14px;
-  }
-  
-  .wsu-desc {
-    font-size: 1rem;
-  }
-  
-  .wsu-expand {
-    padding: 20px;
-  }
-  
-  .wsu-tags span {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-}
-
-/* X-Large Devices (1200px to 1399px) */
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .wsu-section {
-    padding: 80px 6vw;
-  }
-  
-  .wsu-title {
-    font-size: 44px;
-  }
-  
-  .wsu-body {
-    gap: 45px;
-  }
-  
-  .wsu-orbit-wrap {
-    width: 330px;
-    height: 330px;
-  }
-}
-
-/* Large Devices (992px to 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .wsu-section {
-    padding: 70px 5vw;
-  }
-  
-  .wsu-title {
-    font-size: 38px;
-  }
-  
-  .wsu-body {
-    grid-template-columns: 300px 1fr;
-    gap: 40px;
-  }
-  
-  .wsu-orbit-wrap {
-    width: 300px;
-    height: 300px;
-  }
-  
-  .wsu-panel {
-    padding: 25px;
-    min-height: 400px;
-    max-height: 400px;
-  }
-  
-  .wsu-icon {
-    font-size: 24px;
-  }
-}
-
-/* Medium Devices (768px to 991px) - Tablets */
-@media (min-width: 768px) and (max-width: 991px) {
-  .wsu-section {
-    padding: 60px 5vw;
-  }
-  
-  .wsu-header {
-    margin-bottom: 35px;
-    text-align: center;
-  }
-  
-  .wsu-eyebrow {
-    font-size: 11px;
-  }
-  
-  .wsu-title {
-    font-size: 34px;
-  }
-  
+/* --------------------------------------------
+   Responsive – single column below 992px
+-------------------------------------------- */
+@media (max-width: 991px) {
   .wsu-body {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 2rem;
   }
-  
   .wsu-orbit-wrap {
-    width: 320px;
-    height: 320px;
-    margin: 0 auto;
+    max-width: 280px;
   }
-  
+  .wsu-header {
+    text-align: center;
+  }
   .wsu-panel {
-    max-width: 600px;
-    margin: 0 auto;
-    min-height: auto;
     max-height: 380px;
   }
-  
-  .wsu-icon {
-    font-size: 24px;
-  }
 }
 
-/* Small Devices (576px to 767px) - Large Phones */
-@media (min-width: 576px) and (max-width: 767px) {
-  .wsu-section {
-    padding: 50px 4vw;
-  }
-  
-  .wsu-header {
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  .wsu-eyebrow {
-    font-size: 10px;
-  }
-  
-  .wsu-title {
-    font-size: 30px;
-  }
-  
-  .wsu-body {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-  
+/* Further small adjustments */
+@media (max-width: 576px) {
   .wsu-orbit-wrap {
-    width: 280px;
-    height: 280px;
-    margin: 0 auto;
+    max-width: 240px;
   }
-  
   .wsu-panel {
-    padding: 25px;
-    max-width: 500px;
-    margin: 0 auto;
-    min-height: auto;
-    max-height: 380px;
-  }
-  
-  .wsu-icon {
-    font-size: 22px;
-  }
-  
-  .wsu-badge {
-    font-size: 11px;
-  }
-  
-  .wsu-desc {
-    font-size: 0.9rem;
-  }
-  
-  .wsu-expand {
-    padding: 12px;
-  }
-  
-  .wsu-expand p {
-    font-size: 0.85rem;
-  }
-  
-  .wsu-tags span {
-    font-size: 11px;
-    padding: 4px 8px;
-  }
-}
-
-/* Extra Small Devices (425px to 575px) */
-@media (min-width: 425px) and (max-width: 575px) {
-  .wsu-section {
-    padding: 45px 4vw;
-  }
-  
-  .wsu-header {
-    margin-bottom: 25px;
-    text-align: center;
-  }
-  
-  .wsu-eyebrow {
-    font-size: 10px;
-  }
-  
-  .wsu-title {
-    font-size: 28px;
-  }
-  
-  .wsu-body {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .wsu-orbit-wrap {
-    width: 260px;
-    height: 260px;
-    margin: 0 auto;
-  }
-  
-  .wsu-panel {
-    padding: 20px;
-    max-width: 100%;
-    margin: 0;
-    min-height: auto;
-    max-height: 400px;
-  }
-  
-  .wsu-icon {
-    font-size: 22px;
-  }
-  
-  .wsu-badge {
-    font-size: 10px;
-  }
-  
-  .wsu-desc {
-    font-size: 0.85rem;
-    margin-bottom: 12px;
-  }
-  
-  .wsu-expand {
-    padding: 12px;
-    margin-bottom: 15px;
-  }
-  
-  .wsu-expand p {
-    font-size: 0.8rem;
-  }
-  
-  .wsu-tags {
-    gap: 8px;
-  }
-  
-  .wsu-tags span {
-    font-size: 10px;
-    padding: 4px 8px;
-  }
-}
-
-/* Small Mobile Devices (375px to 424px) */
-@media (min-width: 375px) and (max-width: 424px) {
-  .wsu-section {
-    padding: 40px 4vw;
-  }
-  
-  .wsu-header {
-    margin-bottom: 25px;
-    text-align: center;
-  }
-  
-  .wsu-eyebrow {
-    font-size: 9px;
-  }
-  
-  .wsu-title {
-    font-size: 26px;
-  }
-  
-  .wsu-body {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  
-  .wsu-orbit-wrap {
-    width: 240px;
-    height: 240px;
-    margin: 0 auto;
-  }
-  
-  .wsu-panel {
-    padding: 18px;
-    min-height: auto;
     max-height: 420px;
   }
-  
-  .wsu-panel-header {
-    margin-bottom: 10px;
-  }
-  
-  .wsu-icon {
-    font-size: 20px;
-  }
-  
-  .wsu-badge {
-    font-size: 10px;
-  }
-  
-  .wsu-desc {
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .wsu-expand {
-    padding: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .wsu-expand p {
-    font-size: 0.75rem;
-  }
-  
-  .wsu-tags {
-    gap: 6px;
-  }
-  
   .wsu-tags span {
-    font-size: 9px;
-    padding: 3px 7px;
-  }
-}
-
-/* Very Small Mobile Devices (320px to 374px) */
-@media (min-width: 320px) and (max-width: 374px) {
-  .wsu-section {
-    padding: 35px 3vw;
-  }
-  
-  .wsu-header {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .wsu-eyebrow {
-    font-size: 9px;
-  }
-  
-  .wsu-title {
-    font-size: 24px;
-  }
-  
-  .wsu-body {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  
-  .wsu-orbit-wrap {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto;
-  }
-  
-  .wsu-panel {
-    padding: 16px;
-    min-height: auto;
-    max-height: 440px;
-  }
-  
-  .wsu-panel-header {
-    margin-bottom: 10px;
-  }
-  
-  .wsu-icon {
-    font-size: 18px;
-  }
-  
-  .wsu-badge {
-    font-size: 9px;
-  }
-  
-  .wsu-desc {
-    font-size: 0.75rem;
-    margin-bottom: 10px;
-  }
-  
-  .wsu-expand {
-    padding: 10px;
-    margin-bottom: 12px;
-  }
-  
-  .wsu-expand p {
     font-size: 0.7rem;
-  }
-  
-  .wsu-tags {
-    gap: 6px;
-  }
-  
-  .wsu-tags span {
-    font-size: 8px;
-    padding: 3px 6px;
+    padding: 0.2rem 0.6rem;
   }
 }
 
-/* Ultra Small Devices (below 320px) */
-@media (max-width: 319px) {
-  .wsu-section {
-    padding: 30px 3vw;
-  }
-  
-  .wsu-header {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .wsu-eyebrow {
-    font-size: 8px;
-  }
-  
-  .wsu-title {
-    font-size: 20px;
-  }
-  
-  .wsu-body {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
+@media (max-width: 375px) {
   .wsu-orbit-wrap {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
+    max-width: 200px;
   }
-  
-  .wsu-panel {
-    padding: 14px;
-    min-height: auto;
-    max-height: 460px;
-  }
-  
-  .wsu-panel-header {
-    margin-bottom: 8px;
-  }
-  
-  .wsu-icon {
-    font-size: 16px;
-  }
-  
-  .wsu-badge {
-    font-size: 8px;
-  }
-  
-  .wsu-desc {
-    font-size: 0.7rem;
-    margin-bottom: 8px;
-  }
-  
-  .wsu-expand {
-    padding: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .wsu-expand p {
-    font-size: 0.65rem;
-  }
-  
-  .wsu-tags {
-    gap: 5px;
-  }
-  
-  .wsu-tags span {
-    font-size: 7px;
-    padding: 2px 5px;
+  .wsu-num {
+    font-size: 4px;
   }
 }
 
-/* ============================================
-   LANDSCAPE MODE OPTIMIZATION
-   ============================================ */
-
+/* Landscape orientation */
 @media (max-width: 768px) and (orientation: landscape) {
-  .wsu-section {
-    padding: 40px 5vw;
-  }
-  
-  .wsu-header {
-    margin-bottom: 25px;
-  }
-  
-  .wsu-title {
-    font-size: 28px;
-  }
-  
   .wsu-body {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 1.5rem;
   }
-  
   .wsu-orbit-wrap {
-    width: 200px;
-    height: 200px;
+    max-width: 180px;
   }
-  
   .wsu-panel {
     max-height: 300px;
-    min-height: auto;
-    padding: 20px;
-  }
-  
-  .wsu-icon {
-    font-size: 20px;
-  }
-  
-  .wsu-desc {
-    font-size: 0.8rem;
-  }
-  
-  .wsu-expand p {
-    font-size: 0.75rem;
   }
 }
 
-@media (max-width: 480px) and (orientation: landscape) {
-  .wsu-orbit-wrap {
-    width: 180px;
-    height: 180px;
-  }
-  
-  .wsu-panel {
-    max-height: 280px;
-    padding: 15px;
-  }
-}
-
-/* ============================================
-   SEO & ACCESSIBILITY OPTIMIZATIONS
-   ============================================ */
-
-/* Touch target optimization for mobile */
-@media (max-width: 768px) {
-  .wsu-orbit-wrap svg g {
-    cursor: pointer;
-  }
-  
-  .wsu-dot, .wsu-dot-active {
-    cursor: pointer;
-  }
-  
-  .wsu-num {
-    cursor: pointer;
-    font-size: 6px;
-  }
-}
-
-/* Reduce motion preference */
+/* --------------------------------------------
+   Accessibility & Print
+-------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .fade-in,
   .fade-out {
     animation: none !important;
   }
-  
-  .wsu-panel {
-    transition: none !important;
-  }
 }
 
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .wsu-ring {
-    stroke: rgba(201,162,45,0.8);
-  }
-  
-  .wsu-line {
-    stroke: rgba(201,162,45,0.7);
-  }
-  
-  .wsu-expand {
-    background: #f0f0f0;
-    border-left: 3px solid var(--gold);
-  }
-  
-  .wsu-tags span {
-    background: #e5e7eb;
-  }
-}
-
-/* Dark mode optimization */
-@media (prefers-color-scheme: dark) {
-  .wsu-section {
-    background: var(--bg);
-  }
-  
-  .wsu-panel {
-    background: white;
-  }
-}
-
-/* Print styles for SEO */
 @media print {
   .wsu-section {
-    padding: 20px;
-    page-break-inside: avoid;
+    padding: 1rem;
   }
-  
   .wsu-orbit-wrap {
     display: none;
   }
-  
   .wsu-body {
     grid-template-columns: 1fr;
   }
-  
   .wsu-panel {
-    border: 1px solid #ddd;
-    box-shadow: none;
+    border: 1px solid #ccc;
     max-height: none;
     overflow: visible;
   }
-  
   .wsu-expand {
     background: #f5f5f5;
   }
-  
-  .fade-in,
-  .fade-out {
-    animation: none;
-  }
 }
 
-/* Text readability improvements */
-.wsu-desc,
-.wsu-expand p,
-.wsu-tags span {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Ensure proper scrolling on all devices */
-.wsu-panel {
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Focus styles for accessibility */
-.wsu-orbit-wrap svg g:focus {
-  outline: none;
-}
-
-.wsu-orbit-wrap svg g:focus .wsu-dot {
-  stroke-width: 2;
-  filter: drop-shadow(0 0 2px var(--gold));
+/* Focus styles for keyboard navigation */
+.wsu-orbit-wrap svg g:focus-visible {
+  outline: 2px solid #c9a22d;
+  outline-offset: 2px;
+  border-radius: 50%;
 }

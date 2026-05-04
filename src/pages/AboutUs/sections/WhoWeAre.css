@@ -1,54 +1,38 @@
-/* ===== Who We Are Section ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* --------------------------------------------
+   What We Are Section – Cleaned & Optimized
+   (No global resets, no font-family)
+-------------------------------------------- */
 
 .wwa-section {
-  padding: 80px 0;
+  padding: clamp(3rem, 8vw, 5rem) 0;
   background: #ffffff;
-  font-family: 'Inter', sans-serif;
   position: relative;
-  overflow: hidden;
-}
-
-/* Background Pattern */
-.wwa-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(201, 162, 45, 0.02) 0%, transparent 70%);
-  border-radius: 50%;
-  z-index: 1;
+  overflow-x: hidden;
 }
 
 .wwa-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(201, 162, 45, 0.02) 0%, transparent 70%);
-  border-radius: 50%;
-  z-index: 1;
+  display: none !important;
 }
 
+/* Container – 2 column layout */
 .wwa-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 clamp(1rem, 5vw, 1.875rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: clamp(2rem, 5vw, 3.75rem);
   align-items: center;
   position: relative;
   z-index: 2;
 }
 
-/* Left Content */
+/* --------------------------------------------
+   Left Column
+-------------------------------------------- */
 .wwa-content {
   animation: wwaFadeLeft 0.8s ease-out forwards;
+  will-change: transform, opacity;
 }
 
 @keyframes wwaFadeLeft {
@@ -66,7 +50,7 @@
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #C9A22D;
+  color: #c9a22d;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   background: rgba(201, 162, 45, 0.08);
@@ -76,7 +60,7 @@
 }
 
 .wwa-title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 600;
   color: #1e2b37;
   margin: 0 0 1.5rem;
@@ -84,35 +68,31 @@
 }
 
 .wwa-title span {
-  color: #C9A22D;
+  color: #c9a22d;
   position: relative;
   display: inline-block;
 }
 
-.wwa-title span::after {
-  content: '';
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: rgba(201, 162, 45, 0.2);
-  z-index: -1;
-}
-
 .wwa-desc {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
   line-height: 1.7;
   color: #475569;
-  margin: 0;
+  margin: 0 0 1rem;
 }
 
-/* Right Grid */
+.wwa-desc:last-of-type {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------
+   Right Grid (Features)
+-------------------------------------------- */
 .wwa-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: clamp(1rem, 3vw, 1.25rem);
   animation: wwaFadeRight 0.8s ease-out forwards;
+  will-change: transform, opacity;
 }
 
 @keyframes wwaFadeRight {
@@ -131,15 +111,16 @@
   background: #ffffff;
   border: 1px solid #edf2f7;
   border-radius: 20px;
-  padding: 25px 20px;
+  padding: clamp(1.25rem, 3vw, 1.5625rem);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+  will-change: transform, border-color, box-shadow;
 }
 
 .wwa-card:hover {
-  border-color: #C9A22D;
+  border-color: #c9a22d;
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(201, 162, 45, 0.08);
 }
@@ -154,12 +135,13 @@
   justify-content: center;
   margin-bottom: 20px;
   font-size: 1.3rem;
-  color: #C9A22D;
+  color: #c9a22d;
   transition: all 0.3s ease;
+  will-change: transform, background, color;
 }
 
 .wwa-card:hover .wwa-card-icon {
-  background: #C9A22D;
+  background: #c9a22d;
   color: white;
   transform: rotate(360deg);
 }
@@ -193,44 +175,102 @@
   left: 100%;
 }
 
-/* Responsive */
+/* --------------------------------------------
+   Responsive Breakpoints (No UI changes)
+-------------------------------------------- */
 @media (max-width: 900px) {
   .wwa-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 2.5rem;
   }
-  
   .wwa-content {
     text-align: center;
   }
-  
   .wwa-grid {
     max-width: 500px;
     margin: 0 auto;
   }
+  .wwa-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .wwa-title span::after {
+    bottom: 2px;
+    height: 4px;
+  }
 }
 
 @media (max-width: 600px) {
-  .wwa-section {
-    padding: 50px 0;
-  }
-  
-  .wwa-title {
-    font-size: 1.6rem;
-  }
-  
   .wwa-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 1rem;
+    max-width: 100%;
   }
-  
   .wwa-card {
     text-align: center;
-    padding: 20px;
+    padding: 1.25rem;
   }
-  
   .wwa-card-icon {
     margin-left: auto;
     margin-right: auto;
+  }
+  .wwa-title {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .wwa-section {
+    padding: 2rem 0;
+  }
+  .wwa-container {
+    padding: 0 1rem;
+  }
+  .wwa-card-title {
+    font-size: 0.9rem;
+  }
+  .wwa-card-desc {
+    font-size: 0.75rem;
+  }
+}
+
+/* --------------------------------------------
+   Accessibility & Print
+-------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .wwa-card,
+  .wwa-card-icon,
+  .wwa-card-shine,
+  .wwa-content,
+  .wwa-grid {
+    animation: none !important;
+    transition: none !important;
+  }
+  .wwa-card:hover {
+    transform: none;
+  }
+  .wwa-card:hover .wwa-card-icon {
+    transform: none;
+  }
+  .wwa-card-shine {
+    display: none;
+  }
+}
+
+@media print {
+  .wwa-section {
+    padding: 1rem;
+    background: white;
+  }
+  .wwa-section::before,
+  .wwa-section::after {
+    display: none;
+  }
+  .wwa-container {
+    display: block;
+  }
+  .wwa-card {
+    border: 1px solid #ccc;
+    box-shadow: none;
   }
 }

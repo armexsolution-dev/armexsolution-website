@@ -6,7 +6,6 @@ import {
   FiMail,
   FiPhone
 } from "react-icons/fi";
-
 import "./FAQ.css";
 
 const FAQ = () => {
@@ -43,10 +42,16 @@ const FAQ = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  return (
-    <section className="faq-section">
-      <div className="faq-container-fluid">
+  const handleKeyPress = (e, index) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleFAQ(index);
+    }
+  };
 
+  return (
+    <section className="faq-section" aria-label="Frequently asked questions">
+      <div className="faq-container-fluid">
         {/* Header */}
         <div className="faq-header">
           <span className="faq-subtitle">HAVE QUESTIONS?</span>
@@ -59,20 +64,30 @@ const FAQ = () => {
         <div className="faq-grid-2col">
           {faqs.map((faq, index) => (
             <div key={index} className="faq-item">
-              <div 
+              <div
                 className={`faq-question ${openIndex === index ? 'faq-open' : ''}`}
                 onClick={() => toggleFAQ(index)}
+                onKeyPress={(e) => handleKeyPress(e, index)}
+                role="button"
+                tabIndex={0}
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
               >
                 <div className="faq-question-left">
-                  <FiHelpCircle className="faq-question-icon" />
+                  <FiHelpCircle className="faq-question-icon" aria-hidden="true" />
                   <h3>{faq.question}</h3>
                 </div>
-                <span className="faq-toggle">
+                <span className="faq-toggle" aria-hidden="true">
                   {openIndex === index ? <FiChevronUp /> : <FiChevronDown />}
                 </span>
               </div>
-              
-              <div className={`faq-answer ${openIndex === index ? 'faq-answer-open' : ''}`}>
+
+              <div
+                id={`faq-answer-${index}`}
+                className={`faq-answer ${openIndex === index ? 'faq-answer-open' : ''}`}
+                role="region"
+                aria-labelledby={`faq-question-${index}`}
+              >
                 <p>{faq.answer}</p>
               </div>
             </div>
@@ -82,17 +97,16 @@ const FAQ = () => {
         {/* Compact Contact */}
         <div className="faq-compact-contact">
           <div className="faq-compact-content">
-            <FiHelpCircle className="faq-compact-icon" />
+            <FiHelpCircle className="faq-compact-icon" aria-hidden="true" />
             <span>Still have questions?</span>
-            <a href="mailto:admin@armexsolutions.com" className="faq-compact-link">
-              <FiMail /> admin@armexsolutions.com
+            <a href="mailto:admin@armexsolution.com" className="faq-compact-link" aria-label="Email us">
+              <FiMail aria-hidden="true" /> admin@armexsolution.com
             </a>
-            <a href="tel:+919840000000" className="faq-compact-link">
-              <FiPhone /> +91-98400 00000
+            <a href="tel:+919342761826" className="faq-compact-link" aria-label="Call us">
+              <FiPhone aria-hidden="true" /> +91 93427 61826
             </a>
           </div>
         </div>
-
       </div>
     </section>
   );

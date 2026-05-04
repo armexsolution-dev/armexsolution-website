@@ -7,18 +7,17 @@
     #243F88 100%
   );
   color: #d1d5db;
-  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  transform: translateZ(0);
 }
 
 /* container */
-
 .as-footer-container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 70px 24px;
   display: grid;
-  grid-template-columns: 1.8fr 1.8fr 1fr 1fr;
-  /* grid-template-columns: 1.5fr 1.4fr 1fr 1fr; */
+  grid-template-columns: 1.6fr 1.8fr 1fr 1fr;
   gap: 40px;
   align-items: start;
 }
@@ -28,8 +27,7 @@
   content: none;
 }
 
-/* logo box (added) */
-
+/* logo box */
 .as-footer-logo-box {
   display: inline-flex;
   align-items: center;
@@ -48,7 +46,6 @@
 }
 
 /* tagline */
-
 .as-footer-tagline {
   font-size: 14px;
   line-height: 1.7;
@@ -58,7 +55,6 @@
 }
 
 /* headings */
-
 .as-footer-heading {
   color: #ffffff;
   font-size: 15px;
@@ -71,7 +67,6 @@
 }
 
 /* lists */
-
 .as-footer-list {
   list-style: none;
   padding: 0;
@@ -84,19 +79,19 @@
 }
 
 /* links */
-
 .as-footer a {
   color: #d1d5db;
   text-decoration: none;
   transition: color 0.25s ease;
+  will-change: color;
 }
 
 .as-footer a:hover {
-  color: #00b1c7;
+  /* color: #00b1c7; */
+  color: #C9A22D;
 }
 
 /* contact */
-
 .as-footer-contact {
   font-style: normal;
 }
@@ -107,7 +102,7 @@
   line-height: 1.6;
 }
 
-/* ADDED: Get in Touch button with 24/7 support */
+/* Get in Touch button with 24/7 support */
 .as-footer-cta-button {
   background: #C9A22D;
   border: none;
@@ -123,12 +118,18 @@
   gap: 8px;
   transition: all 0.25s ease;
   box-shadow: 0 4px 12px rgba(0, 177, 199, 0.2);
+  will-change: transform, background, box-shadow;
 }
 
 .as-footer-cta-button:hover {
-  background: #0a9aad;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 177, 199, 0.3);
+  background: linear-gradient(
+    0deg,
+    #0C1323 0%,
+    #162049 50%,
+    #243F88 100%
+  );
+  /* transform: translateY(-2px); */
+  /* box-shadow: 0 6px 16px rgba(0, 177, 199, 0.3); */
 }
 
 .as-footer-cta-support {
@@ -141,7 +142,6 @@
 }
 
 /* bottom bar */
-
 .as-footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 22px 24px;
@@ -160,7 +160,6 @@
 }
 
 /* social icons */
-
 .as-footer-social {
   display: flex;
   gap: 12px;
@@ -177,16 +176,16 @@
   color: #d1d5db;
   font-size: 14px;
   transition: all 0.25s ease;
+  will-change: transform, color, border-color;
 }
 
 .as-footer-social a:hover {
-  color: #00b1c7;
-  border-color: #00b1c7;
+  color: #C9A22D;
+  border-color: #C9A22D;
   transform: translateY(-2px);
 }
 
 /* bottom links */
-
 .as-footer-bottom-links {
   display: flex;
   align-items: center;
@@ -203,11 +202,10 @@
 }
 
 .as-footer-bottom-links a:hover {
-  color: #00b1c7;
+  color: #C9A22D;
 }
 
 /* tablet */
-
 @media (max-width: 1000px) {
   .as-footer-container {
     grid-template-columns: repeat(2, 1fr);
@@ -216,7 +214,6 @@
 }
 
 /* mobile */
-
 @media (max-width: 640px) {
   .as-footer-container {
     grid-template-columns: 1fr;

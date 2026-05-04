@@ -1,18 +1,18 @@
-/* ===== Contact Hero ===== */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
-
 .c-hero {
   position: relative;
   width: 100%;
-  height: 88vh;
-  min-height: 600px;
-  max-height: 900px;
+  height: 90vh;                
+  min-height: 500px;       
   overflow: hidden;
-  font-family: "Inter", sans-serif;
   color: #fff;
+  background-color: #000;
 }
 
-/* Background */
+.c-hero::after{
+  display: none !important;
+}
+
+/* Background & Zoom Animation */
 .c-hero-bg {
   position: absolute;
   inset: 0;
@@ -23,19 +23,16 @@
   height: 100%;
   object-fit: cover;
   animation: zoomBg 20s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .c-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.85),
-    rgba(0, 0, 0, 0.6)
-  );
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.6));
 }
 
-/* Floating Shapes */
+/* Floating Shapes – responsive sizes */
 .c-hero-shape {
   position: absolute;
   border-radius: 50%;
@@ -45,55 +42,55 @@
 }
 
 .c-shape-1 {
-  width: 300px;
-  height: 300px;
+  width: min(300px, 40vw);
+  height: min(300px, 40vw);
   top: 10%;
   right: 5%;
 }
 
 .c-shape-2 {
-  width: 200px;
-  height: 200px;
+  width: min(200px, 30vw);
+  height: min(200px, 30vw);
   bottom: 20%;
   left: 10%;
   animation-delay: 2s;
 }
 
 .c-shape-3 {
-  width: 150px;
-  height: 150px;
+  width: min(150px, 25vw);
+  height: min(150px, 25vw);
   top: 40%;
   left: 30%;
   animation-delay: 4s;
 }
 
-/* Container */
+/* Container – fills the 80vh height */
 .c-hero-container {
   position: relative;
   z-index: 5;
-  height: 100%;
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 30px;
+  height: 100%;                /* fills .c-hero */
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: clamp(1rem, 5vh, 2rem) clamp(1rem, 5vw, 3rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-/* Title */
+/* Title Block */
 .c-hero-title-block {
-  text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: clamp(1.5rem, 5vh, 2.5rem);
   opacity: 0;
   animation: fadeUp 0.8s ease forwards;
 }
 
 .c-hero-subtitle {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: clamp(0.6rem, 3vw, 0.8rem);
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #c9a22d;
   padding: 0.3rem 1.2rem;
@@ -104,55 +101,57 @@
 }
 
 .c-hero-title {
-  font-size: 4.5rem;
+  font-size: clamp(2rem, 8vw, 5rem);
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.1;
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
 
 .c-hero-title span {
   display: block;
-  font-size: 3.5rem;
+  font-size: clamp(1.6rem, 6vw, 3.8rem);
   color: #c9a22d;
 }
 
 .c-hero-desc {
-  max-width: 500px;
-  margin: auto;
-  font-size: 1rem;
+  max-width: 550px;
+  margin: 0 auto;
+  font-size: clamp(0.8rem, 3vw, 1rem);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
 }
 
-/* Stats */
+/* Stats Bar – flexible */
 .c-hero-stats {
   display: flex;
   align-items: center;
-  gap: 30px;
-  padding: 20px 30px;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 2rem);
+  padding: 0.8rem 1.5rem;
   border-radius: 60px;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   opacity: 0;
   animation: fadeUp 0.8s ease 0.2s forwards;
+  flex-wrap: wrap;
 }
 
 .c-stat {
   text-align: center;
-  min-width: 80px;
+  min-width: 70px;
 }
 
 .c-stat-number {
   display: block;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 5vw, 1.6rem);
   font-weight: 700;
   color: #c9a22d;
 }
 
 .c-stat-label {
-  font-size: 0.65rem;
+  font-size: clamp(0.5rem, 2vw, 0.7rem);
   text-transform: uppercase;
   letter-spacing: 1px;
   color: rgba(255, 255, 255, 0.7);
@@ -167,13 +166,13 @@
 /* Animations */
 @keyframes zoomBg {
   from { transform: scale(1); }
-  to { transform: scale(1.1); }
+  to { transform: scale(1.05); }
 }
 
 @keyframes float {
-  0%,100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(30px,-30px) scale(1.1); }
-  66% { transform: translate(-20px,20px) scale(0.9); }
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -20px) scale(1.05); }
+  66% { transform: translate(-15px, 15px) scale(0.95); }
 }
 
 @keyframes fadeUp {
@@ -187,703 +186,83 @@
   }
 }
 
-/* ============================================
-   RESPONSIVE DESIGN - ALL SCREEN SIZES
-   ============================================ */
+/* ===== RESPONSIVE – handles content overflow ===== */
 
-/* XX-Large Devices (1400px and above) */
-@media (min-width: 1400px) {
+/* If content is taller than 80vh on very small screens, allow auto height */
+@media (max-width: 550px) {
   .c-hero {
-    height: 85vh;
-    min-height: 700px;
-    max-height: 1000px;
+    height: auto;
+    min-height: 80vh;          /* still at least 80vh, but can grow */
   }
-  
-  .c-hero-container {
-    max-width: 1300px;
-    padding: 0 50px;
-  }
-  
-  .c-hero-subtitle {
-    font-size: 0.9rem;
-    letter-spacing: 4px;
-    padding: 0.4rem 1.5rem;
-    margin-bottom: 1.2rem;
-  }
-  
-  .c-hero-title {
-    font-size: 5.5rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 4.2rem;
-  }
-  
-  .c-hero-desc {
-    max-width: 600px;
-    font-size: 1.1rem;
-  }
-  
+
   .c-hero-stats {
-    gap: 50px;
-    padding: 25px 40px;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
   }
-  
+
+  .c-stat-divider {
+    display: none;
+  }
+
   .c-stat {
-    min-width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: left;
   }
-  
+
   .c-stat-number {
-    font-size: 1.8rem;
+    margin-right: 1rem;
   }
-  
-  .c-stat-label {
-    font-size: 0.75rem;
+}
+
+/* Landscape orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+  .c-hero {
+    height: auto;
+    min-height: 80vh;
   }
-  
+
+  .c-hero-stats {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .c-stat-divider {
+    display: block;
+  }
+
+  .c-stat {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Ultra-wide screens – keep 80vh but adjust shapes */
+@media (min-width: 1600px) {
+  .c-hero-container {
+    max-width: 1500px;
+  }
+
   .c-shape-1 {
     width: 400px;
     height: 400px;
   }
-  
+
   .c-shape-2 {
-    width: 280px;
-    height: 280px;
+    width: 260px;
+    height: 260px;
   }
-  
+
   .c-shape-3 {
     width: 200px;
     height: 200px;
   }
 }
 
-/* X-Large Devices (1200px to 1399px) */
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .c-hero-title {
-    font-size: 4rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 3.2rem;
-  }
-  
-  .c-shape-1 {
-    width: 280px;
-    height: 280px;
-  }
-  
-  .c-shape-2 {
-    width: 180px;
-    height: 180px;
-  }
-  
-  .c-shape-3 {
-    width: 130px;
-    height: 130px;
-  }
-}
-
-/* Large Devices (992px to 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .c-hero {
-    height: 85vh;
-    min-height: 550px;
-  }
-  
-  .c-hero-title {
-    font-size: 3.5rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 2.8rem;
-  }
-  
-  .c-hero-desc {
-    font-size: 0.95rem;
-  }
-  
-  .c-shape-1 {
-    width: 250px;
-    height: 250px;
-  }
-  
-  .c-shape-2 {
-    width: 160px;
-    height: 160px;
-  }
-  
-  .c-shape-3 {
-    width: 110px;
-    height: 110px;
-  }
-}
-
-/* Medium Devices (768px to 991px) - Tablets */
-@media (min-width: 768px) and (max-width: 991px) {
-  .c-hero {
-    height: 85vh;
-    min-height: 520px;
-  }
-  
-  .c-hero-container {
-    padding: 0 40px;
-  }
-  
-  .c-hero-title-block {
-    margin-bottom: 40px;
-  }
-  
-  .c-hero-subtitle {
-    font-size: 0.75rem;
-    letter-spacing: 2.5px;
-    padding: 0.25rem 1rem;
-    margin-bottom: 0.8rem;
-  }
-  
-  .c-hero-title {
-    font-size: 3rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 2.5rem;
-  }
-  
-  .c-hero-desc {
-    font-size: 0.9rem;
-    max-width: 450px;
-  }
-  
-  .c-hero-stats {
-    gap: 25px;
-    padding: 18px 28px;
-  }
-  
-  .c-stat {
-    min-width: 70px;
-  }
-  
-  .c-stat-number {
-    font-size: 1.3rem;
-  }
-  
-  .c-stat-label {
-    font-size: 0.6rem;
-  }
-  
-  .c-shape-1 {
-    width: 220px;
-    height: 220px;
-  }
-  
-  .c-shape-2 {
-    width: 140px;
-    height: 140px;
-  }
-  
-  .c-shape-3 {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-/* Small Devices (576px to 767px) - Large Phones */
-@media (min-width: 576px) and (max-width: 767px) {
-  .c-hero {
-    height: auto;
-    min-height: 90vh;
-    padding: 60px 0;
-  }
-  
-  .c-hero-container {
-    padding: 0 30px;
-  }
-  
-  .c-hero-title-block {
-    margin-bottom: 35px;
-  }
-  
-  .c-hero-subtitle {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    padding: 0.2rem 0.8rem;
-    margin-bottom: 0.7rem;
-  }
-  
-  .c-hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 2rem;
-  }
-  
-  .c-hero-desc {
-    font-size: 0.85rem;
-    max-width: 400px;
-    padding: 0 15px;
-  }
-  
-  .c-hero-stats {
-    flex-direction: row;
-    gap: 20px;
-    padding: 15px 25px;
-    border-radius: 50px;
-    width: auto;
-  }
-  
-  .c-stat {
-    min-width: 65px;
-  }
-  
-  .c-stat-number {
-    font-size: 1.2rem;
-  }
-  
-  .c-stat-label {
-    font-size: 0.55rem;
-  }
-  
-  .c-stat-divider {
-    display: block;
-    width: 1px;
-    height: 25px;
-  }
-  
-  .c-shape-1 {
-    width: 180px;
-    height: 180px;
-  }
-  
-  .c-shape-2 {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .c-shape-3 {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-/* Extra Small Devices (425px to 575px) */
-@media (min-width: 425px) and (max-width: 575px) {
-  .c-hero {
-    height: auto;
-    min-height: 90vh;
-    padding: 50px 0;
-  }
-  
-  .c-hero-container {
-    padding: 0 25px;
-  }
-  
-  .c-hero-title-block {
-    margin-bottom: 30px;
-  }
-  
-  .c-hero-subtitle {
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    padding: 0.2rem 0.7rem;
-    margin-bottom: 0.6rem;
-  }
-  
-  .c-hero-title {
-    font-size: 2rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 1.6rem;
-  }
-  
-  .c-hero-desc {
-    font-size: 0.8rem;
-    max-width: 350px;
-    padding: 0 10px;
-  }
-  
-  .c-hero-stats {
-    flex-direction: column;
-    gap: 12px;
-    padding: 18px 20px;
-    border-radius: 30px;
-    width: 85%;
-  }
-  
-  .c-stat-divider {
-    display: none;
-  }
-  
-  .c-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-width: auto;
-    text-align: left;
-  }
-  
-  .c-stat-number {
-    font-size: 1.2rem;
-  }
-  
-  .c-stat-label {
-    font-size: 0.6rem;
-  }
-  
-  .c-shape-1 {
-    width: 150px;
-    height: 150px;
-    filter: blur(30px);
-  }
-  
-  .c-shape-2 {
-    width: 100px;
-    height: 100px;
-    filter: blur(30px);
-  }
-  
-  .c-shape-3 {
-    width: 70px;
-    height: 70px;
-    filter: blur(30px);
-  }
-}
-
-/* Small Mobile Devices (375px to 424px) */
-@media (min-width: 375px) and (max-width: 424px) {
-  .c-hero {
-    height: auto;
-    min-height: 92vh;
-    padding: 45px 0;
-  }
-  
-  .c-hero-container {
-    padding: 0 20px;
-  }
-  
-  .c-hero-title-block {
-    margin-bottom: 28px;
-  }
-  
-  .c-hero-subtitle {
-    font-size: 0.6rem;
-    letter-spacing: 1.5px;
-    padding: 0.2rem 0.6rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .c-hero-title {
-    font-size: 1.8rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 1.4rem;
-  }
-  
-  .c-hero-desc {
-    font-size: 0.75rem;
-    max-width: 300px;
-    padding: 0 10px;
-  }
-  
-  .c-hero-stats {
-    flex-direction: column;
-    gap: 10px;
-    padding: 16px 18px;
-    border-radius: 25px;
-    width: 90%;
-  }
-  
-  .c-stat-divider {
-    display: none;
-  }
-  
-  .c-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-width: auto;
-  }
-  
-  .c-stat-number {
-    font-size: 1.1rem;
-  }
-  
-  .c-stat-label {
-    font-size: 0.55rem;
-  }
-  
-  .c-shape-1 {
-    width: 130px;
-    height: 130px;
-    filter: blur(25px);
-  }
-  
-  .c-shape-2 {
-    width: 90px;
-    height: 90px;
-    filter: blur(25px);
-  }
-  
-  .c-shape-3 {
-    width: 60px;
-    height: 60px;
-    filter: blur(25px);
-  }
-}
-
-/* Very Small Mobile Devices (320px to 374px) */
-@media (min-width: 320px) and (max-width: 374px) {
-  .c-hero {
-    height: auto;
-    min-height: 95vh;
-    padding: 40px 0;
-  }
-  
-  .c-hero-container {
-    padding: 0 18px;
-  }
-  
-  .c-hero-title-block {
-    margin-bottom: 25px;
-  }
-  
-  .c-hero-subtitle {
-    font-size: 0.55rem;
-    letter-spacing: 1.5px;
-    padding: 0.15rem 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .c-hero-title {
-    font-size: 1.6rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 1.3rem;
-  }
-  
-  .c-hero-desc {
-    font-size: 0.7rem;
-    max-width: 280px;
-    padding: 0 5px;
-  }
-  
-  .c-hero-stats {
-    flex-direction: column;
-    gap: 10px;
-    padding: 14px 16px;
-    border-radius: 25px;
-    width: 95%;
-  }
-  
-  .c-stat-divider {
-    display: none;
-  }
-  
-  .c-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-width: auto;
-  }
-  
-  .c-stat-number {
-    font-size: 1rem;
-  }
-  
-  .c-stat-label {
-    font-size: 0.5rem;
-  }
-  
-  .c-shape-1 {
-    width: 110px;
-    height: 110px;
-    filter: blur(20px);
-  }
-  
-  .c-shape-2 {
-    width: 80px;
-    height: 80px;
-    filter: blur(20px);
-  }
-  
-  .c-shape-3 {
-    width: 55px;
-    height: 55px;
-    filter: blur(20px);
-  }
-}
-
-/* Ultra Small Devices (below 320px) */
-@media (max-width: 319px) {
-  .c-hero {
-    height: auto;
-    min-height: 100vh;
-    padding: 35px 0;
-  }
-  
-  .c-hero-container {
-    padding: 0 15px;
-  }
-  
-  .c-hero-title-block {
-    margin-bottom: 22px;
-  }
-  
-  .c-hero-subtitle {
-    font-size: 0.5rem;
-    letter-spacing: 1px;
-    padding: 0.15rem 0.4rem;
-    margin-bottom: 0.4rem;
-  }
-  
-  .c-hero-title {
-    font-size: 1.4rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 1.1rem;
-  }
-  
-  .c-hero-desc {
-    font-size: 0.65rem;
-    max-width: 260px;
-    padding: 0;
-  }
-  
-  .c-hero-stats {
-    flex-direction: column;
-    gap: 8px;
-    padding: 12px 14px;
-    border-radius: 20px;
-    width: 100%;
-  }
-  
-  .c-stat-divider {
-    display: none;
-  }
-  
-  .c-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    min-width: auto;
-  }
-  
-  .c-stat-number {
-    font-size: 0.9rem;
-  }
-  
-  .c-stat-label {
-    font-size: 0.45rem;
-  }
-  
-  .c-shape-1,
-  .c-shape-2,
-  .c-shape-3 {
-    display: none;
-  }
-}
-
-/* ============================================
-   LANDSCAPE MODE OPTIMIZATION
-   ============================================ */
-
-@media (max-width: 768px) and (orientation: landscape) {
-  .c-hero {
-    height: auto;
-    min-height: 100vh;
-    padding: 40px 0;
-  }
-  
-  .c-hero-title-block {
-    margin-bottom: 30px;
-  }
-  
-  .c-hero-title {
-    font-size: 2rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 1.6rem;
-  }
-  
-  .c-hero-desc {
-    font-size: 0.8rem;
-  }
-  
-  .c-hero-stats {
-    flex-direction: row;
-    gap: 20px;
-    padding: 12px 25px;
-    width: auto;
-  }
-  
-  .c-stat {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .c-stat-divider {
-    display: block;
-  }
-  
-  .c-shape-1 {
-    width: 140px;
-    height: 140px;
-  }
-  
-  .c-shape-2 {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .c-shape-3 {
-    width: 70px;
-    height: 70px;
-  }
-}
-
-@media (max-width: 480px) and (orientation: landscape) {
-  .c-hero-title {
-    font-size: 1.6rem;
-  }
-  
-  .c-hero-title span {
-    font-size: 1.3rem;
-  }
-  
-  .c-hero-stats {
-    gap: 15px;
-    padding: 10px 20px;
-  }
-  
-  .c-stat-number {
-    font-size: 1rem;
-  }
-  
-  .c-stat-label {
-    font-size: 0.5rem;
-  }
-}
-
-/* ============================================
-   SEO & ACCESSIBILITY OPTIMIZATIONS
-   ============================================ */
-
-/* Touch target optimization for mobile */
-@media (max-width: 768px) {
-  .c-stat {
-    min-height: 44px;
-  }
-}
-
-/* Reduce motion preference */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .c-hero-bg img,
   .c-hero-shape,
@@ -891,116 +270,24 @@
   .c-hero-stats {
     animation: none !important;
   }
-  
-  .c-hero-bg img {
-    transform: scale(1);
-  }
-  
+  .c-hero-bg img { transform: none; }
   .c-hero-title-block,
-  .c-hero-stats {
-    opacity: 1;
-    transform: none;
-  }
+  .c-hero-stats { opacity: 1; transform: none; }
 }
 
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .c-hero-overlay {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.95),
-      rgba(0, 0, 0, 0.8)
-    );
-  }
-  
-  .c-hero-subtitle {
-    border: 1px solid rgba(201, 162, 45, 0.8);
-    background: rgba(201, 162, 45, 0.25);
-  }
-  
-  .c-hero-stats {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(201, 162, 45, 0.3);
-  }
-}
-
-/* Dark mode optimization */
-@media (prefers-color-scheme: dark) {
-  .c-hero-overlay {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.9),
-      rgba(0, 0, 0, 0.7)
-    );
-  }
-}
-
-/* Print styles for SEO */
+/* Print styles */
 @media print {
   .c-hero {
     height: auto;
-    min-height: auto;
-    background: #f5f5f5;
+    background: #fff;
     color: #000;
   }
-  
   .c-hero-bg,
   .c-hero-shape,
-  .c-hero-overlay {
-    display: none;
-  }
-  
-  .c-hero-container {
-    position: relative;
-    padding: 20px;
-  }
-  
-  .c-hero-title span {
-    color: #c9a22d;
-  }
-  
+  .c-hero-overlay { display: none; }
   .c-hero-stats {
     background: none;
     border: 1px solid #ddd;
     backdrop-filter: none;
   }
-  
-  .c-stat-number {
-    color: #c9a22d;
-  }
-  
-  .c-stat-label {
-    color: #666;
-  }
-  
-  .c-hero-title-block,
-  .c-hero-stats {
-    opacity: 1;
-    animation: none;
-  }
-}
-
-/* Text readability improvements */
-.c-hero-title,
-.c-hero-desc,
-.c-stat-number,
-.c-stat-label {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Ensure proper background scaling */
-.c-hero-bg img {
-  will-change: transform;
-}
-
-/* Prevent FOUC */
-.c-hero {
-  background-color: #000;
-}
-
-/* Focus styles for accessibility */
-.c-stat:focus {
-  outline: none;
 }

@@ -1,27 +1,34 @@
-/* ===== Upload CV Section ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ===== Upload CV – Fully Responsive | No Media Queries | Simplified ===== */
+/* Fluid layout using flex wrap, relative units, and clamp — works on all screens */
+
+.ucv-section,
+.ucv-section * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 .ucv-section {
-  padding: 70px 0;
-  background: #f8fafc;
-  font-family: 'Inter', sans-serif;
+  padding: clamp(2rem, 8vw, 4.5rem) 0;
+  background: #ffffff;
+  overflow-x: hidden;
 }
 
 .ucv-container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 clamp(1rem, 5vw, 2rem);
 }
 
-/* Header */
+/* Header — fully fluid text */
 .ucv-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: clamp(2rem, 6vw, 3.5rem);
 }
 
 .ucv-subtitle {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: clamp(0.7rem, 3vw, 0.8rem);
   font-weight: 600;
   color: #C9A22D;
   letter-spacing: 1.5px;
@@ -33,10 +40,11 @@
 }
 
 .ucv-title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 7vw, 2.4rem);
   font-weight: 600;
   color: #1e2b37;
-  margin: 0 0 1rem;
+  margin: 0 0 0.8rem;
+  line-height: 1.2;
 }
 
 .ucv-title span {
@@ -44,217 +52,207 @@
 }
 
 .ucv-desc {
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 4vw, 1rem);
   color: #64748b;
-  max-width: 550px;
+  max-width: 600px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-/* Grid */
+/* Grid → Flex wrap: automatically stacks on small screens, side-by-side on large */
 .ucv-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 30px;
-  margin-bottom: 30px;
-}
-
-/* Form Card */
-.ucv-form-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 24px;
-  padding: 35px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-}
-
-.ucv-form-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #1e2b37;
-  margin: 0 0 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #edf2f7;
-}
-
-/* Form Fields */
-.ucv-form {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: 2rem;
 }
 
-.ucv-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.ucv-grid > * {
+  flex: 1 1 300px; /* Minimum 300px, grows equally, wraps when needed */
 }
 
-.ucv-field label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #334155;
-}
-
-.ucv-field input,
-.ucv-field select {
-  padding: 12px 15px;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  color: #1e2b37;
-  background: #f8fafc;
-  transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
-}
-
-.ucv-field input:focus,
-.ucv-field select:focus {
-  outline: none;
-  border-color: #C9A22D;
-  box-shadow: 0 0 0 3px rgba(201, 162, 45, 0.1);
-  background: #ffffff;
-}
-
-/* File Upload */
-.ucv-file-input {
-  position: relative;
-}
-
-.ucv-file-input input[type="file"] {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
-
-.ucv-file-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 15px;
-  background: #f8fafc;
-  border: 2px dashed #e2e8f0;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.ucv-file-label:hover {
-  border-color: #C9A22D;
-  background: rgba(201, 162, 45, 0.02);
-}
-
-.ucv-upload-icon {
-  color: #C9A22D;
-  font-size: 1.2rem;
-}
-
-.ucv-file-label span {
-  font-size: 0.85rem;
-  color: #475569;
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Status Message */
-.ucv-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 15px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid #10b981;
-  border-radius: 12px;
-  color: #065f46;
-}
-
-.ucv-status-icon {
-  color: #10b981;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.ucv-status span {
-  font-size: 0.85rem;
-}
-
-/* Submit Button */
-.ucv-submit-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 25px;
-  background: #C9A22D;
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-
-.ucv-submit-btn:hover {
-  background: #b08f28;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(201, 162, 45, 0.3);
-}
-
-.ucv-submit-icon {
-  transition: transform 0.3s ease;
-}
-
-.ucv-submit-btn:hover .ucv-submit-icon {
-  transform: translateX(5px);
-}
-
-/* Info Card */
+/* Shared card styles — simplified, clean */
+.ucv-email-card,
 .ucv-info-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 24px;
-  padding: 35px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  padding: clamp(1.5rem, 5vw, 2.2rem);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.ucv-info-title {
-  font-size: 1.2rem;
+.ucv-email-card:hover,
+.ucv-info-card:hover {
+  border-color: #C9A22D;
+  box-shadow: 0 12px 24px rgba(201, 162, 45, 0.06);
+}
+
+/* Email icon — fully responsive size */
+.ucv-email-icon-wrapper {
+  width: clamp(55px, 15vw, 80px);
+  height: clamp(55px, 15vw, 80px);
+  background: rgba(201, 162, 45, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem;
+}
+
+.ucv-email-icon {
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  color: #C9A22D;
+}
+
+.ucv-email-title {
+  font-size: clamp(1.3rem, 5vw, 1.7rem);
+  font-weight: 700;
+  color: #1e2b37;
+  text-align: center;
+  margin: 0 0 0.8rem;
+}
+
+.ucv-email-desc {
+  font-size: 0.9rem;
+  color: #475569;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Email address block */
+.ucv-email-address {
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  word-break: break-word;
+}
+
+.ucv-email-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #64748b;
+  margin-bottom: 0.4rem;
+}
+
+.ucv-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  font-weight: 600;
+  color: #C9A22D;
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border-radius: 40px;
+  background: rgba(201, 162, 45, 0.05);
+  transition: all 0.2s ease;
+  word-break: break-all;
+}
+
+.ucv-email-link:hover {
+  background: #C9A22D;
+  color: white;
+}
+
+.ucv-email-send-icon {
+  font-size: 1rem;
+}
+
+/* Instructions list */
+.ucv-email-instructions {
+  margin-bottom: 1.5rem;
+}
+
+.ucv-email-instructions h4 {
+  font-size: 0.9rem;
   font-weight: 600;
   color: #1e2b37;
+  margin-bottom: 0.8rem;
+}
+
+.ucv-email-instructions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ucv-email-instructions li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.ucv-email-instructions li svg {
+  color: #10b981;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* Notes — clean & adaptive */
+.ucv-email-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.8rem;
+  background: #fef9e6;
+  border-radius: 16px;
+  border-left: 3px solid #C9A22D;
+}
+
+.ucv-note-icon {
+  color: #C9A22D;
+  flex-shrink: 0;
+}
+
+.ucv-email-note p {
+  font-size: 0.8rem;
+  color: #5b4c1a;
   margin: 0;
-  padding-bottom: 15px;
+  line-height: 1.4;
+}
+
+/* Info card (right side) */
+.ucv-info-title {
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 600;
+  color: #1e2b37;
+  margin: 0 0 1.2rem;
+  padding-bottom: 0.6rem;
   border-bottom: 1px solid #edf2f7;
 }
 
 .ucv-info-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.2rem;
 }
 
 .ucv-info-item {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 0.8rem;
+  flex-wrap: wrap;
 }
 
 .ucv-info-icon {
   color: #C9A22D;
   font-size: 1.2rem;
   margin-top: 2px;
+  flex-shrink: 0;
 }
 
 .ucv-info-item div {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .ucv-info-label {
@@ -271,45 +269,41 @@
   color: #1e2b37;
   text-decoration: none;
   font-weight: 500;
+  word-break: break-word;
 }
 
 .ucv-info-item a:hover {
   color: #C9A22D;
 }
 
-/* Note */
+/* Extra notes & privacy */
 .ucv-note {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 15px;
+  gap: 0.8rem;
+  padding: 0.8rem;
   background: #f8fafc;
   border-radius: 16px;
   border: 1px solid #e2e8f0;
-}
-
-.ucv-note-icon {
-  color: #C9A22D;
-  font-size: 1rem;
-  flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 0.5rem;
 }
 
 .ucv-note p {
   font-size: 0.8rem;
   color: #475569;
-  line-height: 1.5;
+  line-height: 1.4;
   margin: 0;
 }
 
-/* Privacy */
 .ucv-privacy {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0.7rem 0.9rem;
   background: rgba(201, 162, 45, 0.05);
-  border-radius: 12px;
+  border-radius: 14px;
+  margin-top: 1rem;
 }
 
 .ucv-privacy-icon {
@@ -322,10 +316,10 @@
   color: #475569;
 }
 
-/* Bottom Note */
+/* Bottom section */
 .ucv-bottom-note {
   text-align: center;
-  padding: 20px 0 0;
+  padding-top: 2rem;
   border-top: 1px solid #e2e8f0;
 }
 
@@ -345,30 +339,4 @@
   text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .ucv-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  
-  .ucv-form-card,
-  .ucv-info-card {
-    padding: 25px;
-  }
-}
-
-@media (max-width: 600px) {
-  .ucv-section {
-    padding: 50px 0;
-  }
-  
-  .ucv-title {
-    font-size: 1.6rem;
-  }
-  
-  .ucv-form-card,
-  .ucv-info-card {
-    padding: 20px;
-  }
-}
+/* No media queries — fully responsive by design */

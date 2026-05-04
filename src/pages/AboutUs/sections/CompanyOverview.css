@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
+/* --------------------------------------------
+   Base Section – System Font Stack
+-------------------------------------------- */
 .co-section {
-  padding: 70px 0;
+  padding: clamp(3rem, 8vw, 4.375rem) 0;
   background: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
   position: relative;
   overflow: hidden;
 }
 
-/* Background animated elements – more subtle */
+.co-section::after{
+  display: none;
+}
+/* Background decorative elements */
 .co-bg-circle {
   position: absolute;
   border-radius: 50%;
@@ -16,23 +20,20 @@
   z-index: 1;
   pointer-events: none;
 }
-
 .co-bg-circle-1 {
-  width: 350px;
-  height: 350px;
+  width: clamp(200px, 30vw, 350px);
+  height: clamp(200px, 30vw, 350px);
   top: -120px;
   right: -80px;
   animation: coCircleFloat 18s ease-in-out infinite;
 }
-
 .co-bg-circle-2 {
-  width: 250px;
-  height: 250px;
+  width: clamp(150px, 25vw, 250px);
+  height: clamp(150px, 25vw, 250px);
   bottom: -60px;
   left: -60px;
   animation: coCircleFloat 22s ease-in-out infinite reverse;
 }
-
 @keyframes coCircleFloat {
   0%, 100% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(15px, -15px) scale(1.05); }
@@ -40,10 +41,7 @@
 
 .co-bg-dots {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-image: radial-gradient(rgba(201, 162, 45, 0.08) 1.2px, transparent 1.2px);
   background-size: 24px 24px;
   animation: coDotsMove 40s linear infinite;
@@ -51,138 +49,112 @@
   z-index: 1;
   pointer-events: none;
 }
-
 @keyframes coDotsMove {
   0% { background-position: 0 0; }
   100% { background-position: 48px 48px; }
 }
 
+/* Container – 2‑column layout */
 .co-container {
   max-width: 1200px;
-  margin: auto;
-  padding: 0 30px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 1.875rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  gap: clamp(2rem, 6vw, 3.125rem);
   align-items: center;
   position: relative;
   z-index: 2;
 }
 
-/* ===== ANIMATION CLASSES (entrance only) ===== */
+/* --------------------------------------------
+   Entrance Animations
+-------------------------------------------- */
 .co-fade-left {
   opacity: 0;
   animation: coFadeLeft 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
 }
-
 @keyframes coFadeLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-
 .co-fade-right {
   opacity: 0;
   animation: coFadeRight 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.15s forwards;
 }
-
 @keyframes coFadeRight {
-  from {
-    opacity: 0;
-    transform: translateX(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-
 .co-slide-down {
   opacity: 0;
   animation: coSlideDown 0.5s ease-out 0.1s forwards;
 }
-
 @keyframes coSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 .co-slide-up {
   opacity: 0;
   animation: coSlideUp 0.5s ease-out 0.25s forwards;
 }
-
 @keyframes coSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== LEFT CONTENT (refined, compact) ===== */
+/* --------------------------------------------
+   Left Content
+-------------------------------------------- */
 .co-badge {
   display: inline-block;
   background: rgba(201, 162, 45, 0.12);
-  color: #C9A22D;
+  color: #c9a22d;
   padding: 5px 12px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.3px;
   border-radius: 30px;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   backdrop-filter: blur(2px);
 }
-
 .co-title {
-  font-size: 34px;
+  font-size: clamp(1.75rem, 5vw, 2.125rem);
   font-weight: 700;
   line-height: 1.3;
   color: #0f172a;
-  margin-bottom: 18px;
+  margin-bottom: 1.125rem;
   letter-spacing: -0.3px;
 }
-
 .co-title span {
-  color: #C9A22D;
-  background: linear-gradient(135deg, #C9A22D 0%, #b88d1f 100%);
+  color: #c9a22d;
+  background: linear-gradient(135deg, #c9a22d 0%, #b88d1f 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
-
 .co-desc {
   color: #475569;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   line-height: 1.65;
   max-width: 500px;
-  font-size: 15px;
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
+}
+.co-desc:last-of-type {
+  margin-bottom: 0;
 }
 
-/* ===== RIGHT SIDE – MODERN COLLAGE (2x2 grid with gaps & hover effects) ===== */
+/* --------------------------------------------
+   Right Collage – 2x2 Grid with Hover Effects
+-------------------------------------------- */
 .co-collage-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;   /* forces both rows to take equal height */
-  gap: 18px;
+  grid-template-rows: 1fr 1fr;
+  gap: clamp(0.75rem, 2vw, 1.125rem);
   width: 100%;
-  aspect-ratio: 1 / 1;           /* container is a perfect square */
+  aspect-ratio: 1 / 1;
 }
-
 .co-collage-item {
   position: relative;
   border-radius: 24px;
@@ -194,54 +166,43 @@
   opacity: 0;
   transform: scale(0.96);
   animation: coCollageFadeIn 0.5s ease-out forwards;
-  /* ensure each item fills its grid cell completely */
   width: 100%;
   height: 100%;
 }
-
 @keyframes coCollageFadeIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  to { opacity: 1; transform: scale(1); }
 }
-
 .co-collage-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* covers the area without distortion */
+  object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
 }
-
-/* Hover effect */
 .co-collage-item:hover {
   transform: translateY(-6px);
   box-shadow: 0 22px 32px -14px rgba(0, 0, 0, 0.2);
 }
-
 .co-collage-item:hover img {
   transform: scale(1.05);
 }
-
-/* Optional golden glow on hover */
 .co-collage-item:hover::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   border-radius: 24px;
   box-shadow: inset 0 0 0 2px rgba(201, 162, 45, 0.5);
   pointer-events: none;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1000px) {
+/* --------------------------------------------
+   Responsive Breakpoints
+-------------------------------------------- */
+/* Tablet & below – single column, collage moved up */
+@media (max-width: 992px) {
   .co-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 2rem;
   }
   .co-right {
     order: -1;
@@ -249,32 +210,109 @@
   .co-collage-grid {
     max-width: 480px;
     margin: 0 auto;
-    gap: 14px;
   }
   .co-title {
-    font-size: 32px;
+    text-align: center;
+  }
+  .co-desc {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .co-badge {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Small tablets / large phones */
+@media (max-width: 768px) {
+  .co-collage-grid {
+    max-width: 400px;
+    gap: 0.875rem;
+  }
+  .co-collage-item {
+    border-radius: 20px;
+  }
+}
+/* Phones – tighten spacing, reduce border radius */
+@media (max-width: 480px) {
+  .co-section {
+    padding: 2.5rem 0;
+  }
+  .co-container {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+  .co-title {
+    font-size: 1.5rem;
+  }
+  .co-desc {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .co-collage-grid {
+    max-width: 100%;
+    gap: 0.75rem;
+  }
+  .co-collage-item {
+    border-radius: 16px;
+  }
+}
+/* Extra small devices (≤375px) – keep grid but smaller */
+@media (max-width: 375px) {
+  .co-collage-item {
+    border-radius: 12px;
+  }
+  .co-badge {
+    padding: 4px 10px;
+    font-size: 0.7rem;
   }
 }
 
-@media (max-width: 600px) {
+/* --------------------------------------------
+   Accessibility & Print
+-------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .co-bg-circle,
+  .co-bg-dots,
+  .co-collage-item,
+  .co-collage-item img,
+  .co-fade-left,
+  .co-fade-right,
+  .co-slide-down,
+  .co-slide-up {
+    animation: none !important;
+    transition: none !important;
+  }
+  .co-collage-item:hover {
+    transform: none;
+  }
+  .co-collage-item:hover img {
+    transform: none;
+  }
+  .co-collage-item::after {
+    display: none;
+  }
+}
+@media print {
   .co-section {
-    padding: 50px 0;
+    padding: 1rem;
+    background: white;
+  }
+  .co-bg-circle,
+  .co-bg-dots {
+    display: none;
   }
   .co-container {
-    padding: 0 20px;
-    gap: 32px;
-  }
-  .co-title {
-    font-size: 28px;
-  }
-  .co-desc {
-    font-size: 14px;
-    margin-bottom: 16px;
-  }
-  .co-collage-grid {
-    gap: 12px;
+    display: block;
   }
   .co-collage-item {
-    border-radius: 18px;
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+  .co-collage-item::after {
+    display: none;
   }
 }

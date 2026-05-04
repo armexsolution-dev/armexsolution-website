@@ -190,7 +190,7 @@ const TermsConditions = () => {
           <div className="tc-contact">
             <div className="tc-contact-item">
               <FiMail className="tc-contact-icon" />
-              <a href="mailto:admin@armexsolutions.com">admin@armexsolutions.com</a>
+              <a href="mailto:admin@armexsolution.com">admin@armexsolution.com</a>
             </div>
             <div className="tc-contact-divider"></div>
             <div className="tc-contact-item">

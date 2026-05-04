@@ -1,9 +1,9 @@
-// ConnectSection.jsx
 import React, { useEffect, useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import "./ConnectSection.css";
-import ContactCon1 from '../../../assets/images/Contact/ContactConnection1.jpg'
-import ContactCon2 from '../../../assets/images/Contact/ContactConnection2.jpeg'
+import ContactCon1 from '../../../assets/images/Contact/ContactConnection1.png';
+import ContactCon2 from '../../../assets/images/Contact/ContactConnection2.png';
+import ContactCon3 from '../../../assets/images/Contact/ContactConnection3.png';
 
 const ConnectSection = () => {
   const imageRefs = useRef([]);
@@ -27,18 +27,15 @@ const ConnectSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  // ✅ SCROLL FUNCTION
   const handleScroll = () => {
     const section = document.getElementById("contactF");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+    section?.scrollIntoView({ behavior: "smooth" });
   };
 
   const images = [
     {
       url: ContactCon1,
-      alt: "Team collaboration",
+      alt: "Team collaboration at work",
       delay: "0s",
       rotate: "-3deg",
       top: "0%",
@@ -46,15 +43,15 @@ const ConnectSection = () => {
     },
     {
       url: ContactCon2,
-      alt: "Engineer at work",
+      alt: "Engineer reviewing rebar drawings",
       delay: "0.15s",
       rotate: "2deg",
       top: "30%",
       left: "45%"
     },
     {
-      url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
-      alt: "Construction planning",
+      url: ContactCon3,
+      alt: "Construction site planning",
       delay: "0.3s",
       rotate: "-1deg",
       top: "60%",
@@ -63,12 +60,11 @@ const ConnectSection = () => {
   ];
 
   return (
-    <section className="cn-section">
-      <div className="cn-bg-pattern"></div>
+    <section className="cn-section" aria-label="Connect with us – start your project">
+      <div className="cn-bg-pattern" aria-hidden="true"></div>
 
       <div className="cn-container">
-
-        {/* LEFT */}
+        {/* LEFT: Image collage */}
         <div className="cn-collage">
           {images.map((img, index) => (
             <div
@@ -82,14 +78,14 @@ const ConnectSection = () => {
                 transform: `rotate(${img.rotate})`
               }}
             >
-              <img src={img.url} alt={img.alt} />
-              <div className="cn-image-glow"></div>
+              <img src={img.url} alt={img.alt} loading="lazy" />
+              <div className="cn-image-glow" aria-hidden="true"></div>
             </div>
           ))}
-          <div className="cn-accent-dot"></div>
+          <div className="cn-accent-dot" aria-hidden="true"></div>
         </div>
 
-        {/* RIGHT */}
+        {/* RIGHT: Content */}
         <div className="cn-content">
           <div className="cn-content-wrapper">
             <span className="cn-subtitle">CONNECT WITH US</span>
@@ -100,19 +96,17 @@ const ConnectSection = () => {
               Share your requirements with us and get expert assistance within 2 hours
             </p>
 
-            {/* ✅ BUTTON ADDED */}
-            <button className="cn-hint" onClick={handleScroll}>
+            <button className="cn-hint" onClick={handleScroll} aria-label="Fill the contact form">
               <span>Fill the form below</span>
-              <FiArrowRight className="cn-hint-icon" />
-              <div className="cn-hint-glow"></div>
+              <FiArrowRight className="cn-hint-icon" aria-hidden="true" />
+              <div className="cn-hint-glow" aria-hidden="true"></div>
             </button>
-
           </div>
         </div>
       </div>
 
-      {/* PARTICLES */}
-      <div className="cn-particles">
+      {/* Particles */}
+      <div className="cn-particles" aria-hidden="true">
         {[...Array(6)].map((_, i) => (
           <div
             key={i}

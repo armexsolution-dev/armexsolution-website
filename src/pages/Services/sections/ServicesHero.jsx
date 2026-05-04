@@ -13,48 +13,42 @@ const services = [
   {
     title: "3D REBAR",
     subtitle: "MODELLING",
-    description:
-      "Intelligent 3D reinforcement models with clash detection and constructability validation for complex structures.",
+    description: "Intelligent 3D reinforcement models with clash detection and constructability validation for complex structures.",
     bg: SerHero1,
     card: SerHero1,
   },
   {
     title: "2D SHOP",
     subtitle: "DRAWINGS",
-    description:
-      "Fabrication-ready reinforcement shop drawings with clear bar placement, spacing, and bending details.",
+    description: "Fabrication-ready reinforcement shop drawings with clear bar placement, spacing, and bending details.",
     bg: SerHero2,
     card: SerHero2,
   },
   {
     title: "BAR BENDING",
     subtitle: "SCHEDULES",
-    description:
-      "Accurate bar bending schedules with bar marks, shape codes, cutting lengths, and quantities for fabrication.",
+    description: "Accurate bar bending schedules with bar marks, shape codes, cutting lengths, and quantities for fabrication.",
     bg: SerHero3,
     card: SerHero3,
   },
   {
     title: "REBAR",
     subtitle: "ESTIMATION",
-    description:
-      "Precise rebar quantity takeoffs and weight calculations for project planning and cost management.",
+    description: "Precise rebar quantity takeoffs and weight calculations for project planning and cost management.",
     bg: SerHero4,
     card: SerHero4,
   },
   {
     title: "GA",
     subtitle: "DRAWINGS",
-    description:
-      "Clear general arrangement drawings showing overall reinforcement layout and structural configuration.",
+    description: "Clear general arrangement drawings showing overall reinforcement layout and structural configuration.",
     bg: SerHero5,
     card: SerHero5,
   },
   {
     title: "SITE",
     subtitle: "SUPPORT",
-    description:
-      "Technical support for on-site implementation, drawing clarifications, and quantity reconciliation.",
+    description: "Technical support for on-site implementation, drawing clarifications, and quantity reconciliation.",
     bg: SerHero6,
     card: SerHero6,
   },
@@ -68,7 +62,6 @@ export default function ServiceHero() {
   const nextSlide = () => {
     const newActive = (active + 1) % services.length;
     setActive(newActive);
-
     if (newActive >= startIndex + cardsPerPage) {
       setStartIndex(newActive - cardsPerPage + 1);
     }
@@ -77,7 +70,6 @@ export default function ServiceHero() {
   const prevSlide = () => {
     const newActive = (active - 1 + services.length) % services.length;
     setActive(newActive);
-
     if (newActive < startIndex) {
       setStartIndex(newActive);
     }
@@ -86,55 +78,53 @@ export default function ServiceHero() {
   const visibleServices = services.slice(startIndex, startIndex + cardsPerPage);
 
   const scrollToServices = () => {
-  const section = document.getElementById('services-list');
-  section?.scrollIntoView({ behavior: 'smooth' });
-};
+    const section = document.getElementById('services-list');
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section className="sh-hero">
-      {/* Background Image */}
+      {/* Dynamic background */}
       <div
         className="sh-bg"
         style={{ backgroundImage: `url(${services[active].bg})` }}
+        aria-label={`Background for ${services[active].title} ${services[active].subtitle}`}
       ></div>
 
       <div className="sh-overlay"></div>
 
       <div className="sh-container">
-        {/* LEFT CONTENT */}
+        {/* Left text content */}
         <div className="sh-content">
           <span className="sh-subtitle">{services[active].subtitle}</span>
-
           <h1 className="sh-title">{services[active].title}</h1>
-
           <p className="sh-desc">{services[active].description}</p>
-
           <button className="sh-btn" onClick={scrollToServices}>
             Explore Services
           </button>
         </div>
 
-        {/* CARDS */}
-        <div className="sh-cards">
+        {/* Card strip */}
+        <div className="sh-cards" aria-label="Service navigation cards">
           {visibleServices.map((service, index) => {
             const actualIndex = startIndex + index;
-
             return (
               <div
                 key={actualIndex}
-                className={`sh-card ${
-                  active === actualIndex ? "sh-active" : ""
-                }`}
+                className={`sh-card ${active === actualIndex ? "sh-active" : ""}`}
                 onClick={() => setActive(actualIndex)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && setActive(actualIndex)}
+                aria-label={`Select ${service.title} ${service.subtitle}`}
               >
                 <img
                   src={service.card}
-                  alt={service.title}
+                  alt={`${service.title} ${service.subtitle}`}
                   className="sh-card-img"
+                  loading="lazy"
                 />
-
                 <div className="sh-card-overlay"></div>
-
                 <div className="sh-card-content">
                   <span className="sh-card-title">{service.title}</span>
                   <span className="sh-card-subtitle">{service.subtitle}</span>
@@ -144,16 +134,23 @@ export default function ServiceHero() {
           })}
         </div>
 
-        {/* NAVIGATION BUTTONS */}
+        {/* Navigation arrows */}
         <div className="sh-nav-bottom">
-          <button className="sh-nav-circle" onClick={prevSlide}>
+          <button
+            className="sh-nav-circle"
+            onClick={prevSlide}
+            aria-label="Previous service"
+          >
             <FiChevronLeft />
           </button>
-
-          <button className="sh-nav-circle" onClick={nextSlide}>
+          <button
+            className="sh-nav-circle"
+            onClick={nextSlide}
+            aria-label="Next service"
+          >
             <FiChevronRight />
           </button>
-        </div>  
+        </div>
       </div>
     </section>
   );

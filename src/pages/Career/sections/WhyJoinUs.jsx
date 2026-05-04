@@ -44,7 +44,7 @@ const WhyJoinUs = () => {
   ];
 
   return (
-    <section className="wju-section">
+    <section className="wju-section" id='upload-section'>
       <div className="wju-container">
         
         {/* Header */}

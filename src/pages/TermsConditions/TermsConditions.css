@@ -1,15 +1,15 @@
-/* ===== Terms and Conditions - Tab Navigation ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ===== Terms and Conditions – Clean, Optimized, No External Fonts ===== */
 
 .tc-section {
   padding: 60px 0;
   background: #ffffff;
-  font-family: 'Inter', sans-serif;
   width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
   border-top: 1px solid #edf2f7;
+  overflow-x: hidden;
+  transform: translateZ(0);
 }
 
 .tc-container {
@@ -158,6 +158,7 @@
   color: #475569;
   position: relative;
   overflow: hidden;
+  will-change: transform, background, border-color;
 }
 
 .tc-tab:hover {
@@ -188,6 +189,7 @@
   font-size: 1.1rem;
   color: #C9A22D;
   transition: all 0.3s ease;
+  will-change: transform;
 }
 
 .tc-tab:hover .tc-tab-icon {
@@ -206,6 +208,7 @@
   transform: translateX(-10px);
   transition: all 0.3s ease;
   color: #C9A22D;
+  will-change: transform, opacity;
 }
 
 .tc-tab:hover .tc-tab-arrow {
@@ -237,6 +240,7 @@
   min-height: 450px;
   display: flex;
   flex-direction: column;
+  will-change: transform, opacity;
 }
 
 .tc-content-visible {
@@ -309,6 +313,7 @@
   background: #C9A22D;
   transition: width 0.3s ease;
   border-radius: 2px;
+  will-change: width;
 }
 
 .tc-page-indicator {
@@ -381,13 +386,12 @@
   background: #e2e8f0;
 }
 
-/* Responsive */
+/* Responsive (unchanged) */
 @media (max-width: 900px) {
   .tc-main {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
   .tc-tabs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -395,30 +399,24 @@
     max-height: none;
     overflow-y: visible;
   }
-  
   .tc-tab {
     padding: 10px;
   }
-  
   .tc-tab-title {
     font-size: 0.8rem;
   }
-  
   .tc-status-bar {
     border-radius: 20px;
     padding: 15px;
   }
-  
   .tc-status-divider {
     display: none;
   }
-  
   .tc-contact {
     flex-direction: column;
     gap: 15px;
     border-radius: 30px;
   }
-  
   .tc-contact-divider {
     display: none;
   }
@@ -428,35 +426,28 @@
   .tc-section {
     padding: 40px 0;
   }
-  
   .tc-title {
     font-size: 1.8rem;
   }
-  
   .tc-tabs {
     grid-template-columns: 1fr;
   }
-  
   .tc-content {
     padding: 20px;
     min-height: 400px;
   }
-  
   .tc-content-header h2 {
     font-size: 1.2rem;
   }
-  
   .tc-content-body p {
     font-size: 0.85rem;
   }
-  
   .tc-acceptance {
     flex-direction: column;
     text-align: center;
     border-radius: 20px;
     padding: 15px;
   }
-  
   .tc-acceptance span {
     font-size: 0.8rem;
   }

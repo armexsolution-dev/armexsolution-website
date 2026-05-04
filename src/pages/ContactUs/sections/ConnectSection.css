@@ -1,39 +1,36 @@
-/* ConnectSection.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ===== Connect Section – Clean, Fluid, No External Fonts ===== */
 
 .cn-section {
   position: relative;
   min-height: 80vh;
-  padding: 80px 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-  font-family: 'Inter', sans-serif;
+  padding: 5rem 0;
+  background: #ffffff !important;
   display: flex;
   align-items: center;
-  overflow: hidden;
 }
 
-/* Background Pattern */
+.cn-section::after{
+  display: none !important;
+}
+
+/* Background pattern */
 .cn-bg-pattern {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-image: radial-gradient(circle at 20% 30%, rgba(201, 162, 45, 0.04) 0%, transparent 40%),
                     radial-gradient(circle at 80% 70%, rgba(201, 162, 45, 0.04) 0%, transparent 40%);
   z-index: 1;
+  pointer-events: none;
 }
 
 /* Particles */
 .cn-particles {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
 }
+
 .cn-particle {
   position: absolute;
   width: 3px;
@@ -42,38 +39,52 @@
   border-radius: 50%;
   animation: cnParticleFloat 12s linear infinite;
 }
+
 @keyframes cnParticleFloat {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
-  10% { opacity: 0.6; }
-  50% { transform: translateY(-120px) translateX(40px); opacity: 0.3; }
-  100% { transform: translateY(-240px) translateX(80px); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-120px) translateX(40px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-240px) translateX(80px);
+    opacity: 0;
+  }
 }
 
+/* Container – responsive grid */
 .cn-container {
   position: relative;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 clamp(1rem, 5vw, 3rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: clamp(2rem, 6vw, 4rem);
   align-items: center;
   z-index: 2;
   width: 100%;
 }
 
-/* ===== LEFT COLLAGE – UNIQUE & SIMPLE ===== */
+/* ===== LEFT COLLAGE ===== */
 .cn-collage {
   position: relative;
-  height: 480px;
+  height: min(480px, 55vw);
   width: 100%;
-  max-width: 500px;
+  max-width: 550px;
   margin: 0 auto;
 }
+
 .cn-collage-item {
   position: absolute;
-  width: 220px;
-  height: 260px;
+  width: clamp(140px, 28vw, 240px);
+  height: clamp(170px, 32vw, 280px);
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
@@ -82,69 +93,81 @@
   transform: translateY(40px) rotate(var(--rot, 0deg));
   will-change: transform, opacity;
 }
+
 .cn-collage-item.cn-image-visible {
   opacity: 1;
   transform: translateY(0) rotate(var(--rot, 0deg));
 }
+
 .cn-collage-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-/* Hover effects: scale + slight rotation + golden glow */
+
 .cn-collage-item:hover {
   transform: scale(1.05) rotate(0deg) !important;
   z-index: 10;
   box-shadow: 0 25px 40px -12px rgba(201, 162, 45, 0.3);
 }
+
 .cn-collage-item:hover img {
   transform: scale(1.08);
 }
-/* Soft inner glow on hover */
+
 .cn-image-glow {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: radial-gradient(circle at center, rgba(201, 162, 45, 0.2), transparent 70%);
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
 }
+
 .cn-collage-item:hover .cn-image-glow {
   opacity: 1;
 }
-/* Decorative accent – floating dot */
+
 .cn-accent-dot {
   position: absolute;
   bottom: 10%;
   right: 5%;
   width: 12px;
   height: 12px;
-  background: #C9A22D;
+  background: #c9a22d;
   border-radius: 50%;
   opacity: 0.6;
   animation: cnPulse 2s infinite;
   z-index: 5;
 }
+
 @keyframes cnPulse {
-  0% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.5); opacity: 0.2; }
-  100% { transform: scale(1); opacity: 0.6; }
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
 }
 
-/* ===== RIGHT CONTENT (SIMPLIFIED) ===== */
+/* ===== RIGHT CONTENT ===== */
 .cn-content-wrapper {
   background: white;
-  padding: 40px;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
   border-radius: 30px;
   box-shadow: 0 30px 50px rgba(0, 0, 0, 0.03);
   border: 1px solid #edf2f7;
   position: relative;
   overflow: hidden;
 }
+
 .cn-content-wrapper::before {
   content: '';
   position: absolute;
@@ -152,17 +175,21 @@
   left: 0;
   width: 4px;
   height: 0;
-  background: #C9A22D;
+  background: #c9a22d;
   animation: cnLineGrow 0.8s ease-out 0.3s forwards;
 }
+
 @keyframes cnLineGrow {
-  to { height: 100%; }
+  to {
+    height: 100%;
+  }
 }
+
 .cn-subtitle {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: clamp(0.65rem, 3vw, 0.75rem);
   font-weight: 600;
-  color: #C9A22D;
+  color: #c9a22d;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   background: rgba(201, 162, 45, 0.08);
@@ -170,29 +197,33 @@
   border-radius: 30px;
   margin-bottom: 1rem;
 }
+
 .cn-title {
-  font-size: 2.2rem;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
   font-weight: 700;
   color: #1e2b37;
   margin: 0 0 1rem;
   line-height: 1.2;
 }
+
 .cn-title span {
-  color: #C9A22D;
-  display: block;
+  color: #c9a22d;
+  display: inline;
 }
+
 .cn-desc {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
   color: #475569;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
+
 .cn-hint {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 25px;
+  padding: 0.75rem 1.8rem;
   background: #f8fafc;
   border: 1px solid #edf2f7;
   border-radius: 50px;
@@ -202,19 +233,28 @@
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
+  outline: none;
 }
+
 .cn-hint:hover {
-  border-color: #C9A22D;
+  border-color: #c9a22d;
   transform: translateX(5px);
 }
+
 .cn-hint-icon {
-  color: #C9A22D;
+  color: #c9a22d;
   animation: cnMove 1.5s ease-in-out infinite;
 }
+
 @keyframes cnMove {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(5px); }
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
 }
+
 .cn-hint-glow {
   position: absolute;
   top: 0;
@@ -223,88 +263,152 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(201, 162, 45, 0.1), transparent);
   animation: cnGlow 3s ease-in-out infinite;
-}
-@keyframes cnGlow {
-  0%, 100% { left: -100%; }
-  50% { left: 100%; }
+  pointer-events: none;
 }
 
-/* ===== FULL RESPONSIVE ===== */
-@media (max-width: 1000px) {
+@keyframes cnGlow {
+  0%, 100% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+}
+
+/* ===== RESPONSIVE (fluid, all devices) ===== */
+
+/* Tablet & below – stack layout */
+@media (max-width: 900px) {
   .cn-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 2rem;
   }
+
   .cn-collage {
-    height: 420px;
-    max-width: 450px;
+    height: min(420px, 60vw);
+    max-width: 480px;
   }
-  .cn-collage-item {
-    width: 200px;
-    height: 240px;
-  }
+
   .cn-section {
-    min-height: auto;
-    padding: 60px 0;
+    padding: 3rem 0;
   }
 }
-@media (max-width: 700px) {
+
+/* Mobile L (≤ 650px) – adjust collage item positions slightly */
+@media (max-width: 650px) {
   .cn-collage {
-    height: 380px;
+    height: min(380px, 70vw);
+    max-width: 380px;
   }
+
   .cn-collage-item {
-    width: 170px;
-    height: 200px;
+    width: clamp(110px, 35vw, 140px);
+    height: clamp(140px, 40vw, 170px);
   }
-  .cn-content-wrapper {
-    padding: 30px;
+
+  /* Reposition for narrow screens */
+  .cn-collage-item:nth-child(1) {
+    top: 0%;
+    left: 0%;
   }
-  .cn-title {
-    font-size: 1.8rem;
+  .cn-collage-item:nth-child(2) {
+    top: 25%;
+    left: 55%;
   }
-}
-@media (max-width: 550px) {
-  .cn-collage {
-    height: 340px;
-    max-width: 300px;
+  .cn-collage-item:nth-child(3) {
+    top: 55%;
+    left: 5%;
   }
-  .cn-collage-item {
-    width: 140px;
-    height: 170px;
-  }
-  /* Adjust positions for very small screens */
-  .cn-collage-item:nth-child(1) { top: 0%; left: 0%; }
-  .cn-collage-item:nth-child(2) { top: 25%; left: 50%; }
-  .cn-collage-item:nth-child(3) { top: 55%; left: 10%; }
+
   .cn-accent-dot {
-    bottom: 5%;
-    right: 0%;
+    bottom: 2%;
+    right: 5%;
   }
+
   .cn-title span {
     display: inline;
   }
+}
+
+/* Mobile S (≤ 480px) */
+@media (max-width: 480px) {
+  .cn-collage {
+    height: min(320px, 80vw);
+  }
+
+  .cn-hint {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
   .cn-desc {
     font-size: 0.85rem;
   }
-  .cn-hint {
-    padding: 8px 18px;
-    font-size: 0.8rem;
-  }
 }
-@media (max-width: 480px) {
-  .cn-collage-item {
-    width: 120px;
-    height: 150px;
+
+/* Landscape orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+  .cn-section {
+    min-height: auto;
+    padding: 2rem 0;
   }
+
   .cn-collage {
-    height: 300px;
+    height: 280px;
   }
 }
 
-/* ADD THIS ONLY */
-.cn-hint {
-  border: none;
-  outline: none;
-  background: #f8fafc;
-  cursor: pointer;
+/* Large screens (≥ 1600px) – keep proportions */
+@media (min-width: 1600px) {
+  .cn-container {
+    max-width: 1500px;
+  }
+
+  .cn-collage-item {
+    width: 280px;
+    height: 320px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cn-particle,
+  .cn-collage-item,
+  .cn-hint-icon,
+  .cn-hint-glow,
+  .cn-accent-dot {
+    animation: none !important;
+  }
+  .cn-collage-item {
+    transition: none;
+  }
+  .cn-collage-item:hover {
+    transform: none !important;
+  }
+  .cn-hint:hover {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .cn-section {
+    background: white;
+    padding: 20px;
+  }
+  .cn-bg-pattern,
+  .cn-particles,
+  .cn-accent-dot,
+  .cn-image-glow,
+  .cn-hint-glow {
+    display: none;
+  }
+  .cn-content-wrapper {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  .cn-hint {
+    background: none;
+    border: 1px solid #ccc;
+  }
 }

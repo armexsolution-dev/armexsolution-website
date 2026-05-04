@@ -11,25 +11,27 @@ import Sitemap from "./pages/Sitemap/Sitemap";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions/TermsConditions";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "about-us", element: <AboutUs /> },
+        { path: "services", element: <Services /> },
+        { path: "services/:serviceId", element: <ServiceDetail /> },
+        { path: "contact-us", element: <ContactUs /> },
+        { path: "career", element: <Career /> },
+        { path: "sitemap", element: <Sitemap /> },
+        { path: "privacy-policy", element: <PrivacyPolicy /> },
+        { path: "terms-and-conditions", element: <TermsConditions /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "about-us", element: <AboutUs /> },
-      { path: "services", element: <Services /> },
-
-      // Dynamic Service Page
-      { path: "services/:serviceId", element: <ServiceDetail /> },
-
-      { path: "contact-us", element: <ContactUs /> },
-      { path: "career", element: <Career /> },
-      { path: "sitemap", element: <Sitemap /> },
-      { path: "privacy-policy", element: <PrivacyPolicy /> },
-      { path: "terms-and-conditions", element: <TermsConditions /> },
-    ],
-  },
-]);
+    scrollRestoration: false,  // 👈 ADD THIS LINE
+  }
+);
 
 export default router;

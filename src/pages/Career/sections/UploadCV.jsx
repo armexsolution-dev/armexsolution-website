@@ -1,51 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  FiUpload, 
+  FiMail, 
+  FiPhone, 
+  FiMapPin, 
   FiFile, 
-  FiCheckCircle, 
-  FiMail,
-  FiPhone,
-  FiMapPin,
+  FiCheckCircle,
   FiSend
 } from 'react-icons/fi';
 import './UploadCV.css';
 
 const UploadCV = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState('');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    position: ''
-  });
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setSelectedFile(file);
-      setUploadStatus('File selected: ' + file.name);
-    }
-  };
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    setUploadStatus('Application submitted successfully! We\'ll review your CV.');
-    setTimeout(() => {
-      setUploadStatus('');
-      setSelectedFile(null);
-      setFormData({ name: '', email: '', phone: '', position: '' });
-    }, 3000);
-  };
-
   return (
     <section className="ucv-section">
       <div className="ucv-container">
@@ -63,103 +27,43 @@ const UploadCV = () => {
 
         <div className="ucv-grid">
           
-          {/* Left - Form */}
-          <div className="ucv-form-card">
-            <h3 className="ucv-form-title">Send Your Application</h3>
+          {/* Left - Email CTA Card (replaces form) */}
+          <div className="ucv-email-card">
+            <div className="ucv-email-icon-wrapper">
+              <FiMail className="ucv-email-icon" />
+            </div>
+            <h3 className="ucv-email-title">Send Us Your Resume</h3>
+            <p className="ucv-email-desc">
+              We are always looking for talented professionals to join our growing team. 
+              Email your CV along with a brief introduction to our HR team.
+            </p>
             
-            <form onSubmit={handleSubmit} className="ucv-form">
-              
-              {/* Name */}
-              <div className="ucv-field">
-                <label>Full Name *</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
+            <div className="ucv-email-address">
+              <span className="ucv-email-label">HR Email Address</span>
+              <a href="mailto:careers@armexsolutions.com?subject=Job%20Application%20-%20CV%20Attached&body=Dear%20HR%20Team,%0A%0APlease%20find%20my%20resume%20attached.%20I%20am%20interested%20in%20the%20following%20position%3A%0A%0A%5BInsert%20position%20title%5D%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D" 
+                 className="ucv-email-link">
+                careers@armexsolutions.com
+                <FiSend className="ucv-email-send-icon" />
+              </a>
+            </div>
 
-              {/* Email */}
-              <div className="ucv-field">
-                <label>Email Address *</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="john@example.com"
-                  required
-                />
-              </div>
+            <div className="ucv-email-instructions">
+              <h4>What to include in your email:</h4>
+              <ul>
+                <li><FiCheckCircle /> Updated resume (PDF or DOC)</li>
+                <li><FiCheckCircle /> Position you're interested in</li>
+                <li><FiCheckCircle /> Brief cover message / introduction</li>
+                <li><FiCheckCircle /> Portfolio or work samples (optional)</li>
+              </ul>
+            </div>
 
-              {/* Phone */}
-              <div className="ucv-field">
-                <label>Phone Number</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="+91 98400 00000"
-                />
-              </div>
-
-              {/* Position */}
-              <div className="ucv-field">
-                <label>Position Interested In</label>
-                <select
-                  name="position"
-                  value={formData.position}
-                  onChange={handleInputChange}
-                >
-                  <option value="">Select a role</option>
-                  <option value="Rebar Detailer">Rebar Detailer</option>
-                  <option value="BIM Coordinator">BIM Coordinator</option>
-                  <option value="Structural Engineer">Structural Engineer</option>
-                  <option value="QA/QC Specialist">QA/QC Specialist</option>
-                  <option value="Project Manager">Project Manager</option>
-                </select>
-              </div>
-
-              {/* File Upload */}
-              <div className="ucv-field">
-                <label>Upload CV *</label>
-                <div className="ucv-file-input">
-                  <input
-                    type="file"
-                    id="cv-upload"
-                    onChange={handleFileChange}
-                    accept=".pdf,.doc,.docx"
-                    required
-                  />
-                  <label htmlFor="cv-upload" className="ucv-file-label">
-                    <FiUpload className="ucv-upload-icon" />
-                    <span>{selectedFile ? selectedFile.name : 'Choose file (PDF, DOC)'}</span>
-                  </label>
-                </div>
-              </div>
-
-              {/* Status Message */}
-              {uploadStatus && (
-                <div className="ucv-status">
-                  <FiCheckCircle className="ucv-status-icon" />
-                  <span>{uploadStatus}</span>
-                </div>
-              )}
-
-              {/* Submit Button */}
-              <button type="submit" className="ucv-submit-btn">
-                <FiSend className="ucv-submit-icon" />
-                Submit Application
-              </button>
-
-            </form>
+            <div className="ucv-email-note">
+              <FiFile className="ucv-note-icon" />
+              <p>We accept .pdf, .doc, .docx files (Max 5MB). All applications are kept confidential.</p>
+            </div>
           </div>
 
-          {/* Right - Contact Info */}
+          {/* Right - Contact Info (unchanged) */}
           <div className="ucv-info-card">
             <h3 className="ucv-info-title">HR Contact</h3>
             
@@ -168,7 +72,7 @@ const UploadCV = () => {
                 <FiMail className="ucv-info-icon" />
                 <div>
                   <span className="ucv-info-label">Email</span>
-                  <a href="mailto:careers@armexsolutions.com">careers@armexsolutions.com</a>
+                  <a href="mailto:careers@armexsolutions.com">career@armexsolution.com</a>
                 </div>
               </div>
 
@@ -205,7 +109,7 @@ const UploadCV = () => {
 
         </div>
 
-        {/* Bottom Note */}
+        {/* Bottom Note (unchanged) */}
         <div className="ucv-bottom-note">
           <p>
             By submitting your application, you agree to our 

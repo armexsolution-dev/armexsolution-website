@@ -152,7 +152,7 @@ const PrivacyPolicy = () => {
           <div className="pp-contact">
             <div className="pp-contact-item">
               <FiMail className="pp-contact-icon" />
-              <a href="mailto:admin@armexsolutions.com">admin@armexsolutions.com</a>
+              <a href="mailto:admin@armexsolution.com">admin@armexsolution.com</a>
             </div>
             <div className="pp-contact-divider"></div>
             <div className="pp-contact-item">

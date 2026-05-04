@@ -1,14 +1,14 @@
-/* ===== Privacy Policy - Tab Navigation ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ===== Privacy Policy – Clean, Optimized, No External Fonts ===== */
 
 .pp-section {
   padding: 60px 0;
   background: #ffffff;
-  font-family: 'Inter', sans-serif;
   width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow-x: hidden;
+  transform: translateZ(0);
 }
 
 .pp-container {
@@ -100,6 +100,7 @@
   color: #475569;
   position: relative;
   overflow: hidden;
+  will-change: transform, background, border-color;
 }
 
 .pp-tab:hover {
@@ -130,6 +131,7 @@
   font-size: 1.2rem;
   color: #C9A22D;
   transition: all 0.3s ease;
+  will-change: transform;
 }
 
 .pp-tab:hover .pp-tab-icon {
@@ -173,6 +175,7 @@
   min-height: 400px;
   display: flex;
   flex-direction: column;
+  will-change: transform, opacity;
 }
 
 .pp-content-visible {
@@ -245,6 +248,7 @@
   background: #C9A22D;
   transition: width 0.3s ease;
   border-radius: 2px;
+  will-change: width;
 }
 
 .pp-page-indicator {
@@ -294,34 +298,29 @@
   background: #e2e8f0;
 }
 
-/* Responsive */
+/* Responsive (unchanged) */
 @media (max-width: 900px) {
   .pp-main {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
   .pp-tabs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-  
   .pp-tab {
     padding: 12px;
   }
-  
   .pp-tab-title {
     font-size: 0.8rem;
   }
-  
   .pp-contact {
     flex-direction: column;
     gap: 15px;
     border-radius: 30px;
     padding: 15px;
   }
-  
   .pp-contact-divider {
     display: none;
   }
@@ -331,24 +330,19 @@
   .pp-section {
     padding: 40px 0;
   }
-  
   .pp-title {
     font-size: 1.8rem;
   }
-  
   .pp-tabs {
     grid-template-columns: 1fr;
   }
-  
   .pp-content {
     padding: 20px;
   }
-  
   .pp-content-header h2 {
     font-size: 1.3rem;
   }
-  
   .pp-content-body p {
     font-size: 0.85rem;
   }
-}   
+}

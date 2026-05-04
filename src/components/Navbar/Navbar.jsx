@@ -8,13 +8,13 @@ import {
   HiOutlineCube,
   HiOutlinePhone,
 } from "react-icons/hi";
-import NavLogo from '../../assets/images/logo.svg'
+import NavLogo from "../../assets/images/logo.svg";
 import "./Navbar.css";
 
 const navLinks = [
-  { path: "/",           label: "Home",       icon: <HiHome /> },
-  { path: "/about-us",   label: "About Us",   icon: <HiInformationCircle /> },
-  { path: "/services",   label: "Services",   icon: <HiOutlineCube /> },
+  { path: "/", label: "Home", icon: <HiHome /> },
+  { path: "/about-us", label: "About Us", icon: <HiInformationCircle /> },
+  { path: "/services", label: "Services", icon: <HiOutlineCube /> },
   { path: "/contact-us", label: "Contact Us", icon: <HiOutlinePhone /> },
 ];
 
@@ -22,19 +22,36 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  useEffect(() => { setMenuOpen(false); }, [location]);
-
+  // Close on route change
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    setMenuOpen(false);
+  }, [location]);
+
+  // Body scroll lock (stable)
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
   }, [menuOpen]);
+
+  // ESC key support
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
 
   return (
     <header className="navbar">
       <div className="navbar__inner">
-
-        {/* Logo — left */}
-        <Link to="/" className="navbar__logo" aria-label="Armex home">
+        {/* Logo */}
+        <Link to="/" className="navbar__logo">
           <div className="navbar__logo-box">
             <img
               src={NavLogo}
@@ -45,25 +62,27 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop nav — right */}
-        <nav className="navbar__links" aria-label="Primary navigation">
+        {/* Desktop Nav */}
+        <nav className="navbar__links">
           {navLinks.map(({ path, label, icon }) => (
             <Link
               key={path}
               to={path}
-              className={`navbar__link${location.pathname === path ? " navbar__link--active" : ""}`}
+              className={`navbar__link${
+                location.pathname === path ? " navbar__link--active" : ""
+              }`}
             >
-              <span className="navbar__link-icon" aria-hidden="true">{icon}</span>
+              <span className="navbar__link-icon">{icon}</span>
               {label}
-              <span className="navbar__link-bar" aria-hidden="true" />
+              <span className="navbar__link-bar" />
             </Link>
           ))}
         </nav>
 
-        {/* Hamburger — mobile only */}
+        {/* Hamburger */}
         <button
           className="navbar__hamburger"
-          onClick={() => setMenuOpen(v => !v)}
+          onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
         >
@@ -71,37 +90,45 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Gold bottom accent line */}
-      <div className="navbar__gold-line" aria-hidden="true" />
+      {/* Gold Line */}
+      <div className="navbar__gold-line" />
 
-      {/* Mobile overlay */}
+      {/* Overlay */}
       <div
-        className={`mobile-overlay${menuOpen ? " mobile-overlay--open" : ""}`}
+        className={`mobile-overlay${
+          menuOpen ? " mobile-overlay--open" : ""
+        }`}
         onClick={() => setMenuOpen(false)}
-        aria-hidden="true"
       />
 
-      {/* Mobile drawer */}
-      <aside className={`mobile-drawer${menuOpen ? " mobile-drawer--open" : ""}`}>
-        {/* Close button inside drawer */}
+      {/* Drawer */}
+      <aside
+        className={`mobile-drawer${
+          menuOpen ? " mobile-drawer--open" : ""
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           className="mobile-drawer__close"
           onClick={() => setMenuOpen(false)}
-          aria-label="Close menu"
         >
           <HiOutlineX />
         </button>
-        
+
         <nav className="mobile-drawer__nav">
           {navLinks.map(({ path, label, icon }, i) => (
             <Link
               key={path}
               to={path}
-              className={`mobile-drawer__link${location.pathname === path ? " mobile-drawer__link--active" : ""}`}
+              className={`mobile-drawer__link${
+                location.pathname === path
+                  ? " mobile-drawer__link--active"
+                  : ""
+              }`}
               onClick={() => setMenuOpen(false)}
               style={{ "--i": i }}
             >
-              <span className="mobile-drawer__icon" aria-hidden="true">{icon}</span>
+              <span className="mobile-drawer__icon">{icon}</span>
               {label}
             </Link>
           ))}

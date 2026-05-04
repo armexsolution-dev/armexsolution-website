@@ -1,22 +1,22 @@
-/* ===== Career Hero Section ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 .ch-career-hero {
   position: relative;
-  height: 80vh;
+  height: 90vh;
   min-height: 600px;
+  max-height: 900px;
   width: 100%;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   color: white;
+  isolation: isolate;
 }
 
+.ch-career-hero::after{
+  display: none !important;
+}
+/* ----- Background & Overlays ----- */
 .ch-hero-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1;
 }
 
@@ -24,138 +24,393 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 8s ease;
+}
+
+.ch-career-hero:hover .ch-hero-bg img {
+  transform: scale(1);
 }
 
 .ch-hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: linear-gradient(
-    to right,
-    rgba(11, 42, 65, 0.9) 0%,
-    rgba(11, 42, 65, 0.7) 50%,
-    rgba(11, 42, 65, 0.5) 100%
+    125deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.3) 100%
   );
   z-index: 2;
 }
 
+/* ✅ UPDATED PATTERN IMAGE */
+.ch-hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;   /* use repeat if it's a pattern */
+  background-size: cover;         /* use 150px if small pattern */
+  background-position: center;
+  opacity: 0.2;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ----- Container & Content ----- */
 .ch-hero-container {
   position: relative;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 2rem;
   height: 100%;
   display: flex;
   align-items: center;
-  z-index: 3;
+  z-index: 10;
 }
 
 .ch-hero-content {
   max-width: 700px;
+  width: 100%;
+  background: rgba(11, 42, 65, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 32px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+  animation: chSlideUp 0.8s ease-out;
 }
 
+/* ----- Floating Icon ----- */
+.ch-hero-icon {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  font-size: 8rem;
+  color: rgba(201, 162, 45, 0.15);
+  z-index: 5;
+  pointer-events: none;
+  animation: chFloat 6s ease-in-out infinite;
+}
+
+@keyframes chFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes chSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ----- Typography ----- */
 .ch-hero-subtitle {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: clamp(0.65rem, 3vw, 0.8rem);
   font-weight: 600;
   color: #C9A22D;
   letter-spacing: 2px;
   text-transform: uppercase;
-  background: rgba(201, 162, 45, 0.15);
-  padding: 0.3rem 1rem;
-  border-radius: 30px;
-  margin-bottom: 1.2rem;
-  border: 1px solid rgba(201, 162, 45, 0.3);
+  background: rgba(201, 162, 45, 0.2);
+  padding: 0.3rem 1.2rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(201, 162, 45, 0.5);
+  backdrop-filter: blur(2px);
 }
 
 .ch-hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin: 0 0 1.2rem;
-  line-height: 1.1;
+  font-size: clamp(1.8rem, 7vw, 3.8rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  word-break: break-word;
 }
 
 .ch-hero-title span {
   color: #C9A22D;
-  display: block;
+  position: relative;
+  display: inline-block;
 }
 
 .ch-hero-desc {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
   max-width: 550px;
 }
 
-/* Stats */
-.ch-hero-stats {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 3rem;
-}
-
-.ch-stat-item {
-  display: flex;
+/* ----- Button ----- */
+.ch-hero-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-}
-
-.ch-stat-icon {
-  font-size: 1.8rem;
-  color: #C9A22D;
-}
-
-.ch-stat-value {
-  display: block;
-  font-size: 1.3rem;
+  justify-content: center;
+  gap: 0.8rem;
+  background: #C9A22D;
+  color: #1e2b37;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: clamp(0.8rem, 3vw, 1rem);
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.ch-hero-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #b08f28, #e6b422);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.ch-hero-btn:hover::before {
+  opacity: 1;
+}
+
+.ch-hero-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -8px rgba(201, 162, 45, 0.5);
   color: white;
-  line-height: 1.2;
 }
 
-.ch-stat-label {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.ch-btn-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
 }
 
-/* Scroll Indicator */
-.ch-scroll-indicator {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+.ch-hero-btn:hover .ch-btn-icon {
+  transform: translateY(5px);
 }
 
-.ch-scroll-icon {
-  color: #C9A22D;
-  animation: chBounce 2s ease-in-out infinite;
+/* ========== ENHANCED RESPONSIVE BREAKPOINTS ========== */
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .ch-hero-container {
+    padding: 0 1rem;
+  }
+  .ch-hero-content {
+    padding: 1.5rem;
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+  }
+  .ch-hero-subtitle {
+    font-size: 0.7rem;
+    padding: 0.25rem 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .ch-hero-title {
+    margin-bottom: 0.8rem;
+  }
+  .ch-hero-desc {
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  .ch-hero-btn {
+    padding: 0.75rem 1.5rem;
+    gap: 0.6rem;
+    white-space: normal;
+    word-break: keep-all;
+  }
+  .ch-btn-icon {
+    font-size: 1rem;
+  }
 }
 
-@keyframes chBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(5px); }
+/* Very small devices (320px and down) */
+@media (max-width: 376px) {
+  .ch-career-hero {
+    min-height: 550px;
+  }
+  .ch-hero-content {
+    padding: 1.25rem;
+  }
+  .ch-hero-title {
+    font-size: clamp(1.5rem, 8vw, 1.8rem);
+  }
+  .ch-hero-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+  }
+  .ch-hero-desc {
+    font-size: 0.8rem;
+  }
+  .ch-hero-btn {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.75rem;
+    gap: 0.5rem;
+  }
 }
 
-/* Responsive */
+/* Small devices (tablets, 576px to 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .ch-hero-container {
+    padding: 0 1.5rem;
+  }
+  .ch-hero-content {
+    padding: 2rem;
+    max-width: 85%;
+  }
+  .ch-hero-title {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+  }
+}
+
+/* Medium devices (landscape phones, 768px and down) */
 @media (max-width: 768px) {
   .ch-career-hero {
-    height: 70vh;
+    height: auto;
+    min-height: 600px;
+    padding: 4rem 0;
   }
-  
+  .ch-hero-container {
+    align-items: center;
+    justify-content: center;
+  }
+  .ch-hero-content {
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+    backdrop-filter: blur(12px);
+  }
+  .ch-hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ch-hero-icon {
+    display: none;
+  }
+}
+
+/* Large devices (desktops, 992px to 1200px) */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .ch-hero-container {
+    padding: 0 2rem;
+  }
+  .ch-hero-content {
+    max-width: 650px;
+    padding: 2.2rem;
+  }
+  .ch-hero-icon {
+    font-size: 7rem;
+    right: 3%;
+    top: 12%;
+  }
+}
+
+/* Extra large devices (large desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .ch-hero-container {
+    max-width: 1400px;
+    padding: 0 3rem;
+  }
+  .ch-hero-content {
+    max-width: 750px;
+    padding: 2.8rem;
+    border-radius: 36px;
+  }
   .ch-hero-title {
-    font-size: 2.5rem;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
   }
-  
-  .ch-hero-stats {
-    flex-direction: column;
-    gap: 15px;
+  .ch-hero-desc {
+    font-size: 1.1rem;
+    margin-bottom: 2.2rem;
+  }
+  .ch-hero-icon {
+    font-size: 10rem;
+    right: 8%;
+    top: 18%;
+  }
+}
+
+/* 4K Ultra HD+ screens (2560px and up) */
+@media (min-width: 2560px) {
+  .ch-hero-container {
+    max-width: 1600px;
+  }
+  .ch-hero-content {
+    max-width: 900px;
+    padding: 3.5rem;
+  }
+  .ch-hero-title {
+    font-size: 5rem;
+  }
+  .ch-hero-desc {
+    font-size: 1.3rem;
+    max-width: 700px;
+  }
+  .ch-hero-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+  .ch-hero-icon {
+    font-size: 14rem;
+    opacity: 0.2;
+  }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ch-career-hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 3rem 0;
+  }
+  .ch-hero-content {
+    padding: 1.5rem;
+  }
+  .ch-hero-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .ch-hero-desc {
+    margin-bottom: 1rem;
+  }
+  .ch-hero-icon {
+    display: none;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .ch-hero-bg img,
+  .ch-hero-icon,
+  .ch-hero-content,
+  .ch-hero-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+  .ch-hero-btn:hover {
+    transform: none;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .ch-hero-btn:hover {
+    transform: none;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+  .ch-hero-btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
   }
 }

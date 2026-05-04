@@ -1,14 +1,18 @@
-/* ===== Sitemap Page ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ===== Sitemap Page – Clean, Optimized, No External Fonts ===== */
 
 .sm-section {
   padding: 60px 0;
   background: #ffffff;
-  font-family: 'Inter', sans-serif;
   width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow-x: hidden;
+  transform: translateZ(0);
+}
+
+.sm-section::after{
+  display: none !important;
 }
 
 .sm-container {
@@ -50,16 +54,7 @@
   display: inline-block;
 }
 
-.sm-title-line::after {
-  content: '';
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: rgba(201, 162, 45, 0.2);
-  z-index: -1;
-}
+
 
 .sm-desc {
   font-size: 0.9rem;
@@ -123,6 +118,7 @@
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  will-change: transform, border-color, box-shadow;
 }
 
 .sm-category-card:hover {
@@ -188,6 +184,7 @@
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.2s ease;
+  will-change: transform, border-color, background;
 }
 
 .sm-link-item:hover {
@@ -220,6 +217,7 @@
   opacity: 0;
   transform: translateX(-5px);
   transition: all 0.2s ease;
+  will-change: transform, opacity;
 }
 
 .sm-link-item:hover .sm-link-arrow {
@@ -311,18 +309,16 @@
   background: rgba(201, 162, 45, 0.05);
 }
 
-/* Responsive */
+/* Responsive (unchanged) */
 @media (max-width: 900px) {
   .sm-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
-  
   .sm-status-bar {
     gap: 20px;
     padding: 12px 20px;
   }
-  
   .sm-status-divider {
     display: none;
   }
@@ -332,41 +328,34 @@
   .sm-section {
     padding: 40px 0;
   }
-  
   .sm-title {
     font-size: 1.8rem;
   }
-  
   .sm-grid {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
   .sm-status-bar {
     flex-direction: column;
     align-items: flex-start;
     border-radius: 20px;
     padding: 15px;
   }
-  
   .sm-status-item {
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
   }
-  
   .sm-note-content {
     flex-direction: column;
     text-align: center;
   }
-  
   .sm-quick-links {
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
     padding: 15px;
   }
-  
   .sm-quick-items {
     justify-content: center;
   }
