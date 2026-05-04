@@ -62,6 +62,7 @@ const ContactForm = () => {
 
   const handleChange = ({ target: { name, value } }) =>
     setFormData(prev => ({ ...prev, [name]: value }));
+  
 
   const handleSubmit = e => {
     e.preventDefault();
