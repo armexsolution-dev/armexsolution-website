@@ -4,7 +4,7 @@
 .sh-hero {
   position: relative;
   width: 100%;
-  min-height: 90vh;
+  min-height: 100vh;
   overflow-x: hidden;
   color: white;
   display: flex;
@@ -15,15 +15,21 @@
   display: none !important;
 }
 
-/* Background image with fade transition */
+/* ===== FIXED BACKGROUND (CONSISTENT FADE) ===== */
 .sh-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: background-image 0.6s ease;
   z-index: 1;
-  will-change: background-image;
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  will-change: opacity;
+}
+
+.sh-visible {
+  opacity: 1;
 }
 
 .sh-overlay {
@@ -245,7 +251,7 @@
   transform: scale(1.1);
 }
 
-/* ===== RESPONSIVE BREAKPOINTS (unchanged) ===== */
+/* ===== RESPONSIVE BREAKPOINTS ===== */
 @media (max-width: 1024px) {
   .sh-card {
     width: 110px;

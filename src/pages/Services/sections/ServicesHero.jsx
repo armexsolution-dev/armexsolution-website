@@ -84,9 +84,11 @@ export default function ServiceHero() {
 
   return (
     <section className="sh-hero">
-      {/* Dynamic background */}
+
+      {/* ✅ FIXED BACKGROUND (consistent fade) */}
       <div
-        className="sh-bg"
+        key={active}
+        className="sh-bg sh-visible"
         style={{ backgroundImage: `url(${services[active].bg})` }}
         aria-label={`Background for ${services[active].title} ${services[active].subtitle}`}
       ></div>
@@ -94,7 +96,6 @@ export default function ServiceHero() {
       <div className="sh-overlay"></div>
 
       <div className="sh-container">
-        {/* Left text content */}
         <div className="sh-content">
           <span className="sh-subtitle">{services[active].subtitle}</span>
           <h1 className="sh-title">{services[active].title}</h1>
@@ -104,7 +105,6 @@ export default function ServiceHero() {
           </button>
         </div>
 
-        {/* Card strip */}
         <div className="sh-cards" aria-label="Service navigation cards">
           {visibleServices.map((service, index) => {
             const actualIndex = startIndex + index;
@@ -134,7 +134,6 @@ export default function ServiceHero() {
           })}
         </div>
 
-        {/* Navigation arrows */}
         <div className="sh-nav-bottom">
           <button
             className="sh-nav-circle"

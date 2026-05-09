@@ -1,112 +1,130 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import {
   HiOutlineMenuAlt3,
   HiOutlineX,
   HiHome,
-  HiInformationCircle,
   HiOutlineCube,
   HiOutlinePhone,
+  HiInformationCircle,
+  HiArrowRight,
 } from "react-icons/hi";
+
 import NavLogo from "../../assets/images/logo.svg";
+
 import "./Navbar.css";
 
 const navLinks = [
-  { path: "/", label: "Home", icon: <HiHome /> },
-  { path: "/about-us", label: "About Us", icon: <HiInformationCircle /> },
-  { path: "/services", label: "Services", icon: <HiOutlineCube /> },
-  { path: "/contact-us", label: "Contact Us", icon: <HiOutlinePhone /> },
+  {
+    path: "/",
+    label: "Home",
+    icon: <HiHome />,
+  },
+
+  {
+    path: "/about-us",
+    label: "About Us",
+    icon: <HiOutlineCube />,
+  },
+
+  {
+    path: "/services",
+    label: "Services",
+    icon: <HiOutlineCube />,
+  },
+
+  {
+    path: "/contact-us",
+    label: "Contact Us",
+    icon: <HiInformationCircle />,
+  },
+
 ];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const location = useLocation();
 
-  // Close on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
 
-  // Body scroll lock (stable)
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.touchAction = "none";
     } else {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
     }
   }, [menuOpen]);
 
-  // ESC key support
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") setMenuOpen(false);
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
-
   return (
-    <header className="navbar">
-      <div className="navbar__inner">
-        {/* Logo */}
-        <Link to="/" className="navbar__logo">
-          <div className="navbar__logo-box">
+    <>
+      <header className="navbar">
+        <div className="navbar__container">
+          {/* LOGO */}
+          <Link to="/" className="navbar__logo">
             <img
               src={NavLogo}
-              alt="Armex Business Solutions"
+              alt="Armex Solutions"
               className="navbar__logo-img"
-              loading="eager"
             />
-          </div>
-        </Link>
+          </Link>
 
-        {/* Desktop Nav */}
-        <nav className="navbar__links">
-          {navLinks.map(({ path, label, icon }) => (
-            <Link
-              key={path}
-              to={path}
-              className={`navbar__link${
-                location.pathname === path ? " navbar__link--active" : ""
-              }`}
-            >
-              <span className="navbar__link-icon">{icon}</span>
-              {label}
-              <span className="navbar__link-bar" />
-            </Link>
-          ))}
-        </nav>
+          {/* DESKTOP MENU */}
+          <nav className="navbar__menu">
+            {navLinks.map(({ path, label, icon }) => (
+              <Link
+                key={path}
+                to={path}
+                className={`navbar__link ${
+                  location.pathname === path
+                    ? "navbar__link--active"
+                    : ""
+                }`}
+              >
+                <span className="navbar__icon">{icon}</span>
 
-        {/* Hamburger */}
-        <button
-          className="navbar__hamburger"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? <HiOutlineX /> : <HiOutlineMenuAlt3 />}
-        </button>
-      </div>
+                <span>{label}</span>
 
-      {/* Gold Line */}
-      <div className="navbar__gold-line" />
+                {location.pathname === path && (
+                  <span className="navbar__active-line"></span>
+                )}
+              </Link>
+            ))}
+          </nav>
 
-      {/* Overlay */}
+          {/* BUTTON */}
+          <Link to="/contact-us" className="navbar__btn">
+            <span>Get Quote</span>
+
+            <HiArrowRight />
+          </Link>
+
+          {/* MOBILE BUTTON */}
+          <button
+            className="navbar__hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <HiOutlineX /> : <HiOutlineMenuAlt3 />}
+          </button>
+        </div>
+      </header>
+
+      {/* OVERLAY */}
       <div
-        className={`mobile-overlay${
-          menuOpen ? " mobile-overlay--open" : ""
+        className={`mobile-overlay ${
+          menuOpen ? "mobile-overlay--open" : ""
         }`}
         onClick={() => setMenuOpen(false)}
       />
 
-      {/* Drawer */}
+      {/* MOBILE DRAWER */}
       <aside
-        className={`mobile-drawer${
-          menuOpen ? " mobile-drawer--open" : ""
+        className={`mobile-drawer ${
+          menuOpen ? "mobile-drawer--open" : ""
         }`}
-        onClick={(e) => e.stopPropagation()}
       >
         <button
           className="mobile-drawer__close"
@@ -116,25 +134,35 @@ const Navbar = () => {
         </button>
 
         <nav className="mobile-drawer__nav">
-          {navLinks.map(({ path, label, icon }, i) => (
+          {navLinks.map(({ path, label, icon }) => (
             <Link
               key={path}
               to={path}
-              className={`mobile-drawer__link${
+              className={`mobile-drawer__link ${
                 location.pathname === path
-                  ? " mobile-drawer__link--active"
+                  ? "mobile-drawer__link--active"
                   : ""
               }`}
               onClick={() => setMenuOpen(false)}
-              style={{ "--i": i }}
             >
-              <span className="mobile-drawer__icon">{icon}</span>
-              {label}
+              <span>{icon}</span>
+
+              <span>{label}</span>
             </Link>
           ))}
+
+          <Link
+            to="/contact-us"
+            className="mobile-drawer__btn"
+            onClick={() => setMenuOpen(false)}
+          >
+            <span>Get Quote</span>
+
+            <HiArrowRight />
+          </Link>
         </nav>
       </aside>
-    </header>
+    </>
   );
 };
 

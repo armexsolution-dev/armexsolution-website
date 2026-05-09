@@ -61,12 +61,21 @@ const Footer = () => {
               <a href="tel:+919342761826">+91 93427 61826</a>
             </p>
           </address>
-          <button
+          {/* <button
             className="as-footer-cta-button"
             aria-label="Get in touch with 24/7 support"
           >
             Get in Touch <span className="as-footer-cta-support">24/7 Support</span>
-          </button>
+          </button> */}
+          <Link to="/contact-us">
+  <button
+    className="as-footer-cta-button"
+    aria-label="Get in touch with 24/7 support"
+  >
+    Get in Touch{" "}
+    <span className="as-footer-cta-support">24/7 Support</span>
+  </button>
+</Link>
         </section>
       </div>
 
