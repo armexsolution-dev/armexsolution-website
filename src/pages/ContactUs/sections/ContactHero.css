@@ -1,14 +1,20 @@
+/* ============================================
+   Contact Hero – Overlay Navbar Ready
+   ============================================ */
+
 .c-hero {
   position: relative;
   width: 100%;
-  height: 100vh;                
-  min-height: 500px;       
+  height: 100vh;               /* fallback */
+  height: 100dvh;              /* dynamic viewport for modern mobiles */
+  min-height: 500px;
   overflow: hidden;
   color: #fff;
   background-color: #000;
+  /* NO padding-top – navbar overlays the hero */
 }
 
-.c-hero::after{
+.c-hero::after {
   display: none !important;
 }
 
@@ -16,6 +22,7 @@
 .c-hero-bg {
   position: absolute;
   inset: 0;
+  z-index: 0;
 }
 
 .c-hero-bg img {
@@ -30,15 +37,18 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.6));
+  z-index: 1;
 }
 
-/* Floating Shapes – responsive sizes */
+/* Floating Shapes – responsive */
 .c-hero-shape {
   position: absolute;
   border-radius: 50%;
   filter: blur(40px);
   background: rgba(201, 162, 45, 0.15);
   animation: float 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .c-shape-1 {
@@ -64,11 +74,11 @@
   animation-delay: 4s;
 }
 
-/* Container – fills the 80vh height */
+/* Main Container – vertically centers content */
 .c-hero-container {
   position: relative;
   z-index: 5;
-  height: 100%;                /* fills .c-hero */
+  height: 100%;
   max-width: 1300px;
   margin: 0 auto;
   padding: clamp(1rem, 5vh, 2rem) clamp(1rem, 5vw, 3rem);
@@ -79,7 +89,7 @@
   text-align: center;
 }
 
-/* Title Block */
+/* Title Block – fluid typography */
 .c-hero-title-block {
   margin-bottom: clamp(1.5rem, 5vh, 2.5rem);
   opacity: 0;
@@ -122,7 +132,7 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* Stats Bar – flexible */
+/* Stats Bar – fully responsive */
 .c-hero-stats {
   display: flex;
   align-items: center;
@@ -186,83 +196,199 @@
   }
 }
 
-/* ===== RESPONSIVE – handles content overflow ===== */
+/* ============================================
+   RESPONSIVE BREAKPOINTS – EVERY SCREEN SIZE
+   ============================================ */
 
-/* If content is taller than 80vh on very small screens, allow auto height */
-@media (max-width: 550px) {
-  .c-hero {
-    height: auto;
-    min-height: 80vh;          /* still at least 80vh, but can grow */
-  }
-
-  .c-hero-stats {
-    flex-direction: column;
-    gap: 0.8rem;
-    padding: 1rem 1.2rem;
-  }
-
-  .c-stat-divider {
-    display: none;
-  }
-
-  .c-stat {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    text-align: left;
-  }
-
-  .c-stat-number {
-    margin-right: 1rem;
-  }
-}
-
-/* Landscape orientation */
-@media (max-width: 768px) and (orientation: landscape) {
-  .c-hero {
-    height: auto;
-    min-height: 80vh;
-  }
-
-  .c-hero-stats {
-    flex-direction: row;
-    gap: 1rem;
-  }
-
-  .c-stat-divider {
-    display: block;
-  }
-
-  .c-stat {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-/* Ultra-wide screens – keep 80vh but adjust shapes */
+/* Ultra-wide (≥1600px) */
 @media (min-width: 1600px) {
   .c-hero-container {
     max-width: 1500px;
   }
-
   .c-shape-1 {
     width: 400px;
     height: 400px;
   }
-
   .c-shape-2 {
     width: 260px;
     height: 260px;
   }
-
   .c-shape-3 {
     width: 200px;
     height: 200px;
   }
 }
 
-/* Reduced motion */
+/* Large desktop (1200px – 1599px) – default, no changes needed */
+
+/* Tablet (768px – 1199px) */
+@media (max-width: 1199px) {
+  .c-hero-container {
+    padding: 1.5rem;
+  }
+  .c-hero-stats {
+    gap: 1rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Small tablet / large phone (576px – 767px) */
+@media (max-width: 767px) {
+  .c-stat {
+    min-width: 60px;
+  }
+  .c-stat-number {
+    font-size: 1.2rem;
+  }
+  .c-stat-label {
+    font-size: 0.55rem;
+  }
+}
+
+/* Mobile (≤575px) – stats stack vertically for better readability */
+@media (max-width: 575px) {
+  .c-hero {
+    height: auto;            /* allow growth if content is tall */
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .c-hero-stats {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem 1.2rem;
+    border-radius: 30px;
+  }
+  .c-stat-divider {
+    display: none;
+  }
+  .c-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: auto;
+    text-align: left;
+    gap: 1rem;
+  }
+  .c-stat-number {
+    margin-right: 1rem;
+    font-size: 1.3rem;
+  }
+  .c-stat-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Extra small mobile (375px – 479px) */
+@media (max-width: 479px) {
+  .c-hero-container {
+    padding: 1rem;
+  }
+  .c-hero-title {
+    font-size: 1.8rem;
+  }
+  .c-hero-title span {
+    font-size: 1.4rem;
+  }
+  .c-hero-desc {
+    font-size: 0.75rem;
+  }
+  .c-hero-subtitle {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.8rem;
+  }
+}
+
+/* Very small mobile (320px – 374px) */
+@media (max-width: 374px) {
+  .c-hero-title {
+    font-size: 1.5rem;
+  }
+  .c-hero-title span {
+    font-size: 1.2rem;
+  }
+  .c-hero-desc {
+    font-size: 0.7rem;
+  }
+  .c-stat-number {
+    font-size: 1rem;
+  }
+  .c-stat-label {
+    font-size: 0.55rem;
+  }
+}
+
+/* Ultra small (<320px) */
+@media (max-width: 319px) {
+  .c-hero-title {
+    font-size: 1.3rem;
+  }
+  .c-hero-title span {
+    font-size: 1rem;
+  }
+  .c-hero-desc {
+    font-size: 0.65rem;
+  }
+  .c-stat-number {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   LANDSCAPE MODE – keep row layout
+   ============================================ */
+@media (max-width: 768px) and (orientation: landscape) {
+  .c-hero {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 450px;
+  }
+  .c-hero-container {
+    justify-content: center;
+  }
+  .c-hero-stats {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  .c-stat-divider {
+    display: block;
+  }
+  .c-stat {
+    flex-direction: column;
+    text-align: center;
+    width: auto;
+  }
+  .c-stat-number {
+    margin-right: 0;
+  }
+  /* Reduce shape opacity to not distract */
+  .c-hero-shape {
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   SAFE AREA NOTCH SUPPORT (no padding-top)
+   ============================================ */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .c-hero-container {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* ============================================
+   TOUCH TARGETS – improve on mobile
+   ============================================ */
+@media (max-width: 768px) {
+  .c-stat {
+    min-height: 44px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCE
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
   .c-hero-bg img,
   .c-hero-shape,
@@ -270,24 +396,63 @@
   .c-hero-stats {
     animation: none !important;
   }
-  .c-hero-bg img { transform: none; }
+  .c-hero-bg img {
+    transform: none;
+  }
   .c-hero-title-block,
-  .c-hero-stats { opacity: 1; transform: none; }
+  .c-hero-stats {
+    opacity: 1;
+    transform: none;
+  }
+  .c-hero-shape {
+    display: none;
+  }
 }
 
-/* Print styles */
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+@media (prefers-contrast: high) {
+  .c-hero-overlay {
+    background: rgba(0, 0, 0, 0.95);
+  }
+  .c-hero-subtitle,
+  .c-stat-number {
+    color: #ffd966;
+  }
+  .c-hero-stats {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #c9a22d;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
 @media print {
   .c-hero {
     height: auto;
     background: #fff;
     color: #000;
+    padding: 0;
   }
   .c-hero-bg,
   .c-hero-shape,
-  .c-hero-overlay { display: none; }
+  .c-hero-overlay {
+    display: none;
+  }
+  .c-hero-container {
+    padding: 1rem;
+  }
+  .c-hero-title span {
+    color: #a67c00;
+  }
   .c-hero-stats {
     background: none;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     backdrop-filter: none;
+  }
+  .c-stat-number {
+    color: #a67c00;
   }
 }

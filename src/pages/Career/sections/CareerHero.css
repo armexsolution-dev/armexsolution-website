@@ -1,18 +1,28 @@
+/* ============================================
+   Career Hero – Overlay Navbar Ready
+   100% Responsive | Perfect Centering
+   ============================================ */
+
 .ch-career-hero {
   position: relative;
+  /* Full viewport – overlay navbar floats on top */
   height: 100vh;
-  min-height: 600px;
-  max-height: 900px;
+  height: 100dvh;              /* dynamic for mobile browsers */
   width: 100%;
+  /* Remove max-height to allow fullscreen on any device */
+  /* min-height ensures a minimum size */
+  min-height: 500px;
   overflow: hidden;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   color: white;
   isolation: isolate;
+  /* NO padding-top – navbar overlays */
 }
 
-.ch-career-hero::after{
+.ch-career-hero::after {
   display: none !important;
 }
+
 /* ----- Background & Overlays ----- */
 .ch-hero-bg {
   position: absolute;
@@ -44,19 +54,19 @@
   z-index: 2;
 }
 
-/* ✅ UPDATED PATTERN IMAGE */
+/* Pattern image – responsive */
 .ch-hero-pattern {
   position: absolute;
   inset: 0;
-  background-repeat: no-repeat;   /* use repeat if it's a pattern */
-  background-size: cover;         /* use 150px if small pattern */
+  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
   opacity: 0.2;
   z-index: 3;
   pointer-events: none;
 }
 
-/* ----- Container & Content ----- */
+/* ----- Container & Content – perfect centering ----- */
 .ch-hero-container {
   position: relative;
   max-width: 1300px;
@@ -64,7 +74,8 @@
   padding: 0 2rem;
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: center;      /* vertical center */
+  justify-content: flex-start; /* left-aligned on desktop, center on mobile */
   z-index: 10;
 }
 
@@ -80,7 +91,7 @@
   animation: chSlideUp 0.8s ease-out;
 }
 
-/* ----- Floating Icon ----- */
+/* ----- Floating Icon – hidden on small screens ----- */
 .ch-hero-icon {
   position: absolute;
   top: 15%;
@@ -108,7 +119,7 @@
   }
 }
 
-/* ----- Typography ----- */
+/* ----- Typography – fully fluid ----- */
 .ch-hero-subtitle {
   display: inline-block;
   font-size: clamp(0.65rem, 3vw, 0.8rem);
@@ -147,7 +158,7 @@
   max-width: 550px;
 }
 
-/* ----- Button ----- */
+/* ----- Button – touch-friendly ----- */
 .ch-hero-btn {
   display: inline-flex;
   align-items: center;
@@ -200,16 +211,21 @@
   transform: translateY(5px);
 }
 
-/* ========== ENHANCED RESPONSIVE BREAKPOINTS ========== */
-/* Extra small devices (phones, 480px and down) */
+/* ============================================
+   RESPONSIVE BREAKPOINTS – ALL SCREENS
+   ============================================ */
+
+/*  Extra small devices (≤480px) – perfect centering */
 @media (max-width: 480px) {
   .ch-hero-container {
     padding: 0 1rem;
+    justify-content: center;  /* center content on small screens */
   }
   .ch-hero-content {
     padding: 1.5rem;
     border-radius: 24px;
     backdrop-filter: blur(12px);
+    text-align: center;       /* center text */
   }
   .ch-hero-subtitle {
     font-size: 0.7rem;
@@ -221,23 +237,25 @@
   }
   .ch-hero-desc {
     margin-bottom: 1.5rem;
-    line-height: 1.5;
+    margin-left: auto;
+    margin-right: auto;       /* center description */
   }
   .ch-hero-btn {
     padding: 0.75rem 1.5rem;
     gap: 0.6rem;
     white-space: normal;
-    word-break: keep-all;
+    width: auto;
+    min-width: 160px;
   }
   .ch-btn-icon {
     font-size: 1rem;
   }
 }
 
-/* Very small devices (320px and down) */
+/* Very small devices (≤376px) */
 @media (max-width: 376px) {
   .ch-career-hero {
-    min-height: 550px;
+    min-height: 500px;
   }
   .ch-hero-content {
     padding: 1.25rem;
@@ -259,63 +277,90 @@
   }
 }
 
-/* Small devices (tablets, 576px to 768px) */
-@media (min-width: 576px) and (max-width: 768px) {
+/* Small tablets (577px – 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
   .ch-hero-container {
     padding: 0 1.5rem;
+    justify-content: center;
   }
   .ch-hero-content {
     padding: 2rem;
     max-width: 85%;
+    text-align: center;
   }
   .ch-hero-title {
     font-size: clamp(2rem, 6vw, 2.8rem);
   }
-}
-
-/* Medium devices (landscape phones, 768px and down) */
-@media (max-width: 768px) {
-  .ch-career-hero {
-    height: auto;
-    min-height: 600px;
-    padding: 4rem 0;
-  }
-  .ch-hero-container {
-    align-items: center;
-    justify-content: center;
-  }
-  .ch-hero-content {
-    text-align: center;
-    max-width: 90%;
-    margin: 0 auto;
-    backdrop-filter: blur(12px);
-  }
   .ch-hero-desc {
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* All mobile & tablet (≤768px) – switch to auto height + vertical centering */
+@media (max-width: 768px) {
+  .ch-career-hero {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* No padding-top – navbar overlays */
+  }
+  .ch-hero-container {
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .ch-hero-icon {
+    display: none;  /* hide floating icon on smaller screens */
+  }
+}
+
+/* Landscape mobile (max-height: 500px) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ch-career-hero {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .ch-hero-container {
+    padding: 1rem;
+  }
+  .ch-hero-content {
+    padding: 1rem 1.5rem;
+    max-width: 80%;
+  }
+  .ch-hero-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .ch-hero-desc {
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+  }
+  .ch-hero-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
   }
   .ch-hero-icon {
     display: none;
   }
 }
 
-/* Large devices (desktops, 992px to 1200px) */
-@media (min-width: 992px) and (max-width: 1200px) {
+/* Desktop (≥992px) – left-aligned, no centering constraint */
+@media (min-width: 992px) {
   .ch-hero-container {
-    padding: 0 2rem;
+    justify-content: flex-start;
   }
   .ch-hero-content {
-    max-width: 650px;
-    padding: 2.2rem;
+    text-align: left;
   }
-  .ch-hero-icon {
-    font-size: 7rem;
-    right: 3%;
-    top: 12%;
+  .ch-hero-desc {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
-/* Extra large devices (large desktops, 1400px and up) */
+/* Large desktops (1400px – 2559px) */
 @media (min-width: 1400px) {
   .ch-hero-container {
     max-width: 1400px;
@@ -341,10 +386,10 @@
   }
 }
 
-/* 4K Ultra HD+ screens (2560px and up) */
+/* 4K Ultra HD (≥2560px) */
 @media (min-width: 2560px) {
   .ch-hero-container {
-    max-width: 1600px;
+    max-width: 1800px;
   }
   .ch-hero-content {
     max-width: 900px;
@@ -367,29 +412,35 @@
   }
 }
 
-/* Landscape orientation adjustments for mobile */
-@media (max-height: 500px) and (orientation: landscape) {
+/* ============================================
+   SAFE AREA (notches) – bottom only
+   ============================================ */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
   .ch-career-hero {
-    height: auto;
-    min-height: 100vh;
-    padding: 3rem 0;
-  }
-  .ch-hero-content {
-    padding: 1.5rem;
-  }
-  .ch-hero-title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-  .ch-hero-desc {
-    margin-bottom: 1rem;
-  }
-  .ch-hero-icon {
-    display: none;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
-/* Reduced motion preferences */
+/* ============================================
+   TOUCH TARGETS – improve tap area
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+  .ch-hero-btn {
+    min-height: 44px;
+  }
+  .ch-hero-btn:hover {
+    transform: none;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+  .ch-hero-btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCE
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
   .ch-hero-bg img,
   .ch-hero-icon,
@@ -401,16 +452,62 @@
   .ch-hero-btn:hover {
     transform: none;
   }
+  .ch-hero-content {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-/* Touch-friendly improvements */
-@media (hover: none) and (pointer: coarse) {
-  .ch-hero-btn:hover {
-    transform: none;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+@media (prefers-contrast: high) {
+  .ch-hero-overlay {
+    background: rgba(0, 0, 0, 0.95);
   }
-  .ch-hero-btn:active {
-    transform: scale(0.98);
-    transition: transform 0.1s ease;
+  .ch-hero-subtitle,
+  .ch-hero-title span {
+    color: #ffd966;
+  }
+  .ch-hero-content {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #c9a22d;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .ch-career-hero {
+    height: auto;
+    background: white;
+    color: black;
+    padding: 1rem;
+  }
+  .ch-hero-bg,
+  .ch-hero-overlay,
+  .ch-hero-pattern,
+  .ch-hero-icon {
+    display: none;
+  }
+  .ch-hero-container {
+    position: static;
+    padding: 0;
+  }
+  .ch-hero-content {
+    background: none;
+    backdrop-filter: none;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    padding: 1rem;
+  }
+  .ch-hero-title span {
+    color: #a67c00;
+  }
+  .ch-hero-btn {
+    background: #ccc;
+    color: black;
+    box-shadow: none;
   }
 }

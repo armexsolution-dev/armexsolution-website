@@ -105,9 +105,18 @@ const TermsConditions = () => {
             <h1 className="tc-title">
               Terms & <span>Conditions</span>
             </h1>
-            <p className="tc-desc">
-              Last updated: March 15, 2025 · Version 2.0
-            </p>
+           <p className="tc-desc">
+            Last updated:{" "}
+            {new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toLocaleDateString(
+              "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }
+            )}{" "}
+            · Version 2.0
+          </p>
           </div>
 
           {/* Status Bar */}
