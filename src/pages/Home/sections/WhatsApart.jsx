@@ -24,10 +24,10 @@ const features = [
   {
     id: '02',
     title: 'Global Standards Compliance',
-    desc: 'Our detailing services comply with ACI, BS, Eurocode, ASTM, IS, and GCC requirements.',
+    desc: 'Our detailing services comply with BS, ACI, Eurocode, AS, IS, and GCC requirements.',
     icon: <FiGlobe />,
     longDesc:
-      'Our detailing services comply with international standards including ACI, BS, Eurocode, ASTM, IS, and GCC authority requirements, ensuring seamless integration with global project specifications.',
+      'Our detailing services comply with international standards including BS, ACI, Eurocode, AS, IS, and GCC authority requirements, ensuring seamless integration with global project specifications.',
   },
   {
     id: '03',
@@ -43,7 +43,7 @@ const features = [
     desc: 'We develop coordinated, clash-free reinforcement models.',
     icon: <FiCpu />,
     longDesc:
-      'Using advanced tools such as AutoCAD, Revit, and RebarCAD, we develop coordinated, clash-free reinforcement models and drawings that improve project clarity and efficiency.',
+      'Using skilled technical expertise and industry-leading software including AutoCAD, CADS RC/RebarCAD, Revit, and Navisworks, we deliver coordinated, clash-free reinforcement detailing solutions that support efficient and accurate project delivery.',
   },
   {
     id: '05',

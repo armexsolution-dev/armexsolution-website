@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import SEO from '../../seo/SEO'; // ✅ SEO IMPORT
 
 import CareerHero from './sections/CareerHero';
-import WhyJoinUs from './sections/WhyJoinUs';
 import UploadCV from './sections/UploadCV';
 import './Career.css';
+import AvailableOpenings from './sections/AvailableOpenings';
 
 const Career = () => {
   // Scroll to top when component mounts
@@ -22,7 +22,7 @@ const Career = () => {
 
       <main className="career-page">
         <CareerHero />
-        <WhyJoinUs />
+        <AvailableOpenings/>
         <UploadCV />
       </main>
     </>

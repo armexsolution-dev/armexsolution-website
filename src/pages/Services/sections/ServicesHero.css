@@ -114,6 +114,7 @@
 }
 
 .sh-btn {
+  position: relative;
   padding: 0.7rem 1.8rem;
   background: #c9a22d;
   border: none;
@@ -122,22 +123,97 @@
   font-weight: 600;
   font-size: clamp(0.8rem, 2vw, 0.85rem);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 15px rgba(201, 162, 45, 0.3);
-  will-change: transform, background, box-shadow;
-  /* Ensure touch target size on mobile */
+  overflow: hidden;
+  z-index: 1;
+
+  /* Glow */
+  box-shadow:
+    0 0 10px rgba(201, 162, 45, 0.45),
+    0 0 22px rgba(201, 162, 45, 0.3),
+    0 0 38px rgba(201, 162, 45, 0.18);
+
+  /* Mobile touch */
   min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  will-change: transform, box-shadow;
 }
 
+/* Animated Glow Layer */
+.sh-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #c9a22d,
+    #f3e6af,
+    #c9a22d
+  );
+  opacity: 0.55;
+  filter: blur(14px);
+  z-index: -2;
+  animation: shGlowMove 3s linear infinite;
+}
+
+/* Shine Sweep */
+.sh-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+  transform: skewX(-25deg);
+  transition: all 0.7s ease;
+}
+
+.sh-btn:hover::after {
+  left: 130%;
+}
+
+/* Hover */
 .sh-btn:hover {
   background: #b08f28;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(201, 162, 45, 0.4);
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow:
+    0 0 14px rgba(243, 230, 175, 0.8),
+    0 0 30px rgba(201, 162, 45, 0.45),
+    0 0 48px rgba(201, 162, 45, 0.28);
+}
+
+/* Glow Animation */
+@keyframes shGlowMove {
+
+  0% {
+    transform: translateX(-10%);
+  }
+
+  50% {
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translateX(-10%);
+  }
+
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .sh-btn {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+  }
+
 }
 
 /* Card strip – absolute on desktop, relative on mobile */

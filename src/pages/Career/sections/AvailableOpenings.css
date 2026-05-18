@@ -1,0 +1,319 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.ao-section {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+  background: linear-gradient(to bottom, #ffffff, #f8fafc);
+  overflow-x: hidden;
+}
+
+.ao-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 2rem);
+}
+
+/* ================= HEADER ================= */
+
+.ao-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.ao-subtitle {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #c9a22d;
+  background: rgba(201, 162, 45, 0.12);
+  padding: 0.45rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.ao-title {
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.ao-title span {
+  color: #c9a22d;
+}
+
+.ao-desc {
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* ================= GRID ================= */
+
+.ao-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+}
+
+/* ================= CARD ================= */
+
+.ao-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  padding: 1.8rem;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+}
+
+.ao-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 162, 45, 0.08),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.ao-card:hover {
+  transform: translateY(-10px);
+  border-color: #c9a22d;
+  box-shadow: 0 20px 45px rgba(201, 162, 45, 0.12);
+}
+
+.ao-card:hover::before {
+  opacity: 1;
+}
+
+.ao-topbar {
+  width: 70px;
+  height: 5px;
+  border-radius: 20px;
+  background: #c9a22d;
+  margin-bottom: 1.3rem;
+}
+
+.ao-role-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ao-role {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.ao-badge {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+  padding: 0.4rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ================= META ================= */
+
+.ao-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.ao-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.55rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+.ao-meta-item svg {
+  color: #c9a22d;
+  font-size: 1rem;
+}
+
+/* ================= DESCRIPTION ================= */
+
+.ao-description {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin-bottom: 1.4rem;
+}
+
+/* ================= SKILLS ================= */
+
+.ao-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.ao-skill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  background: rgba(201, 162, 45, 0.08);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #1e293b;
+  transition: all 0.3s ease;
+}
+
+.ao-skill svg {
+  color: #c9a22d;
+}
+
+.ao-card:hover .ao-skill {
+  transform: translateY(-2px);
+}
+
+/* ================= BUTTON ================= */
+
+.ao-btn {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  border: none;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.95rem 1.2rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ao-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.ao-btn:hover {
+  background: #c9a22d;
+}
+
+.ao-btn:hover svg {
+  transform: translateX(5px);
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+  .ao-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .ao-section {
+    padding: 3rem 0;
+  }
+
+  .ao-card {
+    padding: 1.4rem;
+    border-radius: 20px;
+  }
+
+  .ao-role-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ao-role {
+    font-size: 1.1rem;
+  }
+
+  .ao-meta {
+    flex-direction: column;
+  }
+
+  .ao-meta-item {
+    width: 100%;
+  }
+
+  .ao-description {
+    font-size: 0.85rem;
+  }
+
+  .ao-btn {
+    font-size: 0.9rem;
+  }
+
+}
+
+/* ================= SMALL DEVICES ================= */
+
+@media (max-width: 380px) {
+
+  .ao-title {
+    font-size: 1.5rem;
+  }
+
+  .ao-card {
+    padding: 1.2rem;
+  }
+
+  .ao-role {
+    font-size: 1rem;
+  }
+
+  .ao-skill {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ao-card,
+  .ao-btn,
+  .ao-skill,
+  .ao-btn svg {
+    transition: none !important;
+  }
+
+  .ao-card:hover {
+    transform: none;
+  }
+
+}

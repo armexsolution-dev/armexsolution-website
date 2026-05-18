@@ -1,11 +1,18 @@
 .as-footer {
-  background: #0C1323;
-  background: linear-gradient(
-    0deg,
-    #0C1323 0%,
-    #162049 50%,
-    #243F88 100%
-  );
+  background:
+    radial-gradient(
+      ellipse 38% 100% at 0% 50%,
+      #635747 0%,
+      transparent 100%
+    ),
+    linear-gradient(
+      105deg,
+      #1a1408 0%,
+      #0e1525 30%,
+      #0a1020 60%,
+      #080d1a 100%
+    );
+
   color: #d1d5db;
   overflow-x: hidden;
   transform: translateZ(0);

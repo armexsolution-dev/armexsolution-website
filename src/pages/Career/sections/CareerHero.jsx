@@ -42,7 +42,7 @@ const CareerHero = () => {
                 ?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            Upload Your CV
+            Explore Careers
             <FiArrowDown className="ch-btn-icon" />
           </button>
         </div>
