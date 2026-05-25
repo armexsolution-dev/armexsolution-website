@@ -29,10 +29,10 @@
 .ch-hero-bg img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* keeps fullscreen */
+  object-fit: cover;
   object-position: center;
-  transform: none; /* removed zoom */
-  transition: none; /* removed animation */
+  transform: none;
+  transition: none;
 }
 
 .ch-hero-overlay {
@@ -47,7 +47,6 @@
   z-index: 2;
 }
 
-/* Pattern image – responsive */
 .ch-hero-pattern {
   position: absolute;
   inset: 0;
@@ -59,7 +58,7 @@
   pointer-events: none;
 }
 
-/* ----- Container & Content – perfect centering ----- */
+/* ----- Container & Content ----- */
 .ch-hero-container {
   position: relative;
   max-width: 1300px;
@@ -97,8 +96,13 @@
 }
 
 @keyframes chFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
 }
 
 @keyframes chSlideUp {
@@ -106,6 +110,7 @@
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -151,57 +156,110 @@
   max-width: 550px;
 }
 
-/* ----- Button ----- */
-.ch-hero-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  background: #C9A22D;
-  color: #1e2b37;
-  border: none;
-  padding: 0.9rem 2rem;
-  font-size: clamp(0.8rem, 3vw, 1rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  border-radius: 60px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+/* ============================================
+   UPDATED BUTTON STYLE
+   ============================================ */
+
+.ch-button-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.ch-btn-primary {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 35px;
+  background: #c9a22d;
+  border: none;
+  color: #0c1323;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
   overflow: hidden;
   z-index: 1;
-  white-space: nowrap;
+
+  box-shadow:
+    0 0 8px rgba(201, 162, 45, 0.5),
+    0 0 18px rgba(201, 162, 45, 0.35),
+    0 0 30px rgba(201, 162, 45, 0.2);
 }
 
-.ch-hero-btn::before {
-  content: '';
+/* Glow Layer */
+.ch-btn-primary::before {
+  content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, #b08f28, #e6b422);
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #c9a22d,
+    #f3e6af,
+    #c9a22d
+  );
   z-index: -1;
-  transition: opacity 0.4s ease;
-  opacity: 0;
+  opacity: 0.7;
+  filter: blur(14px);
+  animation: chGlowMove 3s linear infinite;
 }
 
-.ch-hero-btn:hover::before {
-  opacity: 1;
+/* Shine Effect */
+.ch-btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: skewX(-25deg);
+  transition: all 0.7s ease;
 }
 
-.ch-hero-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 35px -8px rgba(201, 162, 45, 0.5);
-  color: white;
+.ch-btn-primary:hover::after {
+  left: 130%;
 }
 
-.ch-btn-icon {
+/* Hover */
+.ch-btn-primary:hover {
+  background: #f3e6af;
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow:
+    0 0 12px rgba(243, 230, 175, 0.8),
+    0 0 28px rgba(201, 162, 45, 0.55),
+    0 0 45px rgba(201, 162, 45, 0.35);
+}
+
+/* Arrow */
+.ch-btn-arrow {
   font-size: 1.2rem;
   transition: transform 0.3s ease;
 }
 
-.ch-hero-btn:hover .ch-btn-icon {
-  transform: translateY(5px);
+.ch-btn-primary:hover .ch-btn-arrow {
+  transform: translateX(6px);
+}
+
+/* Glow Animation */
+@keyframes chGlowMove {
+  0% {
+    transform: translateX(-10%);
+  }
+
+  50% {
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translateX(-10%);
+  }
 }
 
 /* ============================================
@@ -238,8 +296,17 @@
   }
 }
 
+@media (max-width: 600px) {
+  .ch-btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 480px) {
-  .ch-hero-btn {
+  .ch-btn-primary {
     width: 100%;
   }
 }
@@ -248,7 +315,7 @@
   .ch-hero-bg img,
   .ch-hero-icon,
   .ch-hero-content,
-  .ch-hero-btn {
+  .ch-btn-primary {
     animation: none !important;
     transition: none !important;
   }

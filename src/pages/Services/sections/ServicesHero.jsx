@@ -62,6 +62,7 @@ export default function ServiceHero() {
   const nextSlide = () => {
     const newActive = (active + 1) % services.length;
     setActive(newActive);
+
     if (newActive >= startIndex + cardsPerPage) {
       setStartIndex(newActive - cardsPerPage + 1);
     }
@@ -70,12 +71,16 @@ export default function ServiceHero() {
   const prevSlide = () => {
     const newActive = (active - 1 + services.length) % services.length;
     setActive(newActive);
+
     if (newActive < startIndex) {
       setStartIndex(newActive);
     }
   };
 
-  const visibleServices = services.slice(startIndex, startIndex + cardsPerPage);
+  const visibleServices = services.slice(
+    startIndex,
+    startIndex + cardsPerPage
+  );
 
   const scrollToServices = () => {
     const section = document.getElementById('services-list');
@@ -97,25 +102,56 @@ export default function ServiceHero() {
 
       <div className="sh-container">
         <div className="sh-content">
-          <span className="sh-subtitle">{services[active].subtitle}</span>
-          <h1 className="sh-title">{services[active].title}</h1>
-          <p className="sh-desc">{services[active].description}</p>
-          <button className="sh-btn" onClick={scrollToServices}>
-            Explore Services
-          </button>
+          <span className="sh-subtitle">
+            {services[active].subtitle}
+          </span>
+
+          <h1 className="sh-title">
+            {services[active].title}
+          </h1>
+
+          <p className="sh-desc">
+            {services[active].description}
+          </p>
+
+          {/* BUTTON */}
+          <div className="sh-button-row">
+            <button
+              className="sh-btn"
+              onClick={scrollToServices}
+              aria-label="Explore more about services"
+            >
+              Explore Services
+
+              <span
+                className="sh-btn-arrow"
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </button>
+          </div>
         </div>
 
-        <div className="sh-cards" aria-label="Service navigation cards">
+        <div
+          className="sh-cards"
+          aria-label="Service navigation cards"
+        >
           {visibleServices.map((service, index) => {
             const actualIndex = startIndex + index;
+
             return (
               <div
                 key={actualIndex}
-                className={`sh-card ${active === actualIndex ? "sh-active" : ""}`}
+                className={`sh-card ${
+                  active === actualIndex ? "sh-active" : ""
+                }`}
                 onClick={() => setActive(actualIndex)}
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && setActive(actualIndex)}
+                onKeyDown={(e) =>
+                  e.key === 'Enter' && setActive(actualIndex)
+                }
                 aria-label={`Select ${service.title} ${service.subtitle}`}
               >
                 <img
@@ -124,10 +160,17 @@ export default function ServiceHero() {
                   className="sh-card-img"
                   loading="lazy"
                 />
+
                 <div className="sh-card-overlay"></div>
+
                 <div className="sh-card-content">
-                  <span className="sh-card-title">{service.title}</span>
-                  <span className="sh-card-subtitle">{service.subtitle}</span>
+                  <span className="sh-card-title">
+                    {service.title}
+                  </span>
+
+                  <span className="sh-card-subtitle">
+                    {service.subtitle}
+                  </span>
                 </div>
               </div>
             );
@@ -142,6 +185,7 @@ export default function ServiceHero() {
           >
             <FiChevronLeft />
           </button>
+
           <button
             className="sh-nav-circle"
             onClick={nextSlide}

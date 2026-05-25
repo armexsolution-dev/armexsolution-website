@@ -17,13 +17,13 @@
 
 .wsu-eyebrow {
   color: #c9a22d;
-  font-size: clamp(0.7rem, 2vw, 0.875rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
 }
 
 .wsu-title {
-  font-size: clamp(1.5rem, 5vw, 3.25rem);
+  font-size: clamp(2rem, 5vw, 3.8rem);
   font-weight: 700;
   line-height: 1.2;
 }
@@ -79,7 +79,7 @@
 }
 
 .wsu-num {
-  font-size: 5px;
+  font-size: 6px;
   fill: #c9a22d;
   text-anchor: middle;
   dominant-baseline: middle;
@@ -91,10 +91,10 @@
 -------------------------------------------- */
 .wsu-panel {
   background: white;
-  padding: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.3rem, 3vw, 2.8rem);
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  min-height: clamp(300px, 40vh, 420px);
+  min-height: clamp(320px, 40vh, 420px);
   max-height: 420px;
   overflow-y: auto;
   scrollbar-width: thin;
@@ -103,6 +103,7 @@
 .wsu-panel::-webkit-scrollbar {
   width: 5px;
 }
+
 .wsu-panel::-webkit-scrollbar-thumb {
   background: rgba(201, 162, 45, 0.4);
   border-radius: 10px;
@@ -116,53 +117,55 @@
 }
 
 .wsu-icon {
-  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
   color: #c9a22d;
 }
 
 .wsu-badge {
-  font-size: clamp(0.7rem, 2vw, 0.875rem);
+  font-size: clamp(0.85rem, 2vw, 1rem);
   color: #c9a22d;
   font-weight: 600;
 }
 
 .wsu-panel h3 {
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
 .wsu-desc {
   color: #475569;
-  margin-bottom: 1rem;
-  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+  font-size: clamp(0.95rem, 2vw, 1.08rem);
 }
 
 .wsu-expand {
   background: #fafafa;
-  padding: clamp(0.75rem, 2vw, 1.25rem);
+  padding: clamp(0.9rem, 2vw, 1.4rem);
   border-left: 3px solid #c9a22d;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.4rem;
 }
 
 .wsu-expand p {
-  font-size: clamp(0.75rem, 2vw, 0.9rem);
-  line-height: 1.5;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.7;
   margin: 0;
 }
 
 .wsu-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.625rem;
+  gap: 0.75rem;
 }
 
 .wsu-tags span {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  gap: 0.3rem;
+  font-size: clamp(0.8rem, 2vw, 0.92rem);
   background: #f1f5f9;
-  padding: 0.3rem 0.75rem;
+  padding: 0.45rem 0.9rem;
   border-radius: 20px;
 }
 
@@ -172,19 +175,23 @@
 .fade-in {
   animation: fadeIn 0.6s ease;
 }
+
 .fade-out {
   animation: fadeOut 0.5s ease;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes fadeOut {
   to {
     opacity: 0;
@@ -200,12 +207,15 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .wsu-orbit-wrap {
     max-width: 280px;
   }
+
   .wsu-header {
     text-align: center;
   }
+
   .wsu-panel {
     max-height: 380px;
   }
@@ -216,12 +226,27 @@
   .wsu-orbit-wrap {
     max-width: 240px;
   }
+
   .wsu-panel {
     max-height: 420px;
   }
+
   .wsu-tags span {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .wsu-title {
+    font-size: 2rem;
+  }
+
+  .wsu-panel h3 {
+    font-size: 1.35rem;
+  }
+
+  .wsu-desc,
+  .wsu-expand p {
+    font-size: 0.95rem;
   }
 }
 
@@ -229,8 +254,9 @@
   .wsu-orbit-wrap {
     max-width: 200px;
   }
+
   .wsu-num {
-    font-size: 4px;
+    font-size: 5px;
   }
 }
 
@@ -239,9 +265,11 @@
   .wsu-body {
     gap: 1.5rem;
   }
+
   .wsu-orbit-wrap {
     max-width: 180px;
   }
+
   .wsu-panel {
     max-height: 300px;
   }
@@ -261,17 +289,21 @@
   .wsu-section {
     padding: 1rem;
   }
+
   .wsu-orbit-wrap {
     display: none;
   }
+
   .wsu-body {
     grid-template-columns: 1fr;
   }
+
   .wsu-panel {
     border: 1px solid #ccc;
     max-height: none;
     overflow: visible;
   }
+
   .wsu-expand {
     background: #f5f5f5;
   }

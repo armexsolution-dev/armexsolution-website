@@ -187,19 +187,19 @@
 
 .cn-subtitle {
   display: inline-block;
-  font-size: clamp(0.65rem, 3vw, 0.75rem);
+  font-size: clamp(0.7rem, 3vw, 0.82rem);
   font-weight: 600;
   color: #c9a22d;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   background: rgba(201, 162, 45, 0.08);
-  padding: 0.3rem 1rem;
+  padding: 0.35rem 1.05rem;
   border-radius: 30px;
   margin-bottom: 1rem;
 }
 
 .cn-title {
-  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
   font-weight: 700;
   color: #1e2b37;
   margin: 0 0 1rem;
@@ -212,66 +212,106 @@
 }
 
 .cn-desc {
-  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  font-size: clamp(0.95rem, 2.8vw, 1.08rem);
   color: #475569;
-  line-height: 1.6;
+  line-height: 1.8;
   margin-bottom: 2rem;
 }
 
+/* ===== UPDATED BUTTON STYLE ONLY ===== */
 .cn-hint {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 0.75rem 1.8rem;
-  background: #f8fafc;
-  border: 1px solid #edf2f7;
-  border-radius: 50px;
-  color: #1e2b37;
-  font-size: 0.9rem;
-  font-weight: 500;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  padding: 14px 35px;
+  background: #c9a22d;
+  border: none;
+  color: #0c1323;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 6px;
   cursor: pointer;
-  outline: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  z-index: 1;
+
+  box-shadow:
+    0 0 8px rgba(201, 162, 45, 0.5),
+    0 0 18px rgba(201, 162, 45, 0.35),
+    0 0 30px rgba(201, 162, 45, 0.2);
 }
 
-.cn-hint:hover {
-  border-color: #c9a22d;
-  transform: translateX(5px);
+/* Glow Layer */
+.cn-hint::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #c9a22d,
+    #f3e6af,
+    #c9a22d
+  );
+  z-index: -1;
+  opacity: 0.7;
+  filter: blur(14px);
+  animation: glowMove 3s linear infinite;
 }
 
-.cn-hint-icon {
-  color: #c9a22d;
-  animation: cnMove 1.5s ease-in-out infinite;
-}
-
-@keyframes cnMove {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-}
-
-.cn-hint-glow {
+/* Shine Effect */
+.cn-hint::after {
+  content: "";
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
+  left: -120%;
+  width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(201, 162, 45, 0.1), transparent);
-  animation: cnGlow 3s ease-in-out infinite;
-  pointer-events: none;
+  background: rgba(255, 255, 255, 0.35);
+  transform: skewX(-25deg);
+  transition: all 0.7s ease;
 }
 
-@keyframes cnGlow {
-  0%, 100% {
-    left: -100%;
+.cn-hint:hover::after {
+  left: 130%;
+}
+
+/* Hover */
+.cn-hint:hover {
+  background: #f3e6af;
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow:
+    0 0 12px rgba(243, 230, 175, 0.8),
+    0 0 28px rgba(201, 162, 45, 0.55),
+    0 0 45px rgba(201, 162, 45, 0.35);
+}
+
+/* Arrow */
+.cn-hint-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  color: #0c1323;
+}
+
+.cn-hint:hover .cn-hint-icon {
+  transform: translateX(6px);
+}
+
+/* Glow Animation */
+@keyframes glowMove {
+  0% {
+    transform: translateX(-10%);
   }
+
   50% {
-    left: 100%;
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translateX(-10%);
   }
 }
 
@@ -311,10 +351,12 @@
     top: 0%;
     left: 0%;
   }
+
   .cn-collage-item:nth-child(2) {
     top: 25%;
     left: 55%;
   }
+
   .cn-collage-item:nth-child(3) {
     top: 55%;
     left: 5%;
@@ -337,12 +379,15 @@
   }
 
   .cn-hint {
-    padding: 0.5rem 1.2rem;
-    font-size: 0.8rem;
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 1rem;
   }
 
   .cn-desc {
-    font-size: 0.85rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
   }
 }
 
@@ -374,17 +419,18 @@
 @media (prefers-reduced-motion: reduce) {
   .cn-particle,
   .cn-collage-item,
-  .cn-hint-icon,
-  .cn-hint-glow,
   .cn-accent-dot {
     animation: none !important;
   }
+
   .cn-collage-item {
     transition: none;
   }
+
   .cn-collage-item:hover {
     transform: none !important;
   }
+
   .cn-hint:hover {
     transform: none;
   }
@@ -396,17 +442,19 @@
     background: white;
     padding: 20px;
   }
+
   .cn-bg-pattern,
   .cn-particles,
   .cn-accent-dot,
-  .cn-image-glow,
-  .cn-hint-glow {
+  .cn-image-glow {
     display: none;
   }
+
   .cn-content-wrapper {
     box-shadow: none;
     border: 1px solid #ddd;
   }
+
   .cn-hint {
     background: none;
     border: 1px solid #ccc;

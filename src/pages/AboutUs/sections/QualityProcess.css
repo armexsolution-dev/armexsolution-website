@@ -1,6 +1,6 @@
 /* --------------------------------------------
-   Quality Philosophy Section – Cleaned & Optimized
-   (No global resets, no font-family)
+   Quality Philosophy Section – Enhanced Typography
+   (Slightly Increased Paragraph Font Sizes)
 -------------------------------------------- */
 
 .qp-section {
@@ -8,17 +8,15 @@
   padding: clamp(3rem, 8vw, 6.25rem) 0 clamp(4rem, 10vw, 7.5rem);
   background: linear-gradient(135deg, #ffffff 0%, #fef9e6 100%);
   overflow-x: hidden;
-  /* GPU acceleration and composite layer */
   transform: translateZ(0);
   backface-visibility: hidden;
-  /* Prevent layout thrashing during scroll */
   contain: layout style paint;
 }
 
-
-.qp-section::after{
+.qp-section::after {
   display: none !important;
 }
+
 /* Background decorative elements */
 .qp-bg {
   position: absolute;
@@ -40,23 +38,35 @@
 }
 
 @keyframes qpGradientFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-20px, 30px) scale(1.1); }
-  66% { transform: translate(20px, -20px) scale(0.9); }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(-20px, 30px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(20px, -20px) scale(0.9);
+  }
 }
 
 .qp-bg-grid {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(201, 162, 45, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(201, 162, 45, 0.03) 1px, transparent 1px);
+  background-image:
+    linear-gradient(rgba(201, 162, 45, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 162, 45, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 .qp-bg-dots {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 2px 2px, rgba(201, 162, 45, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(circle at 2px 2px,
+      rgba(201, 162, 45, 0.05) 1px,
+      transparent 1px);
   background-size: 30px 30px;
 }
 
@@ -68,7 +78,10 @@
   z-index: 10;
 }
 
-/* Header */
+/* --------------------------------------------
+   Header
+-------------------------------------------- */
+
 .qp-header {
   text-align: center;
   margin-bottom: clamp(2rem, 6vw, 3.75rem);
@@ -80,10 +93,10 @@
   gap: 8px;
   background: rgba(201, 162, 45, 0.1);
   border: 1px solid rgba(201, 162, 45, 0.3);
-  padding: 0.4rem 1.2rem;
+  padding: 0.45rem 1.3rem;
   border-radius: 50px;
-  margin-bottom: 1rem;
-  font-size: 0.7rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: #c9a22d;
   letter-spacing: 1px;
@@ -95,15 +108,21 @@
 }
 
 @keyframes qpSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .qp-title {
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 700;
   color: #1e2b37;
   margin: 0 0 1rem;
+  line-height: 1.2;
 }
 
 .qp-title span {
@@ -118,7 +137,7 @@
   bottom: 6px;
   left: 0;
   width: 100%;
-  height: 8px;
+  height: 10px;
   background: rgba(201, 162, 45, 0.2);
   z-index: -1;
 }
@@ -128,7 +147,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .qp-decoration-line {
@@ -147,19 +166,31 @@
 }
 
 @keyframes qpDotPulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.5); opacity: 1; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
 }
 
 .qp-desc {
-  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-size: clamp(1rem, 2vw, 1.08rem);
   color: #64748b;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
-/* Process Flow (steps) */
+/* --------------------------------------------
+   Process Flow
+-------------------------------------------- */
+
 .qp-process {
   display: flex;
   justify-content: space-between;
@@ -173,8 +204,8 @@
   min-width: 200px;
   position: relative;
   text-align: center;
-  padding: 30px 20px;
-  background: rgba(255, 255, 255, 0.8);
+  padding: 32px 22px;
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(10px);
   border-radius: 24px;
   border: 1px solid rgba(201, 162, 45, 0.2);
@@ -183,17 +214,29 @@
   opacity: 0;
   transform: translateY(20px);
   will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
-.qp-process-step:nth-child(1) { animation-delay: 0.1s; }
-.qp-process-step:nth-child(2) { animation-delay: 0.2s; }
-.qp-process-step:nth-child(3) { animation-delay: 0.3s; }
-.qp-process-step:nth-child(4) { animation-delay: 0.4s; }
+.qp-process-step:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.qp-process-step:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.qp-process-step:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.qp-process-step:nth-child(4) {
+  animation-delay: 0.4s;
+}
 
 @keyframes qpStepFade {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .qp-process-step:hover {
@@ -206,9 +249,8 @@
   position: absolute;
   top: -15px;
   left: 20px;
-  width: 40px;
-  height: 40px;
-  background: #c9a22d;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -220,11 +262,10 @@
 }
 
 .qp-step-icon {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 20px;
-  background: rgba(201, 162, 45, 0.1);
-  border-radius: 20px;
+  width: 105px;
+  height: 105px;
+  margin: 0 auto 22px;
+  border-radius: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,15 +274,15 @@
 }
 
 .qp-step-img {
-  width: 85px;
-  height: 85px;
+  width: 88px;
+  height: 88px;
   object-fit: cover;
   border-radius: 14px;
   transition: all 0.3s ease;
 }
 
 .qp-process-step:hover .qp-step-icon {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.08) rotate(4deg);
 }
 
 .qp-process-step:hover .qp-step-img {
@@ -249,18 +290,19 @@
 }
 
 .qp-step-content h3 {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  font-weight: 600;
+  font-size: clamp(1.15rem, 2.5vw, 1.3rem);
+  font-weight: 700;
   color: #1e2b37;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .qp-step-content p {
-  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  font-size: clamp(0.92rem, 2vw, 1rem);
   color: #64748b;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
+/* Connector */
 .qp-step-connector {
   position: absolute;
   top: 50%;
@@ -277,12 +319,16 @@
   background: linear-gradient(90deg, #c9a22d, #0f766e);
   animation: qpLineFlow 2s linear infinite;
   background-size: 200% 100%;
-  will-change: background-position;
 }
 
 @keyframes qpLineFlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 .qp-connector-dot {
@@ -291,44 +337,57 @@
   background: #c9a22d;
   border-radius: 50%;
   animation: qpConnectorPulse 1.5s ease-in-out infinite;
-  will-change: transform;
 }
 
 @keyframes qpConnectorPulse {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.5); opacity: 1; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
 }
 
-/* Quality Pillars */
+/* --------------------------------------------
+   Quality Pillars
+-------------------------------------------- */
+
 .qp-pillars {
-  background: linear-gradient(135deg, rgba(201, 162, 45, 0.05) 0%, rgba(15, 118, 110, 0.05) 100%);
+  background: linear-gradient(135deg,
+      rgba(201, 162, 45, 0.05) 0%,
+      rgba(15, 118, 110, 0.05) 100%);
   border-radius: 40px;
-  padding: clamp(1.5rem, 5vw, 3rem);
+  padding: clamp(1.8rem, 5vw, 3rem);
   margin-bottom: 3rem;
   border: 1px solid rgba(201, 162, 45, 0.2);
 }
 
 .qp-pillars-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .qp-pillars-subtitle {
   display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   color: #c9a22d;
   letter-spacing: 1px;
   text-transform: uppercase;
   background: rgba(201, 162, 45, 0.1);
-  padding: 0.2rem 0.8rem;
+  padding: 0.3rem 0.9rem;
   border-radius: 20px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
 }
 
 .qp-pillars-header h3 {
-  font-size: clamp(1.3rem, 4vw, 1.6rem);
-  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+  font-weight: 700;
   color: #1e2b37;
 }
 
@@ -344,15 +403,13 @@
 
 .qp-pillar-card {
   text-align: center;
-  padding: 25px;
+  padding: 28px 22px;
   background: white;
-  border-radius: 20px;
+  border-radius: 22px;
   transition: all 0.3s ease;
   border: 1px solid rgba(201, 162, 45, 0.1);
   position: relative;
   overflow: hidden;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 .qp-pillar-card:hover {
@@ -362,14 +419,14 @@
 }
 
 .qp-pillar-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 15px;
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 16px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   transition: all 0.3s ease;
 }
 
@@ -378,8 +435,8 @@
 }
 
 .qp-pillar-card h4 {
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: 700;
   color: #1e2b37;
 }
 
@@ -387,21 +444,24 @@
   width: 40px;
   height: 3px;
   background: #c9a22d;
-  margin: 10px auto 0;
+  margin: 12px auto 0;
   border-radius: 2px;
   transition: width 0.3s ease;
 }
 
 .qp-pillar-card:hover .qp-pillar-bar {
-  width: 60px;
+  width: 65px;
 }
 
-/* Statement & Wave */
+/* --------------------------------------------
+   Statement
+-------------------------------------------- */
+
 .qp-statement {
   position: relative;
   background: linear-gradient(135deg, #0b1a2f 0%, #1e2b37 100%);
   border-radius: 30px;
-  padding: clamp(1.5rem, 4vw, 2.2rem) clamp(1rem, 4vw, 2.5rem);
+  padding: clamp(1.8rem, 4vw, 2.5rem);
   text-align: center;
   color: white;
   overflow: hidden;
@@ -416,9 +476,9 @@
 }
 
 .qp-statement p {
-  font-size: clamp(0.85rem, 2vw, 1rem);
-  line-height: 1.7;
-  max-width: 800px;
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  line-height: 1.9;
+  max-width: 820px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -430,14 +490,20 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(201, 162, 45, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle,
+      rgba(201, 162, 45, 0.1) 0%,
+      transparent 70%);
   animation: qpGlowRotate 20s linear infinite;
-  will-change: transform;
 }
 
 @keyframes qpGlowRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .qp-wave {
@@ -448,15 +514,20 @@
   line-height: 0;
 }
 
-/* Responsive Breakpoints */
+/* --------------------------------------------
+   Responsive
+-------------------------------------------- */
+
 @media (max-width: 1000px) {
   .qp-process {
     flex-direction: column;
     gap: 30px;
   }
+
   .qp-step-connector {
     display: none;
   }
+
   .qp-pillars-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -466,16 +537,25 @@
   .qp-pillars-grid {
     grid-template-columns: 1fr;
   }
+
   .qp-pillars {
     padding: 1.5rem;
   }
+
   .qp-step-icon {
-    width: 80px;
-    height: 80px;
+    width: 85px;
+    height: 85px;
   }
+
   .qp-step-img {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
+  }
+
+  .qp-step-content p,
+  .qp-desc,
+  .qp-statement p {
+    font-size: 0.95rem;
   }
 }
 
@@ -483,77 +563,73 @@
   .qp-section {
     padding: 2rem 0 3rem;
   }
+
   .qp-process-step {
-    padding: 20px 15px;
+    padding: 22px 16px;
   }
+
   .qp-step-number {
-    width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
-    top: -12px;
-    left: 15px;
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
   }
-  .qp-step-icon {
-    width: 70px;
-    height: 70px;
-  }
-  .qp-step-img {
-    width: 50px;
-    height: 50px;
-  }
+
   .qp-pillar-card {
-    padding: 18px;
+    padding: 20px;
   }
+
   .qp-pillar-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+    width: 55px;
+    height: 55px;
+    font-size: 1.6rem;
   }
 }
 
-@media (max-width: 375px) {
-  .qp-title-decoration .qp-decoration-line {
-    width: 30px;
-  }
-  .qp-header-badge {
-    font-size: 0.65rem;
-    padding: 0.3rem 0.8rem;
-  }
-}
+/* --------------------------------------------
+   Accessibility
+-------------------------------------------- */
 
-/* Accessibility & Print */
 @media (prefers-reduced-motion: reduce) {
+
   .qp-bg-gradient,
   .qp-badge-icon,
   .qp-decoration-dot,
   .qp-connector-line,
   .qp-connector-dot,
   .qp-statement-glow,
-  .qp-pillar-icon,
-  .qp-pillar-bar {
+  .qp-pillar-icon {
     animation: none !important;
     transition: none !important;
   }
-  .qp-process-step:hover {
+
+  .qp-process-step:hover,
+  .qp-pillar-card:hover {
     transform: none;
   }
 }
+
+/* --------------------------------------------
+   Print
+-------------------------------------------- */
 
 @media print {
   .qp-section {
     background: white;
     padding: 1rem;
   }
+
   .qp-bg,
   .qp-wave,
   .qp-statement-glow {
     display: none;
   }
+
   .qp-process-step {
     break-inside: avoid;
     border: 1px solid #ccc;
     background: white;
   }
+
   .qp-pillars {
     background: #f5f5f5;
   }

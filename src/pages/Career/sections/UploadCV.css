@@ -1,67 +1,33 @@
-/* =======================================================
-   Upload CV Section
-======================================================= */
-
-.ucv-section,
-.ucv-section * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .ucv-section {
   width: 100%;
-  padding: clamp(2.5rem, 6vw, 5rem) 0;
-  background: #ffffff;
-  overflow: hidden;
+  padding: clamp(3rem, 7vw, 5rem) 0;
+  background: #fff;
 }
 
 .ucv-container {
-  width: 100%;
   max-width: 1320px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem);
+  padding: 0 1.5rem;
 }
 
-/* =======================================================
-   Header
-======================================================= */
+/* ================= HEADER ================= */
 
 .ucv-header {
   text-align: center;
-  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 3rem;
 }
 
 .ucv-subtitle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0.45rem 1rem;
-
-  border-radius: 50px;
-
-  background: rgba(201, 162, 45, 0.08);
-
   color: #C9A22D;
-
-  font-size: 0.78rem;
   font-weight: 700;
+  font-size: 0.95rem;
   letter-spacing: 1.5px;
-
-  text-transform: uppercase;
-
-  margin-bottom: 1rem;
 }
 
 .ucv-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
-  line-height: 1.15;
-
-  color: #111827;
-
-  margin-bottom: 1rem;
+  font-size: clamp(2.3rem, 5vw, 3.3rem);
+  font-weight: 800;
+  margin-top: 0.5rem;
 }
 
 .ucv-title span {
@@ -69,484 +35,343 @@
 }
 
 .ucv-desc {
-  max-width: 700px;
-
-  margin: 0 auto;
-
   color: #64748b;
-
-  font-size: clamp(0.95rem, 2vw, 1.05rem);
-
-  line-height: 1.7;
+  max-width: 700px;
+  margin: 1rem auto 0;
+  line-height: 1.9;
+  font-size: 1.08rem;
 }
 
-/* =======================================================
-   GRID
-======================================================= */
+/* ================= GRID ================= */
 
 .ucv-grid {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: clamp(1.5rem, 3vw, 2rem);
-
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
-/* =======================================================
-   SHARED CARD
-======================================================= */
-
-.ucv-email-card,
-.ucv-image-card {
-  flex: 1 1 520px;
-
-  border-radius: 30px;
-
-  overflow: hidden;
-
-  position: relative;
-}
-
-/* =======================================================
-   LEFT CARD
-======================================================= */
+/* ================= LEFT CARD ================= */
 
 .ucv-email-card {
-  background: #ffffff;
-
   border: 1px solid #e2e8f0;
-
-  box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.04);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-
-  display: flex;
+  border-radius: 30px;
+  background: #fff;
 }
-
-.ucv-email-card:hover {
-  transform: translateY(-4px);
-
-  border-color: rgba(201, 162, 45, 0.35);
-
-  box-shadow:
-    0 20px 40px rgba(15, 23, 42, 0.08);
-}
-
-/* =======================================================
-   INNER CONTENT
-======================================================= */
 
 .ucv-card-inner {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-
-  padding:
-    clamp(1.5rem, 3vw, 2.5rem);
-
-  min-height: 100%;
+  padding: 2.2rem;
 }
 
-/* =======================================================
-   ICON
-======================================================= */
-
 .ucv-email-icon-wrapper {
-  width: clamp(70px, 7vw, 82px);
-  height: clamp(70px, 7vw, 82px);
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(201, 162, 45, 0.18),
-      rgba(201, 162, 45, 0.08)
-    );
-
+  width: 78px;
+  height: 78px;
+  background: rgba(201,162,45,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-
+  border-radius: 50%;
   margin-bottom: 1.5rem;
 }
 
 .ucv-email-icon {
-  font-size: clamp(1.9rem, 4vw, 2.4rem);
-
+  font-size: 2.1rem;
   color: #C9A22D;
 }
 
-/* =======================================================
-   CONTENT
-======================================================= */
-
 .ucv-email-title {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-
+  font-size: 2.1rem;
   font-weight: 700;
-
-  line-height: 1.2;
-
-  color: #111827;
-
-  margin-bottom: 1rem;
 }
 
 .ucv-email-desc {
   color: #64748b;
-
-  font-size: 0.98rem;
-
+  margin: 1rem 0 1.8rem;
+  font-size: 1.08rem;
   line-height: 1.8;
-
-  margin-bottom: 1.8rem;
-
-  max-width: 95%;
 }
 
-/* =======================================================
-   EMAIL CTA
-======================================================= */
+/* ================= FORM ================= */
 
-.ucv-email-address {
-  padding: 1.2rem;
+.ucv-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
-  border-radius: 22px;
-
+.ucv-input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: #f8fafc;
-
   border: 1px solid #e2e8f0;
-
-  margin-bottom: 1.8rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
 }
 
-.ucv-email-label {
-  display: block;
-
-  font-size: 0.72rem;
-
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  text-transform: uppercase;
-
+.ucv-input-group svg {
   color: #64748b;
-
-  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
 }
 
-.ucv-email-link {
+.ucv-input-group input,
+.ucv-input-group select {
+  border: none;
+  outline: none;
   width: 100%;
+  background: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #1e293b;
+}
 
+.ucv-form textarea {
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  resize: none;
+  font-size: 1rem;
+  color: #1e293b;
+  line-height: 1.7;
+}
+
+.ucv-input-group:focus-within,
+.ucv-form textarea:focus {
+  border-color: #C9A22D;
+  box-shadow: 0 0 0 3px rgba(201,162,45,0.15);
+}
+
+/* ================= GOLDEN BUTTON ================= */
+
+.button-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.7rem;
-
-  text-decoration: none;
-
-  padding: 1rem 1.2rem;
-
-  border-radius: 50px;
-
-  background: #C9A22D;
-
-  color: #ffffff;
-
-  font-size: 0.95rem;
-  font-weight: 600;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.ucv-email-link:hover {
-  transform: translateY(-2px);
+  gap: 10px;
+  width: 100%;
+  padding: 15px 35px;
+  background: #c9a22d;
+  border: none;
+  color: #0c1323;
+  font-size: 1.08rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  z-index: 1;
 
   box-shadow:
-    0 14px 24px rgba(201, 162, 45, 0.28);
+    0 0 8px rgba(201, 162, 45, 0.5),
+    0 0 18px rgba(201, 162, 45, 0.35),
+    0 0 30px rgba(201, 162, 45, 0.2);
 }
 
-.ucv-email-send-icon {
-  font-size: 1rem;
+/* Glow Layer */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #c9a22d,
+    #f3e6af,
+    #c9a22d
+  );
+  z-index: -1;
+  opacity: 0.7;
+  filter: blur(14px);
+  animation: glowMove 3s linear infinite;
 }
 
-/* =======================================================
-   INSTRUCTIONS
-======================================================= */
-
-.ucv-email-instructions {
-  margin-bottom: 1.6rem;
+/* Shine Effect */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: skewX(-25deg);
+  transition: all 0.7s ease;
 }
 
-.ucv-email-instructions h4 {
-  font-size: 0.95rem;
-
-  font-weight: 700;
-
-  color: #111827;
-
-  margin-bottom: 1rem;
+.btn-primary:hover::after {
+  left: 130%;
 }
 
-.ucv-email-instructions ul {
-  list-style: none;
+/* Hover */
+.btn-primary:hover {
+  background: #f3e6af;
+  transform: translateY(-3px) scale(1.02);
 
+  box-shadow:
+    0 0 12px rgba(243, 230, 175, 0.8),
+    0 0 28px rgba(201, 162, 45, 0.55),
+    0 0 45px rgba(201, 162, 45, 0.35);
+}
+
+/* Arrow */
+.btn-arrow {
   display: flex;
-  flex-direction: column;
-
-  gap: 0.9rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  transition: transform 0.3s ease;
 }
 
-.ucv-email-instructions li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
-
-  color: #475569;
-
-  font-size: 0.92rem;
-
-  line-height: 1.5;
+.btn-primary:hover .btn-arrow {
+  transform: translateX(6px);
 }
 
-.ucv-email-instructions li svg {
-  color: #10b981;
+/* Glow Animation */
+@keyframes glowMove {
+  0% {
+    transform: translateX(-10%);
+  }
 
-  flex-shrink: 0;
+  50% {
+    transform: translateX(10%);
+  }
 
-  margin-top: 2px;
+  100% {
+    transform: translateX(-10%);
+  }
 }
 
-/* =======================================================
-   NOTE
-======================================================= */
+/* ================= NOTE ================= */
 
 .ucv-email-note {
   display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
-
-  padding: 1rem;
-
-  border-radius: 18px;
-
+  gap: 12px;
   background: #fef9e6;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-top: 1.7rem;
+}
 
-  border-left: 4px solid #C9A22D;
+.ucv-email-note p {
+  font-size: 0.98rem;
+  line-height: 1.7;
 }
 
 .ucv-note-icon {
   color: #C9A22D;
-
-  font-size: 1rem;
-
+  font-size: 1.2rem;
   flex-shrink: 0;
 }
 
-.ucv-email-note p {
-  color: #5b4c1a;
+/* ================= RIGHT SIDE ================= */
 
-  font-size: 0.84rem;
-
-  line-height: 1.5;
+.ucv-right-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-/* =======================================================
-   RIGHT IMAGE CARD
-======================================================= */
-
-.ucv-image-card {
-  background: #000000;
-
-  aspect-ratio: 1535 / 1024;
-
-  min-height: 620px;
+.ucv-right-top {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+  padding: 2.2rem;
+  border-radius: 30px;
 }
 
-.ucv-image {
+.ucv-info-tag {
+  color: #C9A22D;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.ucv-info-title {
+  font-size: 2.1rem;
+  margin-top: 0.9rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.ucv-info-desc {
+  margin-top: 1rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.ucv-right-bottom {
+  height: 460px;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ucv-right-bottom img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-  object-position: center;
-
-  display: block;
-
-  transition: transform 0.7s ease;
+  transition: 0.5s ease;
 }
 
-.ucv-image-card:hover .ucv-image {
-  transform: scale(1.04);
+.ucv-right-bottom:hover img {
+  transform: scale(1.05);
 }
-
-/* =======================================================
-   IMAGE OVERLAY
-======================================================= */
 
 .ucv-image-overlay {
   position: absolute;
-
   inset: 0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(15, 23, 42, 0.92) 8%,
-      rgba(15, 23, 42, 0.28) 55%,
-      rgba(15, 23, 42, 0.05) 100%
-    );
-
-  display: flex;
-  align-items: flex-end;
-
-  padding:
-    clamp(1.5rem, 3vw, 2.5rem);
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
 }
 
-.ucv-overlay-content {
-  width: 100%;
-}
+/* ================= RESPONSIVE ================= */
 
-.ucv-overlay-tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+@media (max-width: 900px) {
+  .ucv-grid {
+    grid-template-columns: 1fr;
+  }
 
-  padding: 0.45rem 1rem;
-
-  border-radius: 50px;
-
-  background: rgba(255,255,255,0.12);
-
-  backdrop-filter: blur(10px);
-
-  color: #ffffff;
-
-  font-size: 0.72rem;
-
-  font-weight: 600;
-
-  letter-spacing: 1px;
-
-  margin-bottom: 1rem;
-}
-
-.ucv-overlay-content h3 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-
-  font-weight: 700;
-
-  line-height: 1.2;
-
-  color: #ffffff;
-
-  margin-bottom: 1rem;
-
-  max-width: 500px;
-}
-
-.ucv-overlay-content p {
-  color: rgba(255,255,255,0.85);
-
-  font-size: 0.96rem;
-
-  line-height: 1.8;
-
-  max-width: 520px;
-}
-
-/* =======================================================
-   BOTTOM NOTE
-======================================================= */
-
-.ucv-bottom-note {
-  text-align: center;
-
-  padding-top: 2rem;
-
-  margin-top: 2rem;
-
-  border-top: 1px solid #e2e8f0;
-}
-
-.ucv-bottom-note p {
-  color: #64748b;
-
-  font-size: 0.84rem;
-
-  line-height: 1.6;
-}
-
-.ucv-bottom-note a {
-  color: #C9A22D;
-
-  text-decoration: none;
-
-  font-weight: 600;
-
-  margin: 0 3px;
-}
-
-.ucv-bottom-note a:hover {
-  text-decoration: underline;
-}
-
-/* =======================================================
-   RESPONSIVE
-======================================================= */
-
-@media (max-width: 1100px) {
-
-  .ucv-image-card {
-    min-height: 540px;
+  .ucv-right-bottom {
+    height: 260px;
   }
 }
 
-@media (max-width: 768px) {
-
-  .ucv-email-card,
-  .ucv-image-card {
-    flex: 1 1 100%;
-  }
-
-  .ucv-image-card {
-    aspect-ratio: 3 / 2;
-    min-height: auto;
-  }
-
-  .ucv-card-inner {
-    padding: 1.5rem;
+@media (max-width: 600px) {
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-
-  .ucv-image-card {
-    aspect-ratio: 4 / 3;
+  .ucv-card-inner {
+    padding: 1.3rem;
   }
 
   .ucv-email-title {
-    font-size: 1.5rem;
-  }
-
-  .ucv-overlay-content h3 {
     font-size: 1.7rem;
   }
 
-  .ucv-email-link {
-    font-size: 0.88rem;
-    padding: 0.9rem 1rem;
+  .ucv-right-top {
+    padding: 1.5rem;
+  }
+
+  .ucv-info-title {
+    font-size: 1.7rem;
+  }
+
+  .ucv-desc,
+  .ucv-email-desc,
+  .ucv-info-desc {
+    font-size: 0.97rem;
   }
 }

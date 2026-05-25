@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiArrowDown, FiBriefcase } from 'react-icons/fi';
+import { FiBriefcase } from 'react-icons/fi';
 import heroPattern from '../../../assets/images/Career/CareerHero.png'
 import './CareerHero.css';
 
@@ -34,17 +34,21 @@ const CareerHero = () => {
             We're always looking for talented individuals to grow with us.
           </p>
 
-          <button
-            className="ch-hero-btn"
-            onClick={() => {
-              document
-                .getElementById('upload-section')
-                ?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Explore Careers
-            <FiArrowDown className="ch-btn-icon" />
-          </button>
+          {/* UPDATED BUTTON */}
+          <div className="ch-button-row">
+            <button
+              className="ch-btn-primary"
+              onClick={() => {
+                document
+                  .getElementById('upload-section')
+                  ?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              aria-label="Explore careers"
+            >
+              Explore Careers
+              <span className="ch-btn-arrow">→</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

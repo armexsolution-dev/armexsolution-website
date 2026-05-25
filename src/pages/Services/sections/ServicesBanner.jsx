@@ -56,13 +56,19 @@ const ServicesBanner = () => {
             ))}
           </div>
 
-          <button
-            className="sb-link"
-            onClick={scrollToCategories}
-            aria-label="Discuss your project – scroll to services"
-          >
-            Discuss Your Project <FiArrowRight className="sb-link-icon" aria-hidden="true" />
-          </button>
+          {/* Updated Button Only */}
+          <div className="button-row">
+            <button
+              className="btn-primary"
+              onClick={scrollToCategories}
+              aria-label="Discuss your project – scroll to services"
+            >
+              Discuss Your Project
+              <span className="btn-arrow">
+                <FiArrowRight aria-hidden="true" />
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* Right Image */}

@@ -85,7 +85,6 @@ const PrivacyPolicy = () => {
 
   return (
     <>
-      {/* ✅ SEO ADDED */}
       <SEO page="privacyPolicy" />
 
       <section className="pp-section">

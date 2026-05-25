@@ -7,7 +7,7 @@
   /* TOP SPACE FOR ABSOLUTE NAVBAR */
   padding:
     clamp(120px, 14vw, 150px)
-    clamp(0.8rem, 4vw, 2rem)
+    clamp(0.9rem, 4vw, 2rem)
     60px;
 
   position: relative;
@@ -32,11 +32,12 @@
   color: #64748b;
   text-decoration: none;
 
-  font-size: 0.9rem;
+  font-size: 0.98rem;
+  font-weight: 500;
 
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 
-  padding: 8px 16px;
+  padding: 9px 18px;
 
   background: white;
 
@@ -61,13 +62,13 @@
 .sd-hero {
   position: relative;
 
-  height: clamp(250px, 40vh, 300px);
+  height: clamp(260px, 42vh, 320px);
 
   border-radius: 24px;
 
   overflow: hidden;
 
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
@@ -107,7 +108,7 @@
   flex-direction: column;
   justify-content: center;
 
-  padding: 0 clamp(1rem, 5vw, 3rem);
+  padding: 0 clamp(1.2rem, 5vw, 3rem);
 
   color: white;
 }
@@ -115,14 +116,14 @@
 .sd-hero-sub {
   display: inline-block;
 
-  font-size: clamp(0.7rem, 3vw, 0.8rem);
+  font-size: clamp(0.78rem, 3vw, 0.9rem);
   font-weight: 600;
 
   color: #c9a22d;
 
   background: rgba(201, 162, 45, 0.15);
 
-  padding: 0.3rem 1rem;
+  padding: 0.38rem 1.1rem;
 
   border-radius: 30px;
 
@@ -131,14 +132,16 @@
   width: fit-content;
 
   border: 1px solid rgba(201, 162, 45, 0.3);
+
+  letter-spacing: 0.5px;
 }
 
 .sd-hero-title {
-  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-size: clamp(2rem, 6vw, 3.4rem);
 
   font-weight: 800;
 
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.7rem;
 
   text-transform: uppercase;
 
@@ -146,13 +149,15 @@
 }
 
 .sd-hero-tagline {
-  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  font-size: clamp(1rem, 3vw, 1.2rem);
 
   color: #e0e0e0;
 
-  max-width: 500px;
+  max-width: 560px;
 
-  line-height: 1.6;
+  line-height: 1.7;
+
+  font-weight: 400;
 }
 
 /* =========================================
@@ -162,11 +167,11 @@
 .sd-desc-card {
   background: white;
 
-  padding: 25px 30px;
+  padding: 28px 34px;
 
-  border-radius: 20px;
+  border-radius: 22px;
 
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
 
@@ -192,13 +197,15 @@
 }
 
 .sd-desc-card p {
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-size: clamp(1rem, 2.6vw, 1.08rem);
 
-  line-height: 1.7;
+  line-height: 1.85;
 
   color: #334155;
 
   margin: 0;
+
+  font-weight: 400;
 }
 
 /* =========================================
@@ -210,9 +217,9 @@
 
   grid-template-columns: repeat(2, 1fr);
 
-  gap: 20px;
+  gap: 22px;
 
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 /* =========================================
@@ -222,9 +229,9 @@
 .sd-card {
   background: white;
 
-  padding: clamp(1rem, 3vw, 1.5rem);
+  padding: clamp(1.2rem, 3vw, 1.8rem);
 
-  border-radius: 20px;
+  border-radius: 22px;
 
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
 
@@ -244,23 +251,25 @@
 .sd-card-full {
   grid-column: span 2;
 
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .sd-card-title {
-  font-size: 1.2rem;
+  font-size: 1.38rem;
 
-  font-weight: 600;
+  font-weight: 700;
 
   color: #1e2b37;
 
-  margin: 0 0 20px;
+  margin: 0 0 22px;
 
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 
   border-bottom: 2px solid #f1f5f9;
 
   position: relative;
+
+  line-height: 1.3;
 }
 
 .sd-card-title::after {
@@ -271,7 +280,7 @@
   bottom: -2px;
   left: 0;
 
-  width: 50px;
+  width: 60px;
   height: 2px;
 
   background: #c9a22d;
@@ -292,15 +301,17 @@
   display: flex;
   align-items: flex-start;
 
-  gap: 10px;
+  gap: 12px;
 
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   color: #475569;
 
-  line-height: 1.5;
+  line-height: 1.7;
+
+  font-weight: 400;
 }
 
 .sd-list-item:last-child {
@@ -310,11 +321,11 @@
 .sd-list-icon {
   color: #c9a22d;
 
-  font-size: 1rem;
+  font-size: 1.1rem;
 
   flex-shrink: 0;
 
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 /* =========================================
@@ -326,7 +337,7 @@
 
   grid-template-columns: repeat(4, 1fr);
 
-  gap: 15px;
+  gap: 18px;
 }
 
 .sd-industry-card {
@@ -334,9 +345,9 @@
 
   border: 1px solid #e2e8f0;
 
-  border-radius: 16px;
+  border-radius: 18px;
 
-  padding: 1.2rem 0.8rem;
+  padding: 1.4rem 1rem;
 
   text-align: center;
 
@@ -354,27 +365,31 @@
 }
 
 .sd-industry-icon {
-  font-size: 1.8rem;
+  font-size: 2rem;
 
   color: #c9a22d;
 
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .sd-industry-card h4 {
-  font-size: 1rem;
+  font-size: 1.08rem;
 
-  font-weight: 600;
+  font-weight: 700;
 
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 
   color: #1e2b37;
+
+  line-height: 1.4;
 }
 
 .sd-industry-card p {
-  font-size: 0.8rem;
+  font-size: 0.92rem;
 
   color: #64748b;
+
+  line-height: 1.6;
 }
 
 /* =========================================
@@ -388,29 +403,31 @@
     #2d3748 100%
   );
 
-  padding: clamp(1.5rem, 5vw, 2rem);
+  padding: clamp(1.8rem, 5vw, 2.4rem);
 
-  border-radius: 20px;
+  border-radius: 22px;
 
   text-align: center;
 
   color: white;
 
-  margin-top: 30px;
+  margin-top: 34px;
 }
 
 .sd-cta h3 {
-  font-size: clamp(1rem, 4vw, 1.3rem);
+  font-size: clamp(1.15rem, 4vw, 1.45rem);
 
-  font-weight: 600;
+  font-weight: 700;
 
-  margin: 0 0 15px;
+  margin: 0 0 18px;
+
+  line-height: 1.5;
 }
 
 .sd-cta-btn {
   display: inline-block;
 
-  padding: 0.7rem 2rem;
+  padding: 0.85rem 2.2rem;
 
   background: #c9a22d;
 
@@ -422,7 +439,7 @@
 
   font-weight: 600;
 
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   transition: all 0.3s ease;
 
@@ -462,7 +479,7 @@
   .sd-industries-grid {
     grid-template-columns: repeat(2, 1fr);
 
-    gap: 12px;
+    gap: 14px;
   }
 
   .sd-hero {
@@ -470,7 +487,15 @@
   }
 
   .sd-desc-card {
-    padding: 1.3rem;
+    padding: 1.5rem;
+  }
+
+  .sd-card-title {
+    font-size: 1.22rem;
+  }
+
+  .sd-list-item {
+    font-size: 0.97rem;
   }
 }
 
@@ -480,7 +505,7 @@
   }
 
   .sd-hero {
-    height: 240px;
+    height: 250px;
   }
 
   .sd-hero-content {
@@ -488,12 +513,20 @@
   }
 
   .sd-industries-grid {
-    gap: 10px;
+    gap: 12px;
   }
 
   .sd-card,
   .sd-desc-card {
     border-radius: 18px;
+  }
+
+  .sd-hero-title {
+    font-size: 2rem;
+  }
+
+  .sd-hero-tagline {
+    font-size: 1rem;
   }
 }
 
@@ -505,26 +538,42 @@
   .sd-industries-grid {
     grid-template-columns: 1fr;
 
-    max-width: 280px;
+    max-width: 300px;
 
     margin-left: auto;
     margin-right: auto;
   }
 
   .sd-hero-title {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 
   .sd-hero-tagline {
-    font-size: 0.9rem;
+    font-size: 0.98rem;
   }
 
   .sd-card-title {
-    font-size: 1rem;
+    font-size: 1.12rem;
   }
 
   .sd-list-item {
-    font-size: 0.85rem;
+    font-size: 0.94rem;
+  }
+
+  .sd-desc-card p {
+    font-size: 0.98rem;
+  }
+
+  .sd-industry-card h4 {
+    font-size: 1rem;
+  }
+
+  .sd-industry-card p {
+    font-size: 0.88rem;
+  }
+
+  .sd-cta h3 {
+    font-size: 1.15rem;
   }
 }
 
@@ -548,7 +597,15 @@
   }
 
   .sd-industries-grid {
-    gap: 20px;
+    gap: 22px;
+  }
+
+  .sd-hero-title {
+    font-size: 3.6rem;
+  }
+
+  .sd-desc-card p {
+    font-size: 1.12rem;
   }
 }
 

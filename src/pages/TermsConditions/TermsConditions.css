@@ -1,10 +1,10 @@
 /* ============================================
    Terms and Conditions – Fully Responsive
-   Overlay Navbar Ready (no external offsets)
+   Overlay Navbar Ready (Enhanced Text Sizes)
    ============================================ */
 
 .tc-section {
-  padding: 80px 0;
+  padding: 120px 0;
   background: #ffffff;
   width: 100%;
   min-height: 100vh;
@@ -13,7 +13,6 @@
   border-top: 1px solid #edf2f7;
   overflow-x: hidden;
   transform: translateZ(0);
-  /* No top padding offset for overlay navbar – section spacing is internal */
 }
 
 .tc-container {
@@ -31,22 +30,22 @@
 
 .tc-subtitle {
   display: inline-block;
-  font-size: clamp(0.6rem, 3vw, 0.7rem);
-  font-weight: 600;
+  font-size: clamp(0.72rem, 3vw, 0.82rem);
+  font-weight: 700;
   color: #C9A22D;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
   background: rgba(201, 162, 45, 0.08);
-  padding: 0.3rem 1rem;
+  padding: 0.35rem 1.1rem;
   border-radius: 30px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
 }
 
 .tc-title {
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
-  font-weight: 600;
+  font-size: clamp(1.9rem, 5vw, 2.7rem);
+  font-weight: 700;
   color: #1e2b37;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.7rem;
   line-height: 1.2;
 }
 
@@ -57,11 +56,12 @@
 }
 
 .tc-desc {
-  font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   color: #64748b;
   font-family: monospace;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
+  line-height: 1.7;
 }
 
 /* Status Bar – responsive wrap */
@@ -73,7 +73,7 @@
   background: #F8FAFC;
   border: 1px solid #e2e8f0;
   border-radius: 50px;
-  padding: 10px 25px;
+  padding: 12px 28px;
   margin-bottom: 30px;
   flex-wrap: wrap;
 }
@@ -85,16 +85,16 @@
 }
 
 .tc-status-label {
-  font-size: clamp(0.55rem, 2vw, 0.6rem);
+  font-size: clamp(0.68rem, 2vw, 0.74rem);
   color: #64748b;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 
 .tc-status-value {
-  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  font-size: clamp(0.88rem, 2vw, 0.96rem);
   color: #C9A22D;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .tc-status-divider {
@@ -115,7 +115,7 @@
   border: 1px solid #edf2f7;
 }
 
-/* Left Tabs – scrollable on desktop, grid on mobile */
+/* Left Tabs */
 .tc-tabs {
   display: flex;
   flex-direction: column;
@@ -142,8 +142,8 @@
 .tc-tab {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
+  gap: 12px;
+  padding: 14px 16px;
   background: transparent;
   border: 1px solid transparent;
   border-radius: 16px;
@@ -182,7 +182,7 @@
 }
 
 .tc-tab-icon {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #C9A22D;
   transition: all 0.3s ease;
   will-change: transform;
@@ -195,12 +195,12 @@
 
 .tc-tab-title {
   flex: 1;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.96rem;
+  font-weight: 600;
 }
 
 .tc-tab-arrow {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   opacity: 0;
   transform: translateX(-10px);
   transition: all 0.3s ease;
@@ -215,17 +215,17 @@
 }
 
 .tc-tab-number {
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   color: #94a3b8;
   font-family: monospace;
   flex-shrink: 0;
 }
 
-/* Right Content – smooth transitions */
+/* Right Content */
 .tc-content {
   background: #ffffff;
   border-radius: 20px;
-  padding: 30px;
+  padding: 34px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.02);
   border: 1px solid #edf2f7;
   opacity: 0;
@@ -245,33 +245,33 @@
 .tc-content-card {
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction:  column;
 }
 
 .tc-content-header {
-  margin-bottom: 20px;
-  padding-bottom: 15px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
   border-bottom: 1px solid #edf2f7;
 }
 
 .tc-content-badge {
   display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-size: 0.74rem;
+  font-weight: 700;
   color: #C9A22D;
   background: rgba(201, 162, 45, 0.08);
-  padding: 0.2rem 0.8rem;
+  padding: 0.3rem 0.9rem;
   border-radius: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   letter-spacing: 0.5px;
 }
 
 .tc-content-header h2 {
-  font-size: clamp(1.2rem, 4vw, 1.4rem);
-  font-weight: 600;
+  font-size: clamp(1.45rem, 4vw, 1.8rem);
+  font-weight: 700;
   color: #1e2b37;
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .tc-content-body {
@@ -279,9 +279,9 @@
 }
 
 .tc-content-body p {
-  font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+  font-size: clamp(0.96rem, 2.5vw, 1.05rem);
   color: #334155;
-  line-height: 1.7;
+  line-height: 1.9;
   margin: 0;
 }
 
@@ -314,18 +314,18 @@
 }
 
 .tc-page-indicator {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   color: #64748b;
   font-family: monospace;
 }
 
-/* Acceptance Bar – centered on mobile */
+/* Acceptance Bar */
 .tc-acceptance {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 15px;
+  padding: 16px;
   background: rgba(201, 162, 45, 0.05);
   border: 1px solid rgba(201, 162, 45, 0.2);
   border-radius: 50px;
@@ -335,23 +335,24 @@
 
 .tc-acceptance-icon {
   color: #10b981;
-  font-size: 1rem;
+  font-size: 1.05rem;
   flex-shrink: 0;
 }
 
 .tc-acceptance span {
-  font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+  font-size: clamp(0.88rem, 2.5vw, 0.96rem);
   color: #334155;
   text-align: center;
+  line-height: 1.6;
 }
 
-/* Contact Footer – responsive stacking */
+/* Contact Footer */
 .tc-contact {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding: 15px 20px;
+  padding: 18px 22px;
   background: #F8FAFC;
   border-radius: 60px;
   border: 1px solid #edf2f7;
@@ -363,12 +364,12 @@
   align-items: center;
   gap: 8px;
   color: #475569;
-  font-size: clamp(0.8rem, 2.5vw, 0.85rem);
+  font-size: clamp(0.9rem, 2.5vw, 0.96rem);
 }
 
 .tc-contact-icon {
   color: #C9A22D;
-  font-size: 0.95rem;
+  font-size: 1rem;
   flex-shrink: 0;
 }
 
@@ -392,16 +393,17 @@
    RESPONSIVE BREAKPOINTS
    ============================================ */
 
-/* Tablet (≤900px) */
 @media (max-width: 900px) {
   .tc-section {
     padding: 60px 0;
   }
+
   .tc-main {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 16px;
   }
+
   .tc-tabs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -410,136 +412,163 @@
     overflow-y: visible;
     padding-right: 0;
   }
+
   .tc-tab {
-    padding: 10px;
+    padding: 12px;
   }
+
   .tc-tab-title {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
+
   .tc-status-bar {
     border-radius: 20px;
     padding: 15px;
   }
+
   .tc-status-divider {
     display: none;
   }
+
   .tc-contact {
     flex-direction: column;
     gap: 15px;
     border-radius: 30px;
   }
+
   .tc-contact-divider {
     display: none;
   }
 }
 
-/* Mobile (≤600px) */
 @media (max-width: 600px) {
   .tc-section {
     padding: 40px 0;
   }
+
   .tc-container {
     padding: 0 20px;
   }
+
   .tc-title {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
   }
+
   .tc-tabs {
     grid-template-columns: 1fr;
   }
+
   .tc-content {
-    padding: 20px;
+    padding: 22px;
     min-height: 400px;
   }
+
   .tc-content-header h2 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
+
   .tc-content-body p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
   }
+
   .tc-acceptance {
     flex-direction: column;
     text-align: center;
     border-radius: 20px;
     padding: 15px;
   }
+
   .tc-acceptance span {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
 
-/* Very small devices (≤400px) */
 @media (max-width: 400px) {
   .tc-section {
     padding: 30px 0;
   }
+
   .tc-title {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
+
   .tc-subtitle {
-    font-size: 0.6rem;
+    font-size: 0.68rem;
   }
+
   .tc-desc {
-    font-size: 0.7rem;
+    font-size: 0.82rem;
   }
+
   .tc-tab {
     padding: 10px 12px;
   }
+
   .tc-tab-icon {
     font-size: 1rem;
   }
+
   .tc-tab-title {
-    font-size: 0.75rem;
+    font-size: 0.82rem;
   }
+
   .tc-status-bar {
     gap: 12px;
     padding: 10px 16px;
   }
+
   .tc-contact-item {
-    font-size: 0.75rem;
+    font-size: 0.82rem;
   }
 }
 
-/* Landscape mode – reduce vertical padding */
 @media (max-height: 500px) and (orientation: landscape) {
   .tc-section {
     padding: 30px 0;
     min-height: auto;
   }
+
   .tc-main {
     margin-bottom: 20px;
   }
+
   .tc-content {
     min-height: 300px;
   }
+
   .tc-tabs {
     max-height: 300px;
   }
 }
 
 /* ============================================
-   TOUCH TARGETS (improve tap area)
+   TOUCH TARGETS
    ============================================ */
+
 @media (hover: none) and (pointer: coarse) {
   .tc-tab {
     min-height: 48px;
   }
+
   .tc-tab:active {
     background: rgba(201, 162, 45, 0.1);
     transform: scale(0.98);
   }
+
   .tc-contact-item a {
     padding: 8px 0;
     display: inline-block;
   }
+
   .tc-acceptance {
     min-height: 56px;
   }
 }
 
 /* ============================================
-   REDUCED MOTION PREFERENCE
+   REDUCED MOTION
    ============================================ */
+
 @media (prefers-reduced-motion: reduce) {
   .tc-tab,
   .tc-content,
@@ -549,9 +578,11 @@
     transition: none !important;
     animation: none !important;
   }
+
   .tc-tab:hover {
     transform: none;
   }
+
   .tc-content {
     opacity: 1;
     transform: none;
@@ -561,16 +592,20 @@
 /* ============================================
    HIGH CONTRAST MODE
    ============================================ */
+
 @media (prefers-contrast: high) {
   .tc-tab-active {
     border-width: 2px;
   }
+
   .tc-tab-active::before {
     width: 6px;
   }
+
   .tc-contact-item a {
     text-decoration: underline;
   }
+
   .tc-acceptance {
     border-width: 2px;
   }
@@ -579,12 +614,14 @@
 /* ============================================
    PRINT STYLES
    ============================================ */
+
 @media print {
   .tc-section {
     padding: 20px 0;
     background: white;
     min-height: auto;
   }
+
   .tc-tabs,
   .tc-status-bar,
   .tc-contact,
@@ -592,17 +629,20 @@
   .tc-acceptance {
     display: none;
   }
+
   .tc-main {
     display: block;
     background: none;
     padding: 0;
   }
+
   .tc-content {
     box-shadow: none;
     border: 1px solid #ddd;
     padding: 15px;
     min-height: auto;
   }
+
   .tc-title span::after {
     display: none;
   }

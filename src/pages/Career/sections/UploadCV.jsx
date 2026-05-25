@@ -1,173 +1,211 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FiMail,
   FiFile,
-  FiCheckCircle,
-  FiSend
+  FiBriefcase,
+  FiSend,
+  FiUser,
+  FiPhone
 } from 'react-icons/fi';
 
 import careerImage from '../../../assets/images/Career/Cv.png';
-
 import './UploadCV.css';
 
 const UploadCV = () => {
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    position: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // EmailJS connect later
+    console.log("Submitted Data:", formData);
+  };
+
   return (
     <section className="ucv-section" id="upload-section">
       <div className="ucv-container">
 
-        {/* Header */}
+        {/* HEADER */}
         <div className="ucv-header">
-
-          <span className="ucv-subtitle">
-            APPLY NOW
-          </span>
+          <span className="ucv-subtitle">APPLY NOW</span>
 
           <h2 className="ucv-title">
-            Upload Your <span>CV</span>
+            Job Application <span>Form</span>
           </h2>
 
           <p className="ucv-desc">
-            No current openings? No problem. Send us your CV and
-            we'll keep you in mind for future opportunities
+            Fill out the form below and our HR team will contact you if your profile matches.
           </p>
-
         </div>
 
-        {/* Main Grid */}
+        {/* GRID */}
         <div className="ucv-grid">
 
-          {/* LEFT CARD */}
+          {/* ================= LEFT SIDE FORM ================= */}
           <div className="ucv-email-card">
-
             <div className="ucv-card-inner">
 
-              {/* Icon */}
               <div className="ucv-email-icon-wrapper">
-                <FiMail className="ucv-email-icon" />
+                <FiBriefcase className="ucv-email-icon" />
               </div>
 
-              {/* Title */}
               <h3 className="ucv-email-title">
-                Send Us Your Resume
+                Apply for a Position
               </h3>
 
-              {/* Description */}
               <p className="ucv-email-desc">
-                We are always looking for talented professionals to
-                join our growing team. Email your CV along with a
-                brief introduction to our HR team.
+                No file upload needed. Fill the form and submit your application.
               </p>
 
-              {/* Email CTA */}
-              <div className="ucv-email-address">
+              {/* FORM */}
+              <form className="ucv-form" onSubmit={handleSubmit}>
 
-                <span className="ucv-email-label">
-                  HR Email Address
-                </span>
+                {/* NAME */}
+                <div className="ucv-input-group">
+                  <FiUser />
 
-                <a
-                  href="mailto:admin@armexsolution.com.com?subject=Job%20Application%20-%20CV%20Attached"
-                  className="ucv-email-link"
-                >
-                   admin@armexsolution.com
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-                  <FiSend className="ucv-email-send-icon" />
-                </a>
+                {/* EMAIL */}
+                <div className="ucv-input-group">
+                  <FiMail />
 
-              </div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-              {/* Instructions */}
-              <div className="ucv-email-instructions">
+                {/* PHONE */}
+                <div className="ucv-input-group">
+                  <FiPhone />
 
-                <h4>
-                  What to include in your email:
-                </h4>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
 
-                <ul>
+                {/* POSITION DROPDOWN */}
+                <div className="ucv-input-group">
+                  <FiBriefcase />
 
-                  <li>
-                    <FiCheckCircle />
-                    Updated resume (PDF or DOC)
-                  </li>
+                  <select
+                    name="position"
+                    value={formData.position}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select Position</option>
 
-                  <li>
-                    <FiCheckCircle />
-                    Position you're interested in
-                  </li>
+                    <option value="BIM Engineer">
+                      BIM Engineer
+                    </option>
 
-                  <li>
-                    <FiCheckCircle />
-                    Brief cover message / introduction
-                  </li>
+                    <option value="Structural Detailer">
+                      Structural Detailer
+                    </option>
 
-                  <li>
-                    <FiCheckCircle />
-                    Portfolio or work samples (optional)
-                  </li>
+                    <option value="Rebar Detailing Engineer">
+                      Rebar Detailing Engineer
+                    </option>
 
-                </ul>
+                    <option value="Civil Draftsman">
+                      Civil Draftsman
+                    </option>
+                  </select>
+                </div>
 
-              </div>
+                {/* MESSAGE */}
+                <textarea
+                  name="message"
+                  placeholder="Tell us about your experience..."
+                  rows="4"
+                  value={formData.message}
+                  onChange={handleChange}
+                />
 
-              {/* Note */}
+                {/* SUBMIT BUTTON */}
+                <div className="button-row">
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                    aria-label="Submit job application"
+                  >
+                    Submit Application
+                    <span className="btn-arrow">
+                      <FiSend />
+                    </span>
+                  </button>
+                </div>
+
+              </form>
+
+              {/* NOTE */}
               <div className="ucv-email-note">
-
                 <FiFile className="ucv-note-icon" />
 
                 <p>
-                  We accept .pdf, .doc, .docx files (Max 5MB).
-                  All applications are kept confidential.
+                  Your application will be reviewed by our HR team. We will contact you if shortlisted.
                 </p>
-
               </div>
 
             </div>
-
           </div>
 
-          {/* RIGHT IMAGE CARD */}
-          <div className="ucv-image-card">
+          {/* ================= RIGHT SIDE ================= */}
+          <div className="ucv-right-wrapper">
 
-            <img
-              src={careerImage}
-              alt="Career"
-              className="ucv-image"
-            />
+            <div className="ucv-right-top">
+              <span className="ucv-info-tag">
+                CAREER OPPORTUNITIES
+              </span>
 
-            <div className="ucv-image-overlay">
+              <h3 className="ucv-info-title">
+                Shape Your Future With Our Team
+              </h3>
 
-              <div className="ucv-overlay-content">
+              <p className="ucv-info-desc">
+                Join a workplace that values innovation, collaboration, and long-term professional growth.
+              </p>
+            </div>
 
-                <span className="ucv-overlay-tag">
-                  CAREER OPPORTUNITIES
-                </span>
+            <div className="ucv-right-bottom">
+              <img src={careerImage} alt="Career" />
 
-                <h3>
-                  Shape Your Future With Our Team
-                </h3>
-
-                <p>
-                  Join a workplace that values innovation,
-                  collaboration, and long-term professional growth.
-                </p>
-
-              </div>
-
+              <div className="ucv-image-overlay"></div>
             </div>
 
           </div>
-
-        </div>
-
-        {/* Bottom Note */}
-        <div className="ucv-bottom-note">
-
-          <p>
-            By submitting your application, you agree to our
-            <a href="/privacy-policy"> Privacy Policy</a>
-            and
-            <a href="/terms-conditions"> Terms of Service</a>.
-          </p>
 
         </div>
 

@@ -9,6 +9,7 @@ import {
   FiMessageSquare,
   FiCheckCircle
 } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import "./ContactForm.css";
 
 import emailjs from "@emailjs/browser";
@@ -25,8 +26,7 @@ const contactInfo = [
   {
     icon: <FiMapPin />,
     title: "Corporate Office",
-    line1: "Chennai, Tamil Nadu, India - 600001",
-    color: "#C9A22D"
+    line1: "Chennai, Tamil Nadu, India - 600001"
   },
   {
     icon: <FiMail />,
@@ -41,9 +41,15 @@ const contactInfo = [
     link: "tel:+919342761826"
   },
   {
+    icon: <FaWhatsapp />,
+    title: "WhatsApp",
+    line1: "Chat on WhatsApp",
+    link: "https://wa.me/919342761826"
+  },
+  {
     icon: <FiClock />,
     title: "Support",
-    line1: "24/7"
+    line1: "24/7 Assistance"
   }
 ];
 
@@ -58,55 +64,73 @@ const services = [
 
 const ContactForm = () => {
   const [formData, setFormData] = useState(initialForm);
-  const [status, setStatus] = useState({ submitted: false, message: "" });
 
-  const handleChange = ({ target: { name, value } }) =>
-    setFormData(prev => ({ ...prev, [name]: value }));
-  
+  const [status, setStatus] = useState({
+    submitted: false,
+    message: ""
+  });
 
-  const handleSubmit = e => {
+  const handleChange = ({ target: { name, value } }) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ EMAILJS USING .ENV VARIABLES
-    emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,   // from .env
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,  // from .env
-      {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        message: formData.message
-      },
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY    // from .env
-    )
-    .then(() => {
-      setStatus({
-        submitted: true,
-        message: "Thank you! We'll contact you within 2 hours."
-      });
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        setStatus({
+          submitted: true,
+          message: "Thank you! We'll contact you within 2 hours."
+        });
 
-      setTimeout(() => {
-        setStatus({ submitted: false, message: "" });
-        setFormData(initialForm);
-      }, 3000);
-    })
-    .catch(() => {
-  
-      setStatus({
-        submitted: true,
-        message: "Failed to send message. Please try again."
-      });
+        setTimeout(() => {
+          setStatus({
+            submitted: false,
+            message: ""
+          });
 
-      setTimeout(() => {
-        setStatus({ submitted: false, message: "" });
-      }, 3000);
-    });
+          setFormData(initialForm);
+        }, 3000);
+      })
+      .catch(() => {
+        setStatus({
+          submitted: true,
+          message: "Failed to send message. Please try again."
+        });
+
+        setTimeout(() => {
+          setStatus({
+            submitted: false,
+            message: ""
+          });
+        }, 3000);
+      });
   };
 
   return (
-    <section className="cf-section" id="contactF" aria-label="Contact form section">
+    <section
+      className="cf-section"
+      id="contactF"
+      aria-label="Contact form section"
+    >
       <div className="cf-bg-gradient" aria-hidden="true"></div>
+
       <div className="cf-shape cf-shape-1" aria-hidden="true"></div>
       <div className="cf-shape cf-shape-2" aria-hidden="true"></div>
       <div className="cf-shape cf-shape-3" aria-hidden="true"></div>
@@ -115,11 +139,14 @@ const ContactForm = () => {
         {/* Header */}
         <div className="cf-header">
           <span className="cf-subtitle">CONTACT US</span>
+
           <h2 className="cf-title">
             Get In <span>Touch</span>
           </h2>
+
           <p className="cf-desc">
-            Have a question or ready to start your project? Reach out to us
+            Have a question or ready to start your project? Reach out to us and
+            our team will assist you quickly.
           </p>
         </div>
 
@@ -131,14 +158,28 @@ const ContactForm = () => {
             <div className="cf-info-grid">
               {contactInfo.map((item, i) => (
                 <div key={i} className="cf-info-card">
-                  <div className="cf-info-icon-wrapper">
-                    <div className="cf-info-icon" aria-hidden="true">{item.icon}</div>
+                  <div className="cf-info-icon">
+                    {item.icon}
                   </div>
 
                   <div className="cf-info-content">
                     <h4>{item.title}</h4>
+
                     {item.link ? (
-                      <a href={item.link} className="cf-info-link">
+                      <a
+                        href={item.link}
+                        className="cf-info-link"
+                        target={
+                          item.link.includes("wa.me")
+                            ? "_blank"
+                            : undefined
+                        }
+                        rel={
+                          item.link.includes("wa.me")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                      >
                         {item.line1}
                       </a>
                     ) : (
@@ -159,22 +200,50 @@ const ContactForm = () => {
 
               {status.submitted ? (
                 <div className="cf-success">
-                  <FiCheckCircle className="cf-success-icon" aria-hidden="true" />
+                  <FiCheckCircle
+                    className="cf-success-icon"
+                    aria-hidden="true"
+                  />
+
                   <p>{status.message}</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="cf-form" noValidate>
-                  {[{
-                    label: "Full Name *", name: "name", icon: <FiUser />, type: "text", required: true, placeholder: "Full Name"
-                  }, {
-                    label: "Email Address *", name: "email", icon: <FiMail />, type: "email", required: true, placeholder: "abc@example.com"
-                  }, {
-                    label: "Phone Number", name: "phone", icon: <FiPhone />, type: "tel", placeholder: "+91 98400 00000"
-                  }].map((field, i) => (
+                <form
+                  onSubmit={handleSubmit}
+                  className="cf-form"
+                  noValidate
+                >
+                  {[
+                    {
+                      label: "Full Name *",
+                      name: "name",
+                      icon: <FiUser />,
+                      type: "text",
+                      required: true,
+                      placeholder: "Full Name"
+                    },
+                    {
+                      label: "Email Address *",
+                      name: "email",
+                      icon: <FiMail />,
+                      type: "email",
+                      required: true,
+                      placeholder: "abc@example.com"
+                    },
+                    {
+                      label: "Phone Number",
+                      name: "phone",
+                      icon: <FiPhone />,
+                      type: "tel",
+                      placeholder: "+91 98400 00000"
+                    }
+                  ].map((field, i) => (
                     <div key={i} className="cf-field">
                       <label htmlFor={field.name}>{field.label}</label>
+
                       <div className="cf-field-input">
                         {field.icon}
+
                         <input
                           id={field.name}
                           name={field.name}
@@ -189,9 +258,13 @@ const ContactForm = () => {
                   ))}
 
                   <div className="cf-field">
-                    <label htmlFor="service">Service Interested In</label>
+                    <label htmlFor="service">
+                      Service Interested In
+                    </label>
+
                     <div className="cf-field-input">
-                      <FiMessageSquare className="cf-field-icon" aria-hidden="true" />
+                      <FiMessageSquare className="cf-field-icon" />
+
                       <select
                         id="service"
                         name="service"
@@ -199,17 +272,24 @@ const ContactForm = () => {
                         onChange={handleChange}
                       >
                         <option value="">Select a service</option>
+
                         {services.map((s, i) => (
-                          <option key={i} value={s}>{s}</option>
+                          <option key={i} value={s}>
+                            {s}
+                          </option>
                         ))}
                       </select>
                     </div>
                   </div>
 
                   <div className="cf-field cf-field-full">
-                    <label htmlFor="message">Your Message *</label>
+                    <label htmlFor="message">
+                      Your Message *
+                    </label>
+
                     <div className="cf-field-input cf-textarea">
-                      <FiMessageSquare className="cf-field-icon" aria-hidden="true" />
+                      <FiMessageSquare className="cf-field-icon" />
+
                       <textarea
                         id="message"
                         name="message"
@@ -222,10 +302,11 @@ const ContactForm = () => {
                     </div>
                   </div>
 
+                  {/* UPDATED BUTTON */}
                   <button type="submit" className="cf-submit-btn">
                     <span>Send Message</span>
-                    <FiSend className="cf-submit-icon" aria-hidden="true" />
-                    <div className="cf-btn-glare" aria-hidden="true"></div>
+
+                    <span className="cf-submit-arrow">→</span>
                   </button>
 
                   <p className="cf-privacy">

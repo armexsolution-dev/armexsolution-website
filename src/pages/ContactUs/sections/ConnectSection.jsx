@@ -89,17 +89,22 @@ const ConnectSection = () => {
         <div className="cn-content">
           <div className="cn-content-wrapper">
             <span className="cn-subtitle">CONNECT WITH US</span>
+
             <h2 className="cn-title">
               Ready to start <span>your project?</span>
             </h2>
+
             <p className="cn-desc">
               Share your requirements with us and get expert assistance within 2 hours
             </p>
 
-            <button className="cn-hint" onClick={handleScroll} aria-label="Fill the contact form">
+            <button
+              className="cn-hint"
+              onClick={handleScroll}
+              aria-label="Fill the contact form"
+            >
               <span>Fill the form below</span>
               <FiArrowRight className="cn-hint-icon" aria-hidden="true" />
-              <div className="cn-hint-glow" aria-hidden="true"></div>
             </button>
           </div>
         </div>

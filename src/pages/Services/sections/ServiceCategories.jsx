@@ -133,8 +133,12 @@ const ServiceCategories = () => {
         {/* CTA */}
         <div className="sc-cta">
           <p>Need a custom solution for your project?</p>
+
           <Link to="/contact-us" className="sc-cta-btn">
-            Contact Our Experts <FiArrowRight aria-hidden="true" />
+            Contact Our Experts
+            <span className="sc-btn-arrow">
+              <FiArrowRight aria-hidden="true" />
+            </span>
           </Link>
         </div>
       </div>

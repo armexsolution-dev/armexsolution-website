@@ -20,17 +20,19 @@
    Header
 -------------------------------- */
 .homeServices-header span {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   letter-spacing: 2px;
   color: #8a8a8a;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .homeServices-header h2 {
   margin-top: 10px;
-  font-size: clamp(1.5rem, 4vw, 1.75rem);
+  font-size: clamp(2rem, 4vw, 2.6rem);
   font-weight: 700;
   color: #1a1a1a;
+  line-height: 1.2;
 }
 
 /* --------------------------------
@@ -88,30 +90,32 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent);
   color: white;
   box-sizing: border-box;
 }
 
 .serviceOverlay h3 {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.5px;
+  line-height: 1.3;
 }
 
 .serviceOverlay p {
-  margin: 4px 0 0;
-  font-size: 0.8125rem;
-  opacity: 0.9;
+  margin: 8px 0 0;
+  font-size: 0.98rem;
+  opacity: 0.95;
   color: white;
+  line-height: 1.5;
 }
 
 /* Button */
 .serviceBtn {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #c9a22d;
   border: none;
@@ -121,6 +125,12 @@
   cursor: pointer;
   color: white;
   transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.serviceBtn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .serviceBtn:hover {
@@ -131,16 +141,27 @@
 /* --------------------------------
    Responsive Breakpoints
 -------------------------------- */
+
 /* Up to 1199px – tablet landscape */
 @media (max-width: 1199px) {
   .homeServices-container {
     max-width: 960px;
   }
+
   .serviceCard {
     height: 180px;
   }
+
   .largeCard {
     height: 380px;
+  }
+
+  .serviceOverlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .serviceOverlay p {
+    font-size: 0.9rem;
   }
 }
 
@@ -150,12 +171,15 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
   .smallGrid {
     grid-template-columns: 1fr;
   }
+
   .largeCard {
     height: 320px;
   }
+
   .wideCard {
     grid-column: auto;
   }
@@ -166,20 +190,41 @@
   .homeServices {
     padding: 3rem 0;
   }
+
   .homeServices-container {
     padding: 0 16px;
   }
+
   .homeServices-layout {
     gap: 16px;
   }
+
   .smallGrid {
     gap: 16px;
   }
+
   .serviceCard {
     height: 160px;
   }
+
   .largeCard {
     height: 280px;
+  }
+
+  .homeServices-header h2 {
+    font-size: 2rem;
+  }
+
+  .serviceOverlay {
+    padding: 18px;
+  }
+
+  .serviceOverlay h3 {
+    font-size: 1.05rem;
+  }
+
+  .serviceOverlay p {
+    font-size: 0.85rem;
   }
 }
 
@@ -188,18 +233,31 @@
   .homeServices {
     padding: 2.5rem 0;
   }
+
   .serviceOverlay {
     padding: 16px;
   }
+
   .serviceOverlay h3 {
     font-size: 1rem;
   }
+
   .serviceOverlay p {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
+
   .serviceBtn {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .serviceBtn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .homeServices-header h2 {
+    font-size: 1.8rem;
   }
 }
 
@@ -208,11 +266,21 @@
   .homeServices-container {
     padding: 0 12px;
   }
+
   .serviceCard {
     height: 140px;
   }
+
   .largeCard {
     height: 240px;
+  }
+
+  .serviceOverlay h3 {
+    font-size: 0.95rem;
+  }
+
+  .serviceOverlay p {
+    font-size: 0.78rem;
   }
 }
 
@@ -221,13 +289,20 @@
   .serviceOverlay {
     padding: 12px;
   }
+
   .serviceOverlay h3 {
     font-size: 0.9rem;
   }
-  .serviceBtn {
-    width: 28px;
-    height: 28px;
+
+  .serviceOverlay p {
+    font-size: 0.75rem;
   }
+
+  .serviceBtn {
+    width: 30px;
+    height: 30px;
+  }
+
   .serviceBtn svg {
     width: 16px;
     height: 16px;
@@ -239,9 +314,11 @@
   .homeServices {
     padding: 2rem 0;
   }
+
   .serviceCard {
     height: 160px;
   }
+
   .largeCard {
     height: 260px;
   }
@@ -254,9 +331,11 @@
   .serviceCard img {
     transition: none;
   }
+
   .serviceCard:hover img {
     transform: none;
   }
+
   .serviceBtn {
     transition: none;
   }
@@ -267,18 +346,22 @@
     padding: 1rem 0;
     background: white;
   }
+
   .serviceOverlay {
     position: relative;
     background: #f5f5f5;
     color: black;
     padding: 10px;
   }
+
   .serviceCard img {
     display: none;
   }
+
   .serviceBtn {
     display: none;
   }
+
   .serviceOverlay p {
     color: #333;
   }

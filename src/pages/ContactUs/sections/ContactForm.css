@@ -3,47 +3,50 @@
   min-height: 100vh;
   width: 100%;
   background: #ffffff;
-  padding: 4rem 0;
+  padding: 5rem 0;
   display: flex;
   align-items: center;
   overflow-x: hidden;
-  transform: translateZ(0);
 }
 
-.cf-section::after{
+.cf-section::after {
   display: none !important;
 }
 
-/* Animated gradient background */
+/* Background */
 .cf-bg-gradient {
   position: absolute;
   top: -50%;
   right: -10%;
   width: min(800px, 90vw);
   height: min(800px, 90vw);
-  background: radial-gradient(circle, rgba(201, 162, 45, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(201, 162, 45, 0.08) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   animation: cfGradientFloat 20s ease-in-out infinite;
   z-index: 1;
-  pointer-events: none;
-  will-change: transform;
 }
 
 @keyframes cfGradientFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-30px, 30px) scale(1.1); }
-  66% { transform: translate(20px, -20px) scale(0.9); }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-20px, 20px) scale(1.05);
+  }
 }
 
-/* Floating shapes */
+/* Shapes */
 .cf-shape {
   position: absolute;
-  border: 2px solid rgba(201, 162, 45, 0.1);
   border-radius: 50%;
-  z-index: 1;
+  border: 2px solid rgba(201, 162, 45, 0.08);
   animation: cfShapeFloat 15s ease-in-out infinite;
-  pointer-events: none;
-  will-change: transform;
 }
 
 .cf-shape-1 {
@@ -51,156 +54,110 @@
   height: min(300px, 40vw);
   top: 10%;
   left: 5%;
-  border-color: rgba(201, 162, 45, 0.05);
-  animation-delay: 0s;
 }
 
 .cf-shape-2 {
-  width: min(200px, 30vw);
-  height: min(200px, 30vw);
-  bottom: 15%;
+  width: min(180px, 28vw);
+  height: min(180px, 28vw);
+  bottom: 10%;
   right: 5%;
-  border-color: rgba(201, 162, 45, 0.08);
-  animation-delay: 2s;
 }
 
 .cf-shape-3 {
-  width: min(150px, 25vw);
-  height: min(150px, 25vw);
+  width: min(130px, 22vw);
+  height: min(130px, 22vw);
   top: 40%;
   right: 15%;
-  border: 2px dashed rgba(201, 162, 45, 0.1);
-  animation-delay: 4s;
+  border-style: dashed;
 }
 
 @keyframes cfShapeFloat {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(20px, -20px) rotate(10deg); }
-  66% { transform: translate(-15px, 15px) rotate(-10deg); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 /* Container */
 .cf-container {
   position: relative;
+  z-index: 2;
+  width: 100%;
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 5vw, 3rem);
-  width: 100%;
-  z-index: 2;
 }
 
 /* Header */
 .cf-header {
   text-align: center;
-  margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: cfFadeUp 0.8s ease-out forwards;
-  will-change: transform, opacity;
-}
-
-@keyframes cfFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-bottom: 3rem;
 }
 
 .cf-subtitle {
   display: inline-block;
-  font-size: clamp(0.65rem, 3vw, 0.75rem);
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
   font-weight: 600;
   color: #c9a22d;
   letter-spacing: 2px;
   text-transform: uppercase;
   background: rgba(201, 162, 45, 0.08);
-  padding: 0.3rem 1rem;
+  padding: 0.45rem 1.2rem;
   border-radius: 30px;
   margin-bottom: 1rem;
 }
 
 .cf-title {
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   color: #1e2b37;
-  margin: 0 0 0.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .cf-title span {
   color: #c9a22d;
-  position: relative;
-  display: inline-block;
 }
 
 .cf-desc {
-  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.8;
   color: #64748b;
-  max-width: 550px;
+  max-width: 650px;
   margin: 0 auto;
-  line-height: 1.6;
 }
 
-/* Main grid – stacks on tablets */
+/* Grid */
 .cf-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  gap: 2rem;
   align-items: stretch;
 }
 
-/* Left panel */
+/* Info Section */
 .cf-info {
-  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-  border-radius: 30px;
-  padding: clamp(1.5rem, 5vw, 2.2rem);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(201, 162, 45, 0.2);
-  position: relative;
-  overflow: hidden;
-  animation: cfSlideLeft 0.8s ease-out 0.2s both;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  will-change: transform, opacity;
-}
-
-@keyframes cfSlideLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.cf-info::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #c9a22d, #f7d44a, #c9a22d);
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  border-radius: 28px;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid rgba(201, 162, 45, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
 }
 
 .cf-info-title {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.45rem;
+  font-weight: 700;
   color: #1e2b37;
-  margin: 0 0 1.2rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid rgba(201, 162, 45, 0.2);
+  margin-bottom: 1.5rem;
 }
 
 .cf-info-grid {
   display: grid;
   gap: 1rem;
-  flex: 1;
 }
 
 .cf-info-card {
@@ -208,120 +165,73 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: white;
-  border-radius: 16px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(201, 162, 45, 0.08);
   transition: all 0.3s ease;
-  border: 1px solid rgba(201, 162, 45, 0.1);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
-  will-change: transform, border-color, box-shadow, background;
 }
 
 .cf-info-card:hover {
+  transform: translateY(-4px);
   border-color: #c9a22d;
-  transform: translateX(5px);
-  box-shadow: 0 10px 25px rgba(201, 162, 45, 0.1);
-  background: linear-gradient(90deg, white, rgba(201, 162, 45, 0.02));
+  box-shadow: 0 12px 25px rgba(201, 162, 45, 0.12);
 }
 
 .cf-info-icon {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, #c9a22d 0%, #b08f28 100%);
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #c9a22d, #b08f28);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  color: white;
-  box-shadow: 0 8px 20px rgba(201, 162, 45, 0.3);
-  transition: all 0.3s ease;
-  will-change: transform, background, box-shadow;
-}
-
-.cf-info-card:hover .cf-info-icon {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #b08f28 0%, #9a7a22 100%);
-  box-shadow: 0 10px 25px rgba(201, 162, 45, 0.4);
-}
-
-.cf-info-content {
-  flex: 1;
+  font-size: 1.3rem;
+  flex-shrink: 0;
 }
 
 .cf-info-content h4 {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   color: #1e2b37;
-  margin: 0 0 2px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin-bottom: 0.35rem;
 }
 
 .cf-info-text,
 .cf-info-link {
-  font-size: 0.9rem;
-  color: #334155;
-  margin: 0;
-  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+  text-decoration: none;
   word-break: break-word;
 }
 
-.cf-info-link {
-  color: #c9a22d;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
 .cf-info-link:hover {
-  color: #b08f28;
-  text-decoration: underline;
+  color: #c9a22d;
 }
 
-/* Right panel – form */
-.cf-form-wrapper {
-  animation: cfSlideRight 0.8s ease-out 0.3s both;
-  height: 100%;
-  will-change: transform, opacity;
-}
-
-@keyframes cfSlideRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
+/* Form Section */
 .cf-form-card {
-  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-  border-radius: 30px;
-  padding: clamp(1.5rem, 5vw, 2.2rem);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(201, 162, 45, 0.2);
-  position: relative;
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  border-radius: 28px;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid rgba(201, 162, 45, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .cf-form-title {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: #1e2b37;
-  margin: 0 0 1.2rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid rgba(201, 162, 45, 0.2);
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
 }
 
-/* Form grid */
 .cf-form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
-  flex: 1;
+  gap: 1.3rem;
 }
 
 .cf-field {
@@ -334,10 +244,10 @@
 
 .cf-field label {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #334155;
-  margin-bottom: 6px;
 }
 
 .cf-field-input {
@@ -346,28 +256,30 @@
   align-items: center;
 }
 
-/* Icons inside inputs */
 .cf-field-input > svg {
   position: absolute;
   left: 15px;
   color: #c9a22d;
   font-size: 1rem;
-  z-index: 1;
-  pointer-events: none;
 }
 
 .cf-field-input input,
 .cf-field-input select,
 .cf-field-input textarea {
   width: 100%;
-  padding: 0.75rem 0.75rem 0.75rem 2.8rem;
+  padding: 0.9rem 1rem 0.9rem 2.9rem;
+  border-radius: 14px;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #1e2b37;
   background: #ffffff;
   transition: all 0.3s ease;
   font-family: inherit;
+}
+
+.cf-field-input textarea {
+  resize: vertical;
+  min-height: 120px;
 }
 
 .cf-field-input input:focus,
@@ -379,202 +291,243 @@
 }
 
 .cf-field-input select {
-  cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A22D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 15px center;
-  background-size: 16px;
+  cursor: pointer;
 }
 
-.cf-field-input textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-/* Submit button */
+/* UPDATED BUTTON */
 .cf-submit-btn {
   grid-column: span 2;
   position: relative;
-  padding: 0.9rem 1.5rem;
-  background: linear-gradient(135deg, #c9a22d 0%, #b08f28 100%);
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding: 14px 35px;
+  background: #c9a22d;
+  border: none;
+  color: #0c1323;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  z-index: 1;
   margin-top: 0.5rem;
-  box-shadow: 0 10px 20px rgba(201, 162, 45, 0.3);
-  will-change: transform, box-shadow;
+
+  box-shadow:
+    0 0 8px rgba(201, 162, 45, 0.5),
+    0 0 18px rgba(201, 162, 45, 0.35),
+    0 0 30px rgba(201, 162, 45, 0.2);
+}
+
+.cf-submit-btn::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #c9a22d,
+    #f3e6af,
+    #c9a22d
+  );
+  z-index: -1;
+  opacity: 0.7;
+  filter: blur(14px);
+  animation: glowMove 3s linear infinite;
+}
+
+.cf-submit-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: skewX(-25deg);
+  transition: all 0.7s ease;
+}
+
+.cf-submit-btn:hover::after {
+  left: 130%;
 }
 
 .cf-submit-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(201, 162, 45, 0.4);
+  background: #f3e6af;
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow:
+    0 0 12px rgba(243, 230, 175, 0.8),
+    0 0 28px rgba(201, 162, 45, 0.55),
+    0 0 45px rgba(201, 162, 45, 0.35);
 }
 
-.cf-submit-icon {
+.cf-submit-arrow {
+  font-size: 1.2rem;
   transition: transform 0.3s ease;
-  will-change: transform;
 }
 
-.cf-submit-btn:hover .cf-submit-icon {
-  transform: translateX(5px) rotate(-45deg);
+.cf-submit-btn:hover .cf-submit-arrow {
+  transform: translateX(6px);
 }
 
-.cf-btn-glare {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
-}
+@keyframes glowMove {
+  0% {
+    transform: translateX(-10%);
+  }
 
-.cf-submit-btn:hover .cf-btn-glare {
-  left: 100%;
+  50% {
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translateX(-10%);
+  }
 }
 
 .cf-privacy {
   grid-column: span 2;
-  font-size: 0.7rem;
-  color: #94a3b8;
+  font-size: 0.82rem;
+  line-height: 1.6;
   text-align: center;
-  margin: 0.5rem 0 0;
+  color: #94a3b8;
 }
 
-/* Success message */
+/* Success */
 .cf-success {
   text-align: center;
-  padding: 2.5rem 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 2rem 1rem;
 }
 
 .cf-success-icon {
   font-size: 4rem;
   color: #c9a22d;
   margin-bottom: 1rem;
-  animation: cfSuccessPop 0.5s ease-out;
-  will-change: transform;
-}
-
-@keyframes cfSuccessPop {
-  0% { transform: scale(0); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
 }
 
 .cf-success p {
   font-size: 1.1rem;
   color: #1e2b37;
-  margin: 0;
+  line-height: 1.7;
 }
 
-/* ===== RESPONSIVE BREAKPOINTS (unchanged) ===== */
+/* Tablet */
 @media (max-width: 900px) {
   .cf-grid {
     grid-template-columns: 1fr;
   }
+
   .cf-section {
-    min-height: auto;
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 }
 
+/* Mobile */
 @media (max-width: 650px) {
   .cf-form {
     grid-template-columns: 1fr;
   }
+
   .cf-field,
   .cf-field-full,
   .cf-submit-btn,
   .cf-privacy {
     grid-column: span 1;
   }
+
   .cf-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
+
+  .cf-desc {
+    font-size: 0.95rem;
+  }
+
+  .cf-form-title,
+  .cf-info-title {
+    font-size: 1.2rem;
+  }
+
   .cf-info-card {
-    padding: 0.8rem;
-  }
-  .cf-info-content p,
-  .cf-info-link {
-    font-size: 0.85rem;
+    padding: 0.9rem;
   }
 }
 
-@media (max-width: 500px) {
+/* Small Mobile */
+@media (max-width: 480px) {
+  .cf-section {
+    padding: 3rem 0;
+  }
+
+  .cf-container {
+    padding: 0 1rem;
+  }
+
   .cf-info-card {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    text-align: left;
   }
+
+  .cf-info-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 1.1rem;
+  }
+
   .cf-submit-btn {
-    padding: 0.7rem 1.2rem;
-    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 1rem;
   }
-  .cf-success-icon {
-    font-size: 3rem;
+
+  .cf-field-input input,
+  .cf-field-input select,
+  .cf-field-input textarea {
+    font-size: 0.95rem;
   }
 }
 
+/* Landscape */
 @media (max-width: 768px) and (orientation: landscape) {
   .cf-section {
     padding: 2rem 0;
   }
-  .cf-info-card {
-    padding: 0.6rem;
-  }
 }
 
+/* Large Screens */
 @media (min-width: 1600px) {
   .cf-container {
     max-width: 1500px;
   }
 }
 
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .cf-bg-gradient,
-  .cf-shape,
-  .cf-header,
-  .cf-info,
-  .cf-form-wrapper,
-  .cf-success-icon,
-  .cf-submit-btn .cf-btn-glare {
+  .cf-shape {
     animation: none !important;
-    transition: none !important;
   }
-  .cf-info-card:hover {
-    transform: none;
+
+  .cf-submit-btn,
+  .cf-info-card {
+    transition: none !important;
   }
 }
 
+/* Print */
 @media print {
-  .cf-section {
-    background: white;
-    padding: 1rem;
-  }
   .cf-bg-gradient,
-  .cf-shape,
-  .cf-btn-glare {
+  .cf-shape {
     display: none;
   }
-  .cf-submit-btn {
-    background: #c9a22d;
-    color: white;
-  }
-  .cf-info-card {
-    break-inside: avoid;
+
+  .cf-section {
+    background: #ffffff;
+    padding: 1rem;
   }
 }

@@ -1,7 +1,7 @@
-/* ===== Sitemap Page – Clean, Optimized, No External Fonts ===== */
+/* ===== Sitemap Page – Clean, Optimized, Enhanced Typography ===== */
 
 .sm-section {
-  padding: 60px 0;
+  padding: 120px 0;
   background: #ffffff;
   width: 100%;
   min-height: 100vh;
@@ -11,7 +11,7 @@
   transform: translateZ(0);
 }
 
-.sm-section::after{
+.sm-section::after {
   display: none !important;
 }
 
@@ -25,27 +25,28 @@
 /* Header */
 .sm-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .sm-subtitle {
   display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: #C9A22D;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
   background: rgba(201, 162, 45, 0.08);
-  padding: 0.3rem 1rem;
+  padding: 0.35rem 1.1rem;
   border-radius: 30px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
 }
 
 .sm-title {
-  font-size: 2.2rem;
-  font-weight: 600;
+  font-size: 2.6rem;
+  font-weight: 700;
   color: #1e2b37;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.7rem;
+  line-height: 1.2;
 }
 
 .sm-title-line {
@@ -54,13 +55,12 @@
   display: inline-block;
 }
 
-
-
 .sm-desc {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #64748b;
-  max-width: 500px;
+  max-width: 560px;
   margin: 0 auto;
+  line-height: 1.7;
 }
 
 /* Status Bar */
@@ -72,7 +72,7 @@
   background: #F8FAFC;
   border: 1px solid #e2e8f0;
   border-radius: 50px;
-  padding: 12px 30px;
+  padding: 14px 32px;
   margin-bottom: 40px;
   flex-wrap: wrap;
 }
@@ -84,16 +84,17 @@
 }
 
 .sm-status-label {
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   color: #64748b;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
+  font-weight: 500;
 }
 
 .sm-status-value {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #C9A22D;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .sm-status-divider {
@@ -129,56 +130,56 @@
 
 .sm-category-header {
   background: #F8FAFC;
-  padding: 18px 20px;
+  padding: 20px 22px;
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .sm-category-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   background: #ffffff;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #C9A22D;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   border: 1px solid rgba(201, 162, 45, 0.2);
 }
 
 .sm-category-title {
   flex: 1;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #1e2b37;
   margin: 0;
 }
 
 .sm-category-count {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: #C9A22D;
   background: rgba(201, 162, 45, 0.1);
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 20px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Links List */
 .sm-links-list {
-  padding: 15px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .sm-link-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 15px;
+  padding: 14px 16px;
   background: #ffffff;
   border: 1px solid #edf2f7;
   border-radius: 12px;
@@ -199,21 +200,22 @@
 
 .sm-link-label {
   display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.98rem;
+  font-weight: 600;
   color: #1e2b37;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .sm-link-desc {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: #64748b;
+  line-height: 1.5;
 }
 
 .sm-link-arrow {
   color: #C9A22D;
-  font-size: 0.9rem;
+  font-size: 1rem;
   opacity: 0;
   transform: translateX(-5px);
   transition: all 0.2s ease;
@@ -230,39 +232,40 @@
   background: #F8FAFC;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
-  padding: 20px;
+  padding: 22px;
   margin-bottom: 30px;
 }
 
 .sm-note-content {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
 }
 
 .sm-note-icon {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: #C9A22D;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .sm-note-content h3 {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.12rem;
+  font-weight: 700;
   color: #1e2b37;
-  margin: 0 0 4px;
+  margin: 0 0 5px;
 }
 
 .sm-note-content p {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: #475569;
   margin: 0;
+  line-height: 1.7;
 }
 
 .sm-note-content a {
   color: #C9A22D;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .sm-note-content a:hover {
@@ -275,7 +278,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 15px 25px;
+  padding: 18px 26px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 60px;
@@ -283,9 +286,9 @@
 }
 
 .sm-quick-label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #64748b;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .sm-quick-items {
@@ -298,9 +301,10 @@
 .sm-quick-item {
   color: #475569;
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 500;
   transition: color 0.2s ease;
-  padding: 4px 8px;
+  padding: 5px 10px;
   border-radius: 20px;
 }
 
@@ -309,18 +313,24 @@
   background: rgba(201, 162, 45, 0.05);
 }
 
-/* Responsive (unchanged) */
+/* Responsive */
 @media (max-width: 900px) {
   .sm-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
   .sm-status-bar {
     gap: 20px;
     padding: 12px 20px;
   }
+
   .sm-status-divider {
     display: none;
+  }
+
+  .sm-title {
+    font-size: 2.2rem;
   }
 }
 
@@ -328,35 +338,58 @@
   .sm-section {
     padding: 40px 0;
   }
-  .sm-title {
-    font-size: 1.8rem;
+
+  .sm-container {
+    padding: 0 20px;
   }
+
+  .sm-title {
+    font-size: 1.95rem;
+  }
+
+  .sm-desc {
+    font-size: 0.95rem;
+  }
+
   .sm-grid {
     grid-template-columns: 1fr;
     gap: 15px;
   }
+
   .sm-status-bar {
     flex-direction: column;
     align-items: flex-start;
     border-radius: 20px;
     padding: 15px;
   }
+
   .sm-status-item {
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
   }
+
   .sm-note-content {
     flex-direction: column;
     text-align: center;
   }
+
   .sm-quick-links {
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
     padding: 15px;
   }
+
   .sm-quick-items {
     justify-content: center;
+  }
+
+  .sm-link-label {
+    font-size: 0.92rem;
+  }
+
+  .sm-link-desc {
+    font-size: 0.76rem;
   }
 }
