@@ -96,7 +96,8 @@ const Navbar = () => {
           </nav>
 
           {/* BUTTON */}
-          <Link to="/contact-us" className="navbar__btn">
+          <Link to="/contact-us#contactScroll" className="navbar__btn">
+          
             <span>Get Quote</span>
 
             <HiArrowRight />
@@ -152,7 +153,7 @@ const Navbar = () => {
           ))}
 
           <Link
-            to="/contact-us"
+            to="/contact-us#contactScroll"
             className="mobile-drawer__btn"
             onClick={() => setMenuOpen(false)}
           >

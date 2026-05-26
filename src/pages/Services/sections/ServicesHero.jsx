@@ -4,7 +4,7 @@ import "./ServicesHero.css";
 
 import SerHero1 from '../../../assets/images/Service/Service1.png'
 import SerHero2 from '../../../assets/images/Service/Service2.png'
-import SerHero3 from '../../../assets/images/Service/Service3.png'
+import SerHero3 from '../../../assets/images/Service/Service3.jpeg'
 import SerHero4 from '../../../assets/images/Service/Service4.png'
 import SerHero5 from '../../../assets/images/Service/Service5.png'
 import SerHero6 from '../../../assets/images/Service/Service6.png'

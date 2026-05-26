@@ -12,10 +12,10 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
-    {
-      question: "What information is required to start a project?",
-      answer: "To begin a rebar detailing project, we typically require the following information:\n\nConcrete GA (General Arrangement) drawings in PDF or CAD format\nProject program or schedule, including the required review timeline\nRebar design notes, including lap lengths, concrete cover, and special detailing requirements\nProject standards and applicable codes\nProject title sheet in AutoCAD .DWG format\n\nProviding these documents helps us ensure accurate reinforcement detailing and smooth project coordination."
-    },
+   {
+  question: "What information is required to start a project?",
+  answer: "To commence a rebar detailing project, we typically require the following information and documentation:\n\n• Concrete GA (General Arrangement) drawings in PDF and/or CAD format\n• Project program or construction schedule, including the required review and submission timelines\n• Rebar design notes, including lap lengths, concrete cover requirements, and any special detailing instructions\n• Rebar design intent and any engineer’s detailing preferences or assumptions\n• Applicable project standards, specifications, and design codes\n• Project title sheet in AutoCAD (.DWG) format\n\nProviding the above information at the outset will help ensure accurate reinforcement detailing, efficient coordination, and smooth project execution."
+},
     {
       question: "What types of structures do you work on?",
       answer: "We provide detailing for a wide range of structures including:\n\nResidential buildings\nCommercial buildings\nBridges and infrastructure\nWind turbine foundations\nIndustrial plants\nStadiums and large structures"

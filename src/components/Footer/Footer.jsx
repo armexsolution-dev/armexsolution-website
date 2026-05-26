@@ -74,7 +74,7 @@ const Footer = () => {
 
           {/* CTA Button */}
           <div className="as-footer-button-row">
-            <Link to="/contact-us">
+            <Link to="/contact-us#contactScroll">
               <button
                 className="as-footer-cta-button"
                 aria-label="Get in touch with 24/7 support"

@@ -30,7 +30,7 @@ const AvailableOpenings = () => {
     title: 'Senior Rebar Detailer',
     location: 'Chennai, India',
     type: 'Full Time',
-    experience: '4–5 Years Experience',
+    experience: '4-6 Years Experience',
     description:
       'Lead rebar detailing activities, review reinforcement drawings, and coordinate with project teams to ensure high-quality deliverables.',
     skills: [

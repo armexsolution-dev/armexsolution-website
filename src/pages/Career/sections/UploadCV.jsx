@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import {
   FiMail,
-  FiFile,
+  FiFileText,
   FiBriefcase,
   FiSend,
   FiUser,
-  FiPhone
+  FiPhone,
+  FiAward
 } from 'react-icons/fi';
 
 import careerImage from '../../../assets/images/Career/Cv.png';
@@ -18,8 +19,11 @@ const UploadCV = () => {
     email: '',
     phone: '',
     position: '',
+    experience: '',
     message: ''
   });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -33,6 +37,24 @@ const UploadCV = () => {
 
     // EmailJS connect later
     console.log("Submitted Data:", formData);
+
+    // Show success message
+    setIsSubmitted(true);
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      position: '',
+      experience: '',
+      message: ''
+    });
+
+    // Hide message after 5 sec
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 5000);
   };
 
   return (
@@ -55,7 +77,7 @@ const UploadCV = () => {
         {/* GRID */}
         <div className="ucv-grid">
 
-          {/* ================= LEFT SIDE FORM ================= */}
+          {/* LEFT SIDE */}
           <div className="ucv-email-card">
             <div className="ucv-card-inner">
 
@@ -68,7 +90,7 @@ const UploadCV = () => {
               </h3>
 
               <p className="ucv-email-desc">
-                No file upload needed. Fill the form and submit your application.
+                Complete the form below to submit your application.
               </p>
 
               {/* FORM */}
@@ -115,7 +137,7 @@ const UploadCV = () => {
                   />
                 </div>
 
-                {/* POSITION DROPDOWN */}
+                {/* POSITION */}
                 <div className="ucv-input-group">
                   <FiBriefcase />
 
@@ -127,20 +149,42 @@ const UploadCV = () => {
                   >
                     <option value="">Select Position</option>
 
-                    <option value="BIM Engineer">
-                      BIM Engineer
+                    <option value="Rebar Detailer">
+                      Rebar Detailer
                     </option>
 
-                    <option value="Structural Detailer">
-                      Structural Detailer
+                    <option value="Senior Rebar Detailer">
+                      Senior Rebar Detailer
                     </option>
 
-                    <option value="Rebar Detailing Engineer">
-                      Rebar Detailing Engineer
+                    <option value="Rebar Checker">
+                      Rebar Checker
+                    </option>
+                  </select>
+                </div>
+
+                {/* EXPERIENCE */}
+                <div className="ucv-input-group">
+                  <FiAward />
+
+                  <select
+                    name="experience"
+                    value={formData.experience}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select Experience</option>
+
+                    <option value="2-4 Years">
+                      2-4 Years
                     </option>
 
-                    <option value="Civil Draftsman">
-                      Civil Draftsman
+                    <option value="4-6 Years">
+                      4-6 Years
+                    </option>
+
+                    <option value="6+ Years">
+                      6+ Years
                     </option>
                   </select>
                 </div>
@@ -154,7 +198,7 @@ const UploadCV = () => {
                   onChange={handleChange}
                 />
 
-                {/* SUBMIT BUTTON */}
+                {/* BUTTON */}
                 <div className="button-row">
                   <button
                     type="submit"
@@ -162,6 +206,7 @@ const UploadCV = () => {
                     aria-label="Submit job application"
                   >
                     Submit Application
+
                     <span className="btn-arrow">
                       <FiSend />
                     </span>
@@ -170,19 +215,21 @@ const UploadCV = () => {
 
               </form>
 
-              {/* NOTE */}
-              <div className="ucv-email-note">
-                <FiFile className="ucv-note-icon" />
+              {/* SUCCESS MESSAGE */}
+              {isSubmitted && (
+                <div className="ucv-email-note">
+                  <FiFileText className="ucv-note-icon" />
 
-                <p>
-                  Your application will be reviewed by our HR team. We will contact you if shortlisted.
-                </p>
-              </div>
+                  <p>
+                    Your application has been submitted successfully. Our HR team will review your profile and contact you if shortlisted.
+                  </p>
+                </div>
+              )}
 
             </div>
           </div>
 
-          {/* ================= RIGHT SIDE ================= */}
+          {/* RIGHT SIDE */}
           <div className="ucv-right-wrapper">
 
             <div className="ucv-right-top">

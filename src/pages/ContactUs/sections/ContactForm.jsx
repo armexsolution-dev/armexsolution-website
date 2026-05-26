@@ -126,7 +126,7 @@ const ContactForm = () => {
   return (
     <section
       className="cf-section"
-      id="contactF"
+      // id="contactF"
       aria-label="Contact form section"
     >
       <div className="cf-bg-gradient" aria-hidden="true"></div>
@@ -192,7 +192,7 @@ const ContactForm = () => {
           </div>
 
           {/* Form */}
-          <div className="cf-form-wrapper">
+          <div className="cf-form-wrapper" id="contactScroll">
             <div className="cf-form-card">
               <p className="cf-form-title">
                 Our Experts Can Help You Get the Best Out of Your Business
