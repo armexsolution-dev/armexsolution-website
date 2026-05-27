@@ -88,9 +88,8 @@ export default function ServiceHero() {
   };
 
   return (
-    <section className="sh-hero">
+    <section className="sh-hero" id="shdirect">
 
-      {/* ✅ FIXED BACKGROUND (consistent fade) */}
       <div
         key={active}
         className="sh-bg sh-visible"

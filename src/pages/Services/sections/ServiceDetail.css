@@ -1,16 +1,19 @@
-/* ===== Service Detail – Optimized For Overlay Navbar ===== */
+/* =========================================================
+   LAYOUT
+========================================================= */
 
 .sd-creative {
   max-width: 1100px;
+
   margin: 0 auto;
 
-  /* TOP SPACE FOR ABSOLUTE NAVBAR */
   padding:
     clamp(120px, 14vw, 150px)
     clamp(0.9rem, 4vw, 2rem)
     60px;
 
   position: relative;
+
   overflow-x: hidden;
 
   transform: translateZ(0);
@@ -20,128 +23,149 @@
   display: none !important;
 }
 
-/* =========================================
+/* =========================================================
    BACK BUTTON
-========================================= */
+========================================================= */
 
 .sd-back {
   display: inline-flex;
+
   align-items: center;
+
   gap: 8px;
-
-  color: #64748b;
-  text-decoration: none;
-
-  font-size: 0.98rem;
-  font-weight: 500;
 
   margin-bottom: 22px;
 
   padding: 9px 18px;
 
-  background: white;
-
   border-radius: 30px;
 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  background: #ffffff;
+
+  color: #64748b;
+
+  text-decoration: none;
+
+  font-size: 0.98rem;
+  font-weight: 500;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.03);
 
   transition: all 0.2s ease;
-
-  will-change: transform, color;
 }
 
 .sd-back:hover {
   color: #c9a22d;
+
   transform: translateX(-3px);
 }
 
-/* =========================================
-   HERO SECTION
-========================================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .sd-hero {
   position: relative;
 
-  height: clamp(260px, 42vh, 320px);
-
-  border-radius: 24px;
+  height:
+    clamp(260px, 42vh, 320px);
 
   overflow: hidden;
 
   margin-bottom: 32px;
 
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .sd-hero-bg {
   position: absolute;
+
   inset: 0;
+
   z-index: 1;
 }
 
 .sd-hero-bg img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 }
 
 .sd-hero-overlay {
   position: absolute;
+
   inset: 0;
 
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.82) 0%,
-    rgba(0, 0, 0, 0.45) 100%
-  );
-
   z-index: 2;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
 }
 
 .sd-hero-content {
   position: relative;
+
   z-index: 3;
 
   height: 100%;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
 
-  padding: 0 clamp(1.2rem, 5vw, 3rem);
+  padding:
+    0 clamp(1.2rem, 5vw, 3rem);
 
-  color: white;
+  color: #ffffff;
 }
 
 .sd-hero-sub {
   display: inline-block;
 
-  font-size: clamp(0.78rem, 3vw, 0.9rem);
-  font-weight: 600;
-
-  color: #c9a22d;
-
-  background: rgba(201, 162, 45, 0.15);
-
-  padding: 0.38rem 1.1rem;
-
-  border-radius: 30px;
+  width: fit-content;
 
   margin-bottom: 1rem;
 
-  width: fit-content;
+  padding:
+    0.38rem
+    1.1rem;
 
-  border: 1px solid rgba(201, 162, 45, 0.3);
+  border-radius: 30px;
+
+  background:
+    rgba(201, 162, 45, 0.15);
+
+  border:
+    1px solid rgba(201, 162, 45, 0.3);
+
+  color: #c9a22d;
+
+  font-size:
+    clamp(0.78rem, 3vw, 0.9rem);
+
+  font-weight: 600;
 
   letter-spacing: 0.5px;
 }
 
 .sd-hero-title {
-  font-size: clamp(2rem, 6vw, 3.4rem);
+  margin-bottom: 0.7rem;
+
+  font-size:
+    clamp(2rem, 6vw, 3.4rem);
 
   font-weight: 800;
-
-  margin: 0 0 0.7rem;
 
   text-transform: uppercase;
 
@@ -149,37 +173,37 @@
 }
 
 .sd-hero-tagline {
-  font-size: clamp(1rem, 3vw, 1.2rem);
+  max-width: 560px;
 
   color: #e0e0e0;
 
-  max-width: 560px;
+  font-size:
+    clamp(1rem, 3vw, 1.2rem);
 
   line-height: 1.7;
-
-  font-weight: 400;
 }
 
-/* =========================================
-   DESCRIPTION CARD
-========================================= */
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 .sd-desc-card {
-  background: white;
+  position: relative;
+
+  overflow: hidden;
+
+  margin-bottom: 32px;
 
   padding: 28px 34px;
 
   border-radius: 22px;
 
-  margin-bottom: 32px;
-
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+  background: #ffffff;
 
   border: 1px solid #edf2f7;
 
-  position: relative;
-
-  overflow: hidden;
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.02);
 }
 
 .sd-desc-card::before {
@@ -197,79 +221,77 @@
 }
 
 .sd-desc-card p {
-  font-size: clamp(1rem, 2.6vw, 1.08rem);
-
-  line-height: 1.85;
-
   color: #334155;
 
-  margin: 0;
+  font-size:
+    clamp(1rem, 2.6vw, 1.08rem);
 
-  font-weight: 400;
+  line-height: 1.85;
 }
 
-/* =========================================
-   GRID LAYOUT
-========================================= */
+/* =========================================================
+   GRID
+========================================================= */
 
 .sd-grid-2col {
   display: grid;
 
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns:
+    repeat(2, 1fr);
 
   gap: 22px;
 
   margin-bottom: 22px;
 }
 
-/* =========================================
+/* =========================================================
    CARD
-========================================= */
+========================================================= */
 
 .sd-card {
-  background: white;
-
-  padding: clamp(1.2rem, 3vw, 1.8rem);
+  padding:
+    clamp(1.2rem, 3vw, 1.8rem);
 
   border-radius: 22px;
 
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+  background: #ffffff;
 
   border: 1px solid #edf2f7;
 
-  transition: all 0.2s ease;
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.02);
 
-  will-change: transform, border-color, box-shadow;
+  transition: all 0.2s ease;
 }
 
 .sd-card:hover {
   border-color: #c9a22d;
 
-  box-shadow: 0 10px 30px rgba(201, 162, 45, 0.05);
+  box-shadow:
+    0 10px 30px rgba(201, 162, 45, 0.05);
 }
 
 .sd-card-full {
-  grid-column: span 2;
-
   margin-bottom: 22px;
+
+  grid-column: span 2;
 }
 
 .sd-card-title {
-  font-size: 1.38rem;
+  position: relative;
 
-  font-weight: 700;
-
-  color: #1e2b37;
-
-  margin: 0 0 22px;
+  margin-bottom: 22px;
 
   padding-bottom: 12px;
 
-  border-bottom: 2px solid #f1f5f9;
+  border-bottom:
+    2px solid #f1f5f9;
 
-  position: relative;
+  color: #1e2b37;
 
-  line-height: 1.3;
+  font-size: 1.38rem;
+
+  font-weight: 700;
 }
 
 .sd-card-title::after {
@@ -277,8 +299,8 @@
 
   position: absolute;
 
-  bottom: -2px;
   left: 0;
+  bottom: -2px;
 
   width: 60px;
   height: 2px;
@@ -286,9 +308,9 @@
   background: #c9a22d;
 }
 
-/* =========================================
+/* =========================================================
    LISTS
-========================================= */
+========================================================= */
 
 .sd-list {
   list-style: none;
@@ -299,19 +321,18 @@
 
 .sd-list-item {
   display: flex;
+
   align-items: flex-start;
 
   gap: 12px;
 
   margin-bottom: 15px;
 
-  font-size: 1rem;
-
   color: #475569;
 
-  line-height: 1.7;
+  font-size: 1rem;
 
-  font-weight: 400;
+  line-height: 1.7;
 }
 
 .sd-list-item:last-child {
@@ -319,41 +340,41 @@
 }
 
 .sd-list-icon {
-  color: #c9a22d;
-
-  font-size: 1.1rem;
+  margin-top: 4px;
 
   flex-shrink: 0;
 
-  margin-top: 4px;
+  color: #c9a22d;
+
+  font-size: 1.1rem;
 }
 
-/* =========================================
-   INDUSTRIES GRID
-========================================= */
+/* =========================================================
+   INDUSTRIES
+========================================================= */
 
 .sd-industries-grid {
   display: grid;
 
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns:
+    repeat(4, 1fr);
 
   gap: 18px;
 }
 
 .sd-industry-card {
+  padding:
+    1.4rem 1rem;
+
+  text-align: center;
+
+  border-radius: 18px;
+
   background: #f8fafc;
 
   border: 1px solid #e2e8f0;
 
-  border-radius: 18px;
-
-  padding: 1.4rem 1rem;
-
-  text-align: center;
-
   transition: all 0.3s ease;
-
-  will-change: transform, border-color, box-shadow;
 }
 
 .sd-industry-card:hover {
@@ -361,104 +382,295 @@
 
   border-color: #c9a22d;
 
-  box-shadow: 0 10px 25px rgba(201, 162, 45, 0.1);
+  box-shadow:
+    0 10px 25px rgba(201, 162, 45, 0.1);
 }
 
 .sd-industry-icon {
-  font-size: 2rem;
+  margin-bottom: 12px;
 
   color: #c9a22d;
 
-  margin-bottom: 12px;
+  font-size: 2rem;
 }
 
 .sd-industry-card h4 {
-  font-size: 1.08rem;
-
-  font-weight: 700;
-
   margin-bottom: 7px;
 
   color: #1e2b37;
 
-  line-height: 1.4;
+  font-size: 1.08rem;
+
+  font-weight: 700;
 }
 
 .sd-industry-card p {
-  font-size: 0.92rem;
-
   color: #64748b;
+
+  font-size: 0.92rem;
 
   line-height: 1.6;
 }
 
-/* =========================================
+/* =========================================================
    CTA
-========================================= */
+========================================================= */
 
 .sd-cta {
-  background: linear-gradient(
-    135deg,
-    #1e2b37 0%,
-    #2d3748 100%
-  );
+  position: relative;
 
-  padding: clamp(1.8rem, 5vw, 2.4rem);
+  overflow: hidden;
 
-  border-radius: 22px;
+  margin-top: 38px;
+
+  padding:
+    clamp(2.5rem, 6vw, 4rem)
+    clamp(1.5rem, 5vw, 3rem);
+
+  border-radius: 28px;
 
   text-align: center;
 
-  color: white;
+  color: #ffffff;
 
-  margin-top: 34px;
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a 0%,
+      #1e293b 45%,
+      #0f172a 100%
+    );
+
+  border:
+    1px solid rgba(201, 162, 45, 0.18);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.sd-cta h3 {
-  font-size: clamp(1.15rem, 4vw, 1.45rem);
+.sd-cta-glow {
+  position: absolute;
+
+  top: -120px;
+  right: -120px;
+
+  width: 380px;
+  height: 380px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(201, 162, 45, 0.18) 0%,
+      transparent 72%
+    );
+
+  pointer-events: none;
+}
+
+.sd-cta-content {
+  position: relative;
+
+  z-index: 2;
+}
+
+.sd-cta-subtitle {
+  display: inline-block;
+
+  margin-bottom: 1rem;
+
+  padding:
+    0.45rem
+    1.1rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(201, 162, 45, 0.12);
+
+  border:
+    1px solid rgba(201, 162, 45, 0.22);
+
+  color: #f3e6af;
+
+  font-size: 0.82rem;
 
   font-weight: 700;
 
-  margin: 0 0 18px;
+  letter-spacing: 1.4px;
 
-  line-height: 1.5;
+  text-transform: uppercase;
 }
 
-.sd-cta-btn {
-  display: inline-block;
+.sd-cta h3 {
+  margin-bottom: 1rem;
 
-  padding: 0.85rem 2.2rem;
+  font-size:
+    clamp(1.5rem, 4vw, 2.3rem);
 
-  background: #c9a22d;
+  font-weight: 800;
 
-  color: white;
+  line-height: 1.25;
+}
+
+.sd-cta p {
+  max-width: 760px;
+
+  margin:
+    0 auto 2rem;
+
+  color:
+    rgba(255, 255, 255, 0.78);
+
+  font-size:
+    clamp(1rem, 2.4vw, 1.08rem);
+
+  line-height: 1.85;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.SDbutton-row {
+  display: flex;
+
+  justify-content: center;
+}
+
+.SDbtn-primary {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  overflow: hidden;
+
+  padding:
+    15px 36px;
+
+  border-radius: 8px;
 
   text-decoration: none;
 
-  border-radius: 50px;
+  background: #c9a22d;
 
-  font-weight: 600;
+  color: #0c1323;
 
-  font-size: 1rem;
+  font-size: 1.05rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
 
   transition: all 0.3s ease;
 
-  cursor: pointer;
+  z-index: 1;
 
-  will-change: transform, background, box-shadow;
+  box-shadow:
+    0 0 8px rgba(201, 162, 45, 0.45),
+    0 0 20px rgba(201, 162, 45, 0.28),
+    0 0 35px rgba(201, 162, 45, 0.16);
 }
 
-.sd-cta-btn:hover {
-  background: #b08f28;
+.SDbtn-primary::before {
+  content: '';
 
-  transform: translateY(-3px);
+  position: absolute;
 
-  box-shadow: 0 10px 30px rgba(201, 162, 45, 0.3);
+  inset: -2px;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #c9a22d,
+      #f3e6af,
+      #c9a22d
+    );
+
+  opacity: 0.7;
+
+  filter: blur(14px);
+
+  z-index: -1;
+
+  animation:
+    glowMove 3s linear infinite;
 }
 
-/* =========================================
+.SDbtn-primary::after {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 60%;
+  height: 100%;
+
+  background:
+    rgba(255, 255, 255, 0.35);
+
+  transform: skewX(-25deg);
+
+  transition: all 0.7s ease;
+}
+
+.SDbtn-primary:hover::after {
+  left: 130%;
+}
+
+.SDbtn-primary:hover {
+  background: #f3e6af;
+
+  transform:
+    translateY(-3px)
+    scale(1.03);
+
+  box-shadow:
+    0 0 12px rgba(243, 230, 175, 0.85),
+    0 0 28px rgba(201, 162, 45, 0.55),
+    0 0 48px rgba(201, 162, 45, 0.35);
+}
+
+.SDbtn-arrow {
+  font-size: 1.2rem;
+
+  transition: transform 0.3s ease;
+}
+
+.SDbtn-primary:hover .btn-arrow {
+  transform: translateX(6px);
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes glowMove {
+  0% {
+    transform: translateX(-10%);
+  }
+
+  50% {
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
+/* =========================================================
    RESPONSIVE
-========================================= */
+========================================================= */
 
 @media (max-width: 768px) {
   .sd-creative {
@@ -477,7 +689,8 @@
   }
 
   .sd-industries-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, 1fr);
 
     gap: 14px;
   }
@@ -497,6 +710,20 @@
   .sd-list-item {
     font-size: 0.97rem;
   }
+
+  .sd-cta {
+    padding:
+      2.3rem
+      1.4rem;
+  }
+
+  .sd-cta h3 {
+    font-size: 1.7rem;
+  }
+
+  .sd-cta p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -512,12 +739,9 @@
     padding: 0 1.2rem;
   }
 
-  .sd-industries-grid {
-    gap: 12px;
-  }
-
   .sd-card,
-  .sd-desc-card {
+  .sd-desc-card,
+  .sd-cta {
     border-radius: 18px;
   }
 
@@ -526,6 +750,20 @@
   }
 
   .sd-hero-tagline {
+    font-size: 1rem;
+  }
+
+  .button-row {
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+
+    padding:
+      14px
+      20px;
+
     font-size: 1rem;
   }
 }
@@ -540,8 +778,7 @@
 
     max-width: 300px;
 
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
   }
 
   .sd-hero-title {
@@ -609,16 +846,17 @@
   }
 }
 
-/* =========================================
+/* =========================================================
    REDUCED MOTION
-========================================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .sd-back,
   .sd-card,
   .sd-industry-card,
-  .sd-cta-btn {
+  .btn-primary {
     transition: none !important;
+
     transform: none !important;
   }
 

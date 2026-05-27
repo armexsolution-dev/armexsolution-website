@@ -1,13 +1,13 @@
 /* --------------------------------
-   Base & White Background
+   BASE SECTION
 -------------------------------- */
+
 .homeIntro {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  font-family: 'Inter', sans-serif;
-  background: #ffffff;
   overflow: hidden;
+  background: #ffffff;
+  font-family: 'Inter', sans-serif;
 }
 
 .homeIntro::after {
@@ -22,27 +22,33 @@
 }
 
 /* --------------------------------
-   Container (2-column layout)
+   MAIN CONTAINER
 -------------------------------- */
+
 .homeIntro-container {
   position: relative;
+  z-index: 10;
+
+  width: 100%;
   max-width: 1300px;
+
   margin: 0 auto;
-  padding: 80px 40px;
+  padding: 90px 40px;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
   align-items: center;
-  min-height: 100vh;
-  z-index: 10;
+  gap: 80px;
+
+  box-sizing: border-box;
 }
 
 /* --------------------------------
-   Left Column – Image Collage
+   IMAGE SIDE
 -------------------------------- */
+
 .homeIntro-imageCollage {
   position: relative;
-  padding: 0;
   z-index: 10;
 }
 
@@ -54,28 +60,30 @@
 
 .homeIntro-collageMain {
   grid-column: span 2;
-  height: 320px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  height: 340px;
 }
 
 .homeIntro-collageSmall {
-  height: 200px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  height: 220px;
 }
 
 .homeIntro-collageItem {
   position: relative;
+  overflow: hidden;
+  border-radius: 18px;
   cursor: pointer;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.3s ease;
 }
 
 .homeIntro-collageItem img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
   transition: transform 0.5s ease;
 }
 
@@ -86,14 +94,15 @@
 .homeIntro-imageOverlay {
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     135deg,
-    rgba(201, 162, 45, 0.05),
-    rgba(36, 63, 136, 0.05)
+    rgba(201, 162, 45, 0.08),
+    rgba(36, 63, 136, 0.08)
   );
+
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
 }
 
 .homeIntro-collageItem:hover .homeIntro-imageOverlay {
@@ -102,11 +111,15 @@
 
 .homeIntro-collageItem::after {
   content: '';
+
   position: absolute;
   inset: 0;
+
   border: 2px solid transparent;
-  border-radius: 16px;
+  border-radius: 18px;
+
   transition: border-color 0.3s ease;
+
   pointer-events: none;
 }
 
@@ -115,84 +128,108 @@
 }
 
 /* --------------------------------
-   Right Column – Content
+   CONTENT SIDE
 -------------------------------- */
+
 .homeIntro-content {
-  color: #333;
+  position: relative;
   z-index: 10;
-  padding: 0;
 }
 
 .homeIntro-title {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.2;
   margin-bottom: 24px;
-  color: #1a1a1a;
+
+  color: #111827;
+
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.15;
 }
 
 .homeIntro-title span {
   color: #c9a22d;
-  display: inline-block;
 }
 
 .homeIntro-text {
-  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-  line-height: 1.7;
+  max-width: 540px;
+
+  margin-bottom: 38px;
+
   color: #555;
-  margin-bottom: 36px;
-  max-width: 520px;
+
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  line-height: 1.8;
 }
 
-/* Standards Tags */
+/* --------------------------------
+   STANDARDS
+-------------------------------- */
+
 .homeIntro-standards {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+
   margin-bottom: 42px;
 }
 
 .homeIntro-standard {
-  padding: 8px 18px;
-  background: transparent;
+  padding: 9px 18px;
+
   border: 1px solid;
   border-radius: 40px;
-  font-size: clamp(0.75rem, 2vw, 0.85rem);
+
+  background: transparent;
+
+  font-size: 0.85rem;
   font-weight: 500;
+
   transition: all 0.3s ease;
+
   cursor: pointer;
 }
 
 .homeIntro-standard:hover {
-  background: rgba(201, 162, 45, 0.04);
   transform: translateY(-2px);
+
+  background: rgba(201, 162, 45, 0.05);
 }
 
-/* Button Row */
-.button-row {
+/* --------------------------------
+   BUTTON
+-------------------------------- */
+
+.HIbutton-row {
   display: flex;
-  gap: 15px;
-  margin-bottom: 30px;
   flex-wrap: wrap;
+  gap: 15px;
 }
 
-/* Primary Button */
-.btn-primary {
+.HIbtn-primary {
   position: relative;
-  display: flex;
+
+  display: inline-flex;
   align-items: center;
   gap: 10px;
+
   padding: 14px 35px;
+
   background: #c9a22d;
   border: none;
+
   color: #0c1323;
-  font-size: 1.1rem;
+
+  font-size: 1.05rem;
   font-weight: 700;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
   letter-spacing: 0.5px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
   overflow: hidden;
+
+  transition: all 0.3s ease;
+
   z-index: 1;
 
   box-shadow:
@@ -201,44 +238,56 @@
     0 0 30px rgba(201, 162, 45, 0.2);
 }
 
-/* Glow Layer */
-.btn-primary::before {
+/* Glow */
+.HIbtn-primary::before {
   content: '';
+
   position: absolute;
   inset: -2px;
+
   border-radius: inherit;
+
   background: linear-gradient(
     90deg,
     #c9a22d,
     #f3e6af,
     #c9a22d
   );
+
   z-index: -1;
+
   opacity: 0.7;
+
   filter: blur(14px);
+
   animation: glowMove 3s linear infinite;
 }
 
-/* Shine Effect */
-.btn-primary::after {
+/* Shine */
+.HIbtn-primary::after {
   content: '';
+
   position: absolute;
   top: 0;
   left: -120%;
+
   width: 60%;
   height: 100%;
+
   background: rgba(255, 255, 255, 0.35);
+
   transform: skewX(-25deg);
+
   transition: all 0.7s ease;
 }
 
-.btn-primary:hover::after {
+.HIbtn-primary:hover::after {
   left: 130%;
 }
 
-/* Hover */
-.btn-primary:hover {
+.HIbtn-primary:hover {
   background: #f3e6af;
+
   transform: translateY(-3px) scale(1.03);
 
   box-shadow:
@@ -247,17 +296,20 @@
     0 0 45px rgba(201, 162, 45, 0.35);
 }
 
-/* Arrow */
-.btn-arrow {
+.HIbtn-arrow {
   font-size: 1.2rem;
+
   transition: transform 0.3s ease;
 }
 
-.btn-primary:hover .btn-arrow {
+.HIbtn-primary:hover .btn-arrow {
   transform: translateX(6px);
 }
 
-/* Glow Animation */
+/* --------------------------------
+   GLOW ANIMATION
+-------------------------------- */
+
 @keyframes glowMove {
   0% {
     transform: translateX(-10%);
@@ -272,12 +324,141 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* --------------------------------
+   LARGE DESKTOP
+-------------------------------- */
+
+@media (min-width: 1400px) {
+  .homeIntro-container {
+    max-width: 1400px;
+  }
+}
+
+/* --------------------------------
+   LAPTOP
+-------------------------------- */
+
+@media (max-width: 1200px) {
+  .homeIntro-container {
+    gap: 60px;
+  }
+
+  .homeIntro-collageMain {
+    height: 300px;
+  }
+
+  .homeIntro-collageSmall {
+    height: 200px;
+  }
+}
+
+/* --------------------------------
+   TABLET
+-------------------------------- */
+
+@media (max-width: 991px) {
+  .homeIntro-container {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+
+    padding: 70px 30px;
+  }
+
+  .homeIntro-content {
+    text-align: center;
+  }
+
+  .homeIntro-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .homeIntro-standards {
+    justify-content: center;
+  }
+
+  .button-row {
+    justify-content: center;
+  }
+
+  .homeIntro-imageCollage {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+/* --------------------------------
+   MOBILE
+-------------------------------- */
+
+@media (max-width: 767px) {
+  .homeIntro-container {
+    padding: 60px 20px;
+    gap: 40px;
+  }
+
+  .homeIntro-collageGrid {
+    gap: 14px;
+  }
+
+  .homeIntro-collageMain {
+    height: 240px;
+  }
+
+  .homeIntro-collageSmall {
+    height: 160px;
+  }
+
+  .homeIntro-title {
+    font-size: 2rem;
+  }
+
+  .homeIntro-text {
+    font-size: 0.95rem;
+  }
+
+  .homeIntro-standard {
+    font-size: 0.78rem;
+    padding: 8px 14px;
+  }
+}
+
+/* --------------------------------
+   SMALL MOBILE
+-------------------------------- */
+
+@media (max-width: 480px) {
+  .homeIntro-container {
+    padding: 50px 16px;
+  }
+
+  .homeIntro-collageMain {
+    height: 200px;
+  }
+
+  .homeIntro-collageSmall {
+    height: 130px;
+  }
+
+  .homeIntro-title {
+    font-size: 1.7rem;
+  }
+
+  .homeIntro-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .homeIntro-standard {
+    width: 100%;
+    text-align: center;
+  }
+
   .btn-primary {
     width: 100%;
     justify-content: center;
     padding: 13px 20px;
     font-size: 1rem;
   }
-}
+}   

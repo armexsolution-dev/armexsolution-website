@@ -57,14 +57,14 @@ const ServicesBanner = () => {
           </div>
 
           {/* Updated Button Only */}
-          <div className="button-row">
+          <div className="SBbutton-row">
             <button
-              className="btn-primary"
+              className="SBbtn-primary"
               onClick={scrollToCategories}
               aria-label="Discuss your project – scroll to services"
             >
               Discuss Your Project
-              <span className="btn-arrow">
+              <span className="SBbtn-arrow">
                 <FiArrowRight aria-hidden="true" />
               </span>
             </button>

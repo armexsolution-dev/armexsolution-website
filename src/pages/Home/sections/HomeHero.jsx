@@ -100,14 +100,14 @@ const HomeHero = () => {
 
                 <p className="description">{slide.description}</p>
 
-                <div className="button-row">
+                <div className="HHbutton-row">
                   <button
-                    className="btn-primary"
+                    className="HHbtn-primary"
                     onClick={scrollToIntro}
                     aria-label="Explore more about services"
                   >
                     Explore More
-                    <span className="btn-arrow">→</span>
+                    <span className="HHbtn-arrow">→</span>
                   </button>
                 </div>
               </div>

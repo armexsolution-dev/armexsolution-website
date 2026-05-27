@@ -139,7 +139,7 @@ body {
 }
 
 /* Button Row */
-.button-row {
+.HHbutton-row {
   display: flex;
   gap: 15px;
   margin-bottom: 30px;
@@ -151,7 +151,7 @@ body {
 }
 
 /* Primary Button */
-.btn-primary {
+.HHbtn-primary {
   position: relative;
 
   /* IMPORTANT FIX */
@@ -189,7 +189,7 @@ body {
 }
 
 /* Glow Layer */
-.btn-primary::before {
+.HHbtn-primary::before {
   content: "";
   position: absolute;
   inset: -2px;
@@ -207,7 +207,7 @@ body {
 }
 
 /* Shine Effect */
-.btn-primary::after {
+.HHbtn-primary::after {
   content: "";
   position: absolute;
   top: 0;
@@ -219,12 +219,12 @@ body {
   transition: all 0.7s ease;
 }
 
-.btn-primary:hover::after {
+.HHbtn-primary:hover::after {
   left: 130%;
 }
 
 /* Hover */
-.btn-primary:hover {
+.HHbtn-primary:hover {
   background: #f3e6af;
   transform: translateY(-2px) scale(1.02);
 
@@ -235,12 +235,12 @@ body {
 }
 
 /* Arrow */
-.btn-arrow {
+.HHbtn-arrow {
   font-size: 1rem;
   transition: transform 0.3s ease;
 }
 
-.btn-primary:hover .btn-arrow {
+.HHbtn-primary:hover .btn-arrow {
   transform: translateX(5px);
 }
 

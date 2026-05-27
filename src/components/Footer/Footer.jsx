@@ -1,5 +1,5 @@
 import "./Footer.css";
-import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram,FaWhatsapp  } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import FootLogo from "../../assets/images/logo.svg";
 import { servicesData } from "../../data/servicesData";
@@ -121,6 +121,14 @@ const Footer = () => {
             aria-label="Instagram"
           >
             <FaInstagram />
+          </a>
+          <a
+            href="https://wa.me/919342761826?text=Hello%20ARMEX%20SOLUTIONS%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+          >
+            <FaWhatsapp />
           </a>
         </div>
 
